@@ -13,7 +13,7 @@ enough information so that you know what you are doing (in case you don't
 know that already), and where to go next if you are looking for a more
 elaborate statistical analysis of your data.
 
-![Logo](Logo.jpg)
+![Logo](resources/stats_gauss.jpg)
 
 The Python sample scripts can be found in the folder *Code_Quantlets*,
 and provide examples of:
