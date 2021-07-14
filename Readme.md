@@ -14,7 +14,7 @@ know that already), and where to go next if you are looking for a more
 elaborate statistical analysis of your data.
 
 <p align="center">
-  <img src="resources/stats_gauss.jpg"  width=350  />
+  <img src="resources/logo_ISP2.jpg"  width=350  />
 </p>
 
 The Python sample scripts can be found in the folder *Code_Quantlets*,

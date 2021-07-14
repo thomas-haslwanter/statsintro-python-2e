@@ -15,7 +15,7 @@ The examples contain:
 - 3D surface and wireframe plots
 '''
 
-# Copyright(c) 2017, Thomas Haslwanter. All rights reserved, under the CC BY-SA 4.0 International License
+# Copyright(c) 2021, Thomas Haslwanter. All rights reserved, under the CC BY-SA 4.0 International License
 
 # First, import the libraries that you are going to need. You could also do
 # that later, but it is better style to do that at the beginning.
@@ -117,8 +117,12 @@ def simplePlots():
     
     # Boxplot
     # The ox consists of the first, second (middle) and third quartile
-    plt.boxplot(x, sym='*')
-    printout('boxplot.png', xlabel='Values', title='Boxplot')
+
+    fig, axs = plt.subplots(1, 2, sharey=True)
+    axs[0].plot(x, '.')
+    axs[1].boxplot(x, sym='*')
+    axs[1].set_xticklabels([])
+    printout('boxplot.svg', xlabel='Values', title='Boxplot')
     
     plt.boxplot(x, sym='*', vert=False)
     plt.title('Boxplot, horizontal')
