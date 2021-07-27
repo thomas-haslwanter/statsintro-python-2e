@@ -7,6 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
 import seaborn as sns
+import pingouin as pg
 
 # additional packages
 # Import formatting commands if directory "Utilities" is available
@@ -33,7 +34,7 @@ def generate_probplot():
     # Generate the data
     x = np.linspace(0,10, 100)
     y = chi2.pdf(x)
-    np.random.seed(12345)
+    np.random.seed(123)
     numData = 100
     data = chi2.rvs(numData)
     
@@ -56,8 +57,9 @@ def generate_probplot():
     
     
     # Plot probplot
-    plt.axes(axs[1])
-    stats.probplot(data, plot=plt)
+    # plt.axes(axs[1])
+    pg.qqplot(data, ax=axs[1])
+    # stats.probplot(data, plot=plt)
     
     x0, x1 = axs[1].get_xlim()
     y0, y1 = axs[1].get_ylim()
@@ -65,7 +67,7 @@ def generate_probplot():
     axs[1].axvline(0, lw=0.5, ls='--')
     axs[1].set_aspect((x1-x0)/(y1-y0))
     
-    showData('chi2pp.png')
+    showData('chi2pp.jpg')
     
     return(data)
     """

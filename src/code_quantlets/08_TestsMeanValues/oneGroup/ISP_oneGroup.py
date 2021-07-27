@@ -6,16 +6,25 @@ This script shows how to
 - Compare the values from the t-distribution with those of a normal distribution
 '''
 
-# Copyright(c) 2015, Thomas Haslwanter. All rights reserved, under the CC BY-SA 4.0 International License
+# Copyright(c) 2021, Thomas Haslwanter.
+# All rights reserved, under the CC BY-SA 4.0 International License
+
 
 # Import standard packages
 import numpy as np
 import scipy.stats as stats
+import pingouin as pg
+from pprint import pprint
 
-def check_mean():        
-    '''Data from Altman, check for significance of mean value.
+
+def check_mean() -> float:        
+    """Data from Altman, check for significance of mean value.
     Compare average daily energy intake (kJ) over 10 days of 11 healthy women, and compare it to the recommended level of 7725 kJ.
-    '''
+
+    Returns
+    -------
+    p-value : just for testing the function 
+    """
     
     # Get data from Altman
     inFile = 'altman_91.txt'
@@ -51,6 +60,46 @@ def check_mean():
     
     return prob # should be 0.018137235176105802
  
+
+def explain_power() -> None:
+    """ Reproduce most of the parameters from pingouin's 'ttest' """
+
+    # generate the data
+    np.random.seed(12345)
+    n = 100
+    data = stats.norm(7,3).rvs(n)
+
+    # analysis parameters
+    c = 6.5
+    alpha = 0.05
+
+    # standard parameters
+    mean = np.mean(data)
+    sem = stats.sem(data)
+    std = np.std(data, ddof=1)
+    dof = n-1
+
+    h1 = stats.t(df=len(data)-1, loc=mean, scale=sem)
+
+    # reproduce the results of the pingouin T-test
+    results = {}
+
+    results['dof'] = dof
+    results['t_val'] = (mean-c)/sem
+    results['d'] = (mean-c)/np.std(data, ddof=1)
+
+    tc = stats.t(dof).isf(alpha/2)
+    results['p_val'] = stats.t(dof).sf(results['t_val'])*2
+
+    results['ci'] = h1.ppf([alpha/2, 1-alpha/2])
+
+    # power-calculation
+    nct = stats.nct(df=dof, nc=(mean-c)/sem)
+    results['power'] = nct.sf(tc) + nct.cdf(-tc)
+
+    pprint(results)
+
+
 def compareWithNormal():
     '''This function is supposed to give you an idea how big/small the difference between t- and normal
     distribution are for realistic calculations.
@@ -78,6 +127,8 @@ def compareWithNormal():
     
     return normProb # should be 0.054201154690070759
            
+
 if __name__ == '__main__':
     check_mean()
+    explain_power()
     compareWithNormal()

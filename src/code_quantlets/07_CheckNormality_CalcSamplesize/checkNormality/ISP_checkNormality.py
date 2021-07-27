@@ -1,24 +1,29 @@
-'''
+"""
 Graphical and quantitative check, if a given distribution is normal.
-- For small sample-numbers (<50), you should use the Shapiro-Wilk test or the "normaltest"
-- for intermediate sample numbers, the Lilliefors-test is good since the original Kolmogorov-Smirnov-test is unreliable when mean and std of the distribution
-are not known.
-- the Kolmogorov-Smirnov(Kolmogorov-Smirnov) test should only be used for large sample numbers (>300)
-'''
+- For small sample-numbers (<50), you should use the Shapiro-Wilk test or
+    the "normaltest"
+- for intermediate sample numbers, the Lilliefors-test is good since the
+   original Kolmogorov-Smirnov-test is unreliable when mean and std of the
+   distribution are not known.
+- the Kolmogorov-Smirnov(Kolmogorov-Smirnov) test should only be used for large
+    sample numbers (>300)
+"""
 
-# Copyright(c) 2020, Thomas Haslwanter. All rights reserved, under the CC BY-SA 4.0 International License
+# Copyright(c) 2021, Thomas Haslwanter. All rights reserved, under the CC BY-SA 4.0 International License
 
 # Import standard packages
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.stats as stats
 import pandas as pd
+import pingouin as pg
 
 # additional packages
 from statsmodels.stats.diagnostic import lilliefors
 
+
 def check_normality():
-    '''Check if the distribution is normal.'''
+    """Check if the distribution is normal."""
     
     # Set the parameters
     numData = 1000
@@ -26,7 +31,7 @@ def check_normality():
     mySD = 3
     
     # To get reproducable values, I provide a seed value
-    np.random.seed(1234)   
+    np.random.seed(12345)   
     
     # Generate and show random data
     data = stats.norm.rvs(myMean, mySD, size=numData)
@@ -37,7 +42,8 @@ def check_normality():
     # --- >>> START stats <<< ---
     # Graphical test: if the data lie on a line, they are pretty much
     # normally distributed
-    _ = stats.probplot(data, plot=plt)
+    # _ = stats.probplot(data, plot=plt)
+    pg.qqplot(data)
     plt.show()
 
     pVals = pd.Series()
