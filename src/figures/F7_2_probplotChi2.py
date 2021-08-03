@@ -49,6 +49,8 @@ def generate_probplot():
     axs[0].set_xlabel('X')
     axs[0].set_ylabel('PDF(X)')
     axs[0].set_title('chi2(x), k=3')
+    axs[0].axhline(ls='dotted')
+    axs[0].axvline(ls='dotted')
     sns.set_style('white')
     
     x0, x1 = axs[0].get_xlim()

@@ -1,4 +1,4 @@
-'''Multiple testing
+"""Multiple testing
 
 This script provides an example, where three treatments are compared. It
 first performs a one-way ANOVA, to see if there is a difference between the
@@ -16,9 +16,10 @@ participant's stress levels, with higher numbers indicating higher
 effectiveness.
 
 Taken from an example by Josef Perktold (http://jpktd.blogspot.co.at/)
-'''
+"""
 
-# Copyright(c) 2015, Thomas Haslwanter. All rights reserved, under the CC BY-SA 4.0 International License
+# Copyright(c) 2021, Thomas Haslwanter.
+# All rights reserved, under the CC BY-SA 4.0 International License
 
 # Import standard packages
 import numpy as np
@@ -42,14 +43,21 @@ except ImportError:
         return
 
 # Other required packages
+import statsmodels
 from statsmodels.stats.multicomp import (pairwise_tukeyhsd,
                                          MultiComparison)
 from statsmodels.formula.api import ols
 from statsmodels.stats.anova import anova_lm
 from statsmodels.stats.libqsturng import psturng
     
-def setData():
-    ''' Set up the data, as a structured array. '''
+
+def setData() -> np.array:
+    """ Set up the data, as a structured array.
+
+    Returns
+    -------
+    data : structured array, containing ('idx', 'Treatment', 'Stressreduction')
+    """
     
     # The first and last field are 32-bit intergers; the second field is an
     # 8-byte string. Note that here we can also give names to the individual
@@ -88,9 +96,15 @@ def setData():
                                     ('Treatment', '|S8'),
                                     ('StressReduction', '<i4')])
     return data
+
     
-def doAnova(data):
-    '''one-way ANOVA'''
+def doAnova(data: np.ndarray) -> None:
+    """one-way ANOVA
+
+    Parameters
+    ----------
+    data : structured array, containing ('Treatment', 'StressReduction')
+    """
     
     df = pd.DataFrame(data)
     model = ols('StressReduction ~ C(Treatment)',df).fit()
@@ -100,8 +114,16 @@ def doAnova(data):
     if anovaResults['PR(>F)'][0] < 0.05:
         print('One of the groups is different.')
 
-def doTukey(data, multiComp):    
-    '''Do a pairwise comparison, and show the confidence intervals'''
+
+def doTukey(data: np.ndarray, multiComp: MultiComparison) -> None:    
+    """Do a pairwise comparison, and show the confidence intervals
+
+    Parameters
+    ----------
+    data : structured array, containing the data
+    multiComp : statsmodels class containing test for multiple comparisons
+
+    """
     
     print((multiComp.tukeyhsd().summary()))
     
@@ -141,8 +163,16 @@ def doTukey(data, multiComp):
     outFile = 'multComp.png'
     showData(outFile)
     
-def Holm_Bonferroni(multiComp):
-    ''' Instead of the Tukey's test, we can do pairwise t-test '''
+
+def Holm_Bonferroni(multiComp: MultiComparison) -> None:
+    """ Instead of the Tukey's test, we can do pairwise t-test
+
+    Parameters
+    ----------
+    data : structured array, containing the data
+    multiComp : statsmodels class containing test for multiple comparisons
+
+    """
     
     # First, with the "Holm" correction
     rtp = multiComp.allpairtest(stats.ttest_rel, method='Holm')
@@ -155,7 +185,13 @@ def Holm_Bonferroni(multiComp):
     checkVal = rtp[1][0][0,0]
     return checkVal
     
-def main():
+
+def main() -> float:
+    """
+    Returns
+    -------
+    checkVal : for testing the program
+    """
     # Get the data
     data = setData()
     
@@ -170,5 +206,6 @@ def main():
     
     return checkVal     # this is only for regression testing of the program
     
+
 if __name__ == '__main__':
     main()
