@@ -25,6 +25,7 @@ except ImportError:
         plt.show()
         return
     
+setFonts(16)
 # Plot a normal distribution, and mark tc
 x = np.linspace(-4, 4, 200)
 nd = stats.norm()
@@ -34,7 +35,8 @@ plt.plot(x,y, ls='dotted')
 # Plot the second distribution ...
 x2 = x+0.3
 plt.plot(x2,y)
-plt.axhline(ls='dotted')
+plt.axhline(ls='dashed')
+plt.axvline(x=0, ymin=0, ymax=1, ls='dashed')
 
 # ... including the "true positive" areas
 alpha=0.05
@@ -48,11 +50,12 @@ plt.fill_between(x2[small], y[small], color='C1')
 plt.plot([tc, tc], [0, nd.pdf(tc)], color='C0')
 plt.plot([-tc, -tc], [0, nd.pdf(tc)], color='C0')
 
-xlabels = ['-tc', 'c', '+tc']
+xlabels = ['ref-tc', 'ref', 'ref+tc']
 xticks = [-tc, 0, tc]
 ax = plt.gca()
 ax.set_xticks(xticks)
 ax.set_xticklabels(xlabels)
+ax.set_yticks(np.linspace(0, 0.4, 5))
 plt.ylim(0, 0.42)
 
 out_file = 'show_power.jpg'

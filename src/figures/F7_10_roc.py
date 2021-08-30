@@ -52,10 +52,10 @@ def main():
     y2 = nd2.pdf(x)
     
     # Axes locations
-    ROC = {'left': 0.35,
-           'width': 0.36,
+    ROC = {'left': 0.30,
+           'width': 0.30,
            'bottom': 0.1,
-           'height': 0.47}
+           'height': 0.4}
     
     PDF = {'left': 0.1,
            'width': 0.8,
@@ -72,22 +72,28 @@ def main():
     
     # Plot and label the PDF-curves
     ax1.plot(x,y1)
-    ax1.fill_between(x,0,y1, where=x<3, facecolor='#EEEEEE', alpha=0.5)
-    ax1.annotate('Sensitivity',
+    ax1.margins(x=0, y=0)
+    ax1.fill_between(x,0,y1, where=x<3, facecolor='#DDDDDD', alpha=0.5)
+                 # arrowprops={'facecolor':'#CCCCCC',
+    ax1.annotate('True Positives',
                  xy=(x[75], y1[65]),
                  xytext=(x[40], y1[75]*1.2), 
-                 fontsize=14,
+                 fontsize=12,
                  horizontalalignment='center',
-                 arrowprops=dict(facecolor='#CCCCCC'))
+                 arrowprops={'facecolor':'#CCCCCC',
+                     'arrowstyle':'->'}
+                     )
     
     ax1.plot(x,y2,'#888888')
     ax1.fill_between(x,0,y2, where=x<3, facecolor='#555555', alpha=0.5)
-    ax1.annotate('1-Specificity',
+    ax1.annotate('False Positives',
                  xy=(2.5, 0.03),
                  xytext=(8,0.05), 
-                 fontsize=14,
+                 fontsize=12,
                  horizontalalignment='center',
-                 arrowprops=dict(facecolor='#888888'))
+                 arrowprops={'facecolor':'#888888',
+                     'arrowstyle':'->'}
+                     )
     
     ax1.set_ylabel('PDF')
     
@@ -100,13 +106,13 @@ def main():
     ax2.set_ylim([0, 1])
     ax2.axis('equal')
     ax2.set_title('ROC-Curve')
-    ax2.set_xlabel('1-Specificity')
-    ax2.set_ylabel('Sensitivity')
+    ax2.set_xlabel('False Positives')
+    ax2.set_ylabel('True Positives')
     
     arrow_bidir(ax2, (0.5,0.5), (0.095, 0.885))
     
     # Show the plot, and create a figure
-    showData('ROC.png')    
+    showData('ROC.jpg')    
     
 if __name__ == '__main__':
     main()

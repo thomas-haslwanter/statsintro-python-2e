@@ -75,7 +75,7 @@ def arma_plot(arma_list: list, title: str) -> None:
 
     out_file = title + '.jpg'
     fig.suptitle(title)
-    showData(out_file, out_dir='../../ImagesISP')
+    showData(out_file)
     
     plt.show()
 

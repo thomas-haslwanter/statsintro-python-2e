@@ -1,10 +1,10 @@
-'''Analysis of one group of data
+"""Analysis of one group of data
 
 This script shows how to
 - Use a t-test for a single mean
 - Use a non-parametric test (Wilcoxon signed rank sum) to check a single mean 
 - Compare the values from the t-distribution with those of a normal distribution
-'''
+"""
 
 # Copyright(c) 2021, Thomas Haslwanter.
 # All rights reserved, under the CC BY-SA 4.0 International License
@@ -101,9 +101,9 @@ def explain_power() -> None:
 
 
 def compareWithNormal():
-    '''This function is supposed to give you an idea how big/small the difference between t- and normal
+    """This function is supposed to give you an idea how big/small the difference between t- and normal
     distribution are for realistic calculations.
-    '''
+    """
 
     # generate the data
     np.random.seed(12345)

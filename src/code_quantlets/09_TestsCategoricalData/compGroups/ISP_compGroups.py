@@ -134,7 +134,11 @@ def chiSquare() -> float:
     """
 
     # Enter the data
-    obs = np.array([[32, 118], [17, 127]])
+    obs = np.array([[32, 118],
+                    [17, 127]])
+
+    # obs = np.array([[43, 9],
+    #                 [44, 4]])
 
     # --- >>> START stats <<< ---
     # Calculate the chi-square test
