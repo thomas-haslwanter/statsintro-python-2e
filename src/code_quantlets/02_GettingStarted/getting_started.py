@@ -20,7 +20,7 @@ superfluous. But it shows good Python coding style.
 """
 
 # author:   Thomas Haslwanter
-# date:     June-2020
+# date:     Aug-2021
 
 # In contrast to MATLAB, you explicitly have to load the modules that you need.
 import numpy as np
@@ -41,9 +41,9 @@ def main() -> None:
     np.savetxt(outFile, np.vstack([t,x]).T)
 
     # Read the data into a different variable
-    inData = np.loadtxt(outFile)
-    t2 = inData[:,0] # Note that Python starts at "0"!
-    x2 = inData[:,1]
+    in_data = np.loadtxt(outFile)
+    t2 = in_data[:,0] # Note that Python starts at "0"!
+    x2 = in_data[:,1]
 
     # Plot the data, and wait for the user to click
     plt.plot(t2,x2)

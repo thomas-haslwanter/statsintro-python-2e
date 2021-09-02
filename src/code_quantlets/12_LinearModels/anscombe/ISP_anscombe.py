@@ -31,6 +31,7 @@ import ISP_mystyle
 
 sns.set(style="ticks")
 
+
 if __name__ == '__main__':
     # Load the example dataset for Anscombe's quartet
     df = sns.load_dataset("anscombe")

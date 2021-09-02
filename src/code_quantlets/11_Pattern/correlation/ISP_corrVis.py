@@ -6,7 +6,7 @@ _tkinter.TclError: can't invoke "update" command: application has been destroyed
 """
 
 # author:   Thomas Haslwanter
-# date:     April-2021
+# date:     Sept-2021
 
 # Import the required packages
 import numpy as np

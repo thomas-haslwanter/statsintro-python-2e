@@ -1,8 +1,8 @@
-"""Solution for Exercise "Categorical Data"
-"A Lady Tasting Tea"
+""" Solution for Exercise 'Categorical Data'
+    'A Lady Tasting Tea'
 """
 
-# author: Thomas Haslwanter, date: Feb-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 from scipy import stats
 obs = [[3,1], [1,3]]

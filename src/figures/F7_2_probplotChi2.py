@@ -1,6 +1,6 @@
 """ Demonstration of the probplot of a non-normal distribution """
 
-# author: Thomas Haslwanter, date: Feb-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import numpy as np

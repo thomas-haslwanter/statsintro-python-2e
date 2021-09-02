@@ -3,7 +3,8 @@ curves with logrank test.
 "miR-137" is a short non-coding RNA molecule that functions to regulate
 the expression levels of other genes.
 """
-# author: Thomas Haslwanter, date: Jun-2015
+
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import matplotlib.pyplot as plt

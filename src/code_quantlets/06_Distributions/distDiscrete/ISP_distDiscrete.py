@@ -3,7 +3,8 @@
 - Poisson distribution (PMF, CDF, and PPF)
 '''
 
-# Copyright(c) 2015, Thomas Haslwanter. All rights reserved, under the CC BY-SA 4.0 International License
+# Copyright(c) 2015, Thomas Haslwanter. All rights reserved,
+# under the CC BY-SA 4.0 International License
 
 # Import standard packages
 import numpy as np
@@ -33,7 +34,7 @@ sns.set(context='poster', style='ticks')
 sns.set_palette(sns.color_palette('hls', 3))
 setFonts(24)
 
-#----------------------------------------------------------------------
+
 def show_binomial():
     """Show an example of binomial distributions"""
     
@@ -58,7 +59,7 @@ def show_binomial():
     # Show and save the plot
     showData('Binomial_distribution_pmf.png')
     
-#----------------------------------------------------------------------
+
 def show_poisson():
     """Show an example of Poisson distributions"""
     
@@ -68,7 +69,8 @@ def show_poisson():
     k = np.arange(20)       # generate x-values
     markersize = 8
     for par in lambdas:
-        plt.plot(k, stats.poisson.pmf(k, par), 'o--', label='$\lambda={0}$'.format(par))
+        plt.plot(k, stats.poisson.pmf(k, par), 'o--',
+                label='$\lambda={0}$'.format(par))
     
     # Format the plot
     plt.legend()
@@ -79,7 +81,7 @@ def show_poisson():
     # Show and save the plot
     showData('Poisson_distribution_pmf.png')
     
-#----------------------------------------------------------------------
+
 def show_poisson_views():
     """Show different views of a Poisson distribution"""
     
@@ -108,7 +110,7 @@ def show_poisson_views():
     plt.tight_layout()
     plt.show()
     
-# -----------------------------------------------------------------------------------
+
 if __name__ == '__main__':
     show_binomial()
     show_poisson()

@@ -149,7 +149,8 @@ def doTukey(data: np.ndarray, multiComp: MultiComparison) -> None:
     plt.errorbar(xvals, res2.meandiffs, yerr=errors, fmt='o')
     
     # Put on labels
-    pair_labels = multiComp.groupsunique[np.column_stack(res2._multicomp.pairindices)]
+    pair_labels = \
+          multiComp.groupsunique[np.column_stack(res2._multicomp.pairindices)]
     plt.xticks(xvals, pair_labels)
     
     # Format the plot

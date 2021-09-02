@@ -1,6 +1,6 @@
 """Solutions to 6.3.1 Examples of Normal Distributions"""
 
-# author: Thomas Haslwanter, date: Feb-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import numpy as np

@@ -1,6 +1,7 @@
-"""Scatterplot of normally distributed data, with Standard Deviation and Standard Error"""
+""" Scatterplot of normally distributed data, with Standard Deviation
+and Standard Error"""
 
-# author: Thomas Haslwanter, date: Feb-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import numpy as np
@@ -62,15 +63,17 @@ curAxis = plt.gca()
 curAxis.set_xticklabels( () )
 
 # Make the arrows
-plt.arrow(10, np.mean(x), 0, sdVal,
-    width=0.2, length_includes_head=True, head_length=0.2, head_width=1, color='C0')
-plt.arrow(10, np.mean(x), 0, -sdVal,
-    width=0.2, length_includes_head=True, head_length=0.2, head_width=1, color='C0')
+plt.arrow(10, np.mean(x), 0, sdVal, width=0.2,
+        length_includes_head=True, head_length=0.2, head_width=1, color='C0')
 
-plt.arrow(35, np.mean(x)-4*seVal, 0, 3*seVal,
-    width=0.2, length_includes_head=True, head_length=0.1, head_width=1, color='C1')
-plt.arrow(35, np.mean(x)+4*seVal, 0, -3*seVal,
-    width=0.2, length_includes_head=True, head_length=0.1, head_width=1, color='C1')
+plt.arrow(10, np.mean(x), 0, -sdVal, width=0.2,
+        length_includes_head=True, head_length=0.2, head_width=1, color='C0')
+
+plt.arrow(35, np.mean(x)-4*seVal, 0, 3*seVal, width=0.2,
+        length_includes_head=True, head_length=0.1, head_width=1, color='C1')
+
+plt.arrow(35, np.mean(x)+4*seVal, 0, -3*seVal, width=0.2,
+        length_includes_head=True, head_length=0.1, head_width=1, color='C1')
 
 fs = 16
 #plt.text(10, 5.5, '$\pm$ 1SD', family='sans-seriv', fontsize=fs)
@@ -80,10 +83,6 @@ plt.text(35, 5.2, '$\pm$ 1SEM', fontsize=fs, color='C1')
 plt.annotate('mean', (70,np.mean(x)),xycoords='data', fontsize=fs, color='C2',
                 xytext=(75, 5.5), textcoords='data',
                 arrowprops=dict(facecolor='C2', shrink=0.05))
-
-
-# Add the text
-
 
 # Save and show
 outFile = ('standardError.jpg')

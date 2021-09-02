@@ -3,7 +3,7 @@ Generate a sine and cosine wave using pandas' DataFrames,
 and write them to an out-file.
 """
 
-# author: Thomas Haslwanter, date: Sept-2015
+# author: Thomas Haslwanter, date: Sept-2021
 
 import numpy as np
 import pandas as pd

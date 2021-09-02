@@ -33,7 +33,8 @@ def generate_data():
     
 
 def calc_bootstrap(data):
-    """ Find the confidence interval for the mean of the given data set with bootstrapping. """
+    """ Find the confidence interval for the mean of the given data set
+    with bootstrapping. """
     
     # --- >>> START stats <<< ---
     # Calculate the bootstrap

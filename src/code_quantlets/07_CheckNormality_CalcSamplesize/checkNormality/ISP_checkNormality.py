@@ -1,5 +1,4 @@
-"""
-Graphical and quantitative check, if a given distribution is normal.
+""" Graphical and quantitative check, if a given distribution is normal.
 - For small sample-numbers (<50), you should use the Shapiro-Wilk test or
     the "normaltest"
 - for intermediate sample numbers, the Lilliefors-test is good since the
@@ -9,7 +8,8 @@ Graphical and quantitative check, if a given distribution is normal.
     sample numbers (>300)
 """
 
-# Copyright(c) 2021, Thomas Haslwanter. All rights reserved, under the CC BY-SA 4.0 International License
+# Copyright(c) 2021, Thomas Haslwanter. All rights reserved,
+# under the CC BY-SA 4.0 International License
 
 # Import standard packages
 import numpy as np
@@ -62,10 +62,12 @@ def check_normality():
     _, pFewVals['Lilliefors'] = lilliefors(fewData)
     
     # Alternatively with original Kolmogorov-Smirnov test
-    _, pVals['Kolmogorov-Smirnov']    = stats.kstest((data-np.mean(data))/np.std(data,ddof=1), 'norm')
-    _, pFewVals['Kolmogorov-Smirnov'] = stats.kstest((fewData-np.mean(fewData))/np.std(fewData,ddof=1), 'norm')
+    _, pVals['Kolmogorov-Smirnov']    = \
+            stats.kstest((data-np.mean(data))/np.std(data,ddof=1), 'norm')
+    _, pFewVals['Kolmogorov-Smirnov'] = \
+        stats.kstest((fewData-np.mean(fewData))/np.std(fewData,ddof=1), 'norm')
     
-    print('p-values for all {0} data points: ----------------'.format(len(data)))
+    print(f'p-values for all {len(data)} data points: ----------------')
     print(pVals)
     print('p-values for the first 100 data points: ----------------')
     print(pFewVals)
@@ -76,6 +78,7 @@ def check_normality():
     
     return pVals['Kolmogorov-Smirnov']
     
+
 if __name__ == '__main__':
     p = check_normality()    
     print(p)

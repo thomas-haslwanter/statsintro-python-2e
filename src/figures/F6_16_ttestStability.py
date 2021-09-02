@@ -1,7 +1,7 @@
 """ Stability of the T-distribution against outliers, compared to the
  normal distribution. """
 
-# author: Thomas Haslwanter, date: Feb-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import numpy as np

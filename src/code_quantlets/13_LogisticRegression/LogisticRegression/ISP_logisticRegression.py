@@ -4,10 +4,11 @@ A logistic regression is an example of a "Generalized Linear Model (GLM)".
 The input values are the recorded O-ring data from the space shuttle launches
 before 1986, and the fit indicates the likelihood of failure for an O-ring.
 
-Taken from http://www.brightstat.com/index.php?option=com_content&task=view&id=41&Itemid=1&limit=1&limitstart=2
+Taken from
+http://www.brightstat.com/index.php?option=com_content&task=view&id=41&Itemid=1&limit=1&limitstart=2
 """
 
-# author: Thomas Haslwanter, date: Feb-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import numpy as np

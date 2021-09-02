@@ -1,8 +1,9 @@
-'''Example of a Kruskal-Wallis test (for not normally distributed data)
+""" Example of a Kruskal-Wallis test (for not normally distributed data)
 Taken from http://www.brightstat.com/index.php?option=com_content&task=view&id=41&Itemid=1&limit=1&limitstart=2
-'''
+"""
 
-# Copyright(c) 2015, Thomas Haslwanter. All rights reserved, under the CC BY-SA 4.0 International License
+# Copyright(c) 2015, Thomas Haslwanter. All rights reserved,
+# under the CC BY-SA 4.0 International License
 
 # Import standard packages
 import numpy as np
@@ -10,8 +11,9 @@ import numpy as np
 # additional packages
 from scipy.stats.mstats import kruskalwallis
 
+
 def main():
-    '''These data could be a comparison of the smog levels in four different cities. '''
+    """These data could be a comparison of the smog levels in four different cities. """
     
     # Get the data
     city1 = np.array([68, 93, 123, 83, 108, 122])
@@ -31,6 +33,7 @@ def main():
         print('No significant difference between the cities.')
         
     return h
+
 
 if __name__ == '__main__':
     main()    

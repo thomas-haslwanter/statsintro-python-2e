@@ -1,8 +1,8 @@
-"""Solution for Exercise "Categorical Data"
+""" Solution for Exercise 'Categorical Data'
 McNemar's Test
 """
 
-# author: Thomas Haslwanter, date: Feb-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 from scipy import stats
 from statsmodels.sandbox.stats.runs import mcnemar

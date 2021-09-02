@@ -1,5 +1,4 @@
-"""
-Calculation of Confidence Intervals for different statistics
+""" Calculation of Confidence Intervals for different statistics
     - normal mean value
     - normal variability
     - Binomial p
@@ -7,7 +6,7 @@ Calculation of Confidence Intervals for different statistics
 """
 
 # author: Thomas Haslwanter
-# date:   April-2021
+# date:   Sept-2021
 
 # Import the standard packages
 import numpy as np
@@ -360,6 +359,7 @@ def sigma(sigma_data: np.ndarray, alpha: float =0.05,
         else:
             ci_lower = std * np.sqrt(df/cd.ppf(1-alpha))
         return np.array([ci_lower])
+
 
 if __name__ == '__main__':
     alpha = 0.05

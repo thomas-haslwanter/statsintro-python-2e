@@ -1,6 +1,6 @@
 """Solution for Exercise "Continuous Distribution Functions" """
 
-# author: Thomas Haslwanter, date: Jan-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 import numpy as np
 import matplotlib.pyplot as plt

@@ -33,7 +33,8 @@ def get_data() -> pd.DataFrame:
     df : iris-data (ML-dataset)
     """
 
-    # The "iris" dataset is one of the most common examples in pattern recognition
+    # The "iris" dataset is one of the most common examples
+    # in pattern recognition
     df = sns.load_dataset('iris')
 
     return df

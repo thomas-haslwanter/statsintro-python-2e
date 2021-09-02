@@ -19,7 +19,8 @@ it by default when the module is imported by the main program, is a bit
 superfluous. But it shows good Python coding style.
 '''
 
-# Copyright(c) 2017, Thomas Haslwanter. All rights reserved, under the CC BY-SA 4.0 International License
+# Copyright(c) 2021, Thomas Haslwanter
+# All rights reserved, under the CC BY-SA 4.0 International License
 
 # In contrast to MATLAB, you explicitly have to load the modules that you need.
 import numpy as np
@@ -40,9 +41,9 @@ def main():
     np.savetxt(outFile, np.vstack([t,x]).T)
 
     # Read the data into a different variable
-    inData = np.loadtxt(outFile)
-    t2 = inData[:,0] # Note that Python starts at "0"!
-    x2 = inData[:,1]
+    in_data = np.loadtxt(outFile)
+    t2 = in_data[:,0] # Note that Python starts at "0"!
+    x2 = in_data[:,1]
 
     # Plot the data, and wait for the user to click
     plt.plot(t2,x2)
@@ -56,27 +57,27 @@ def main():
     x = par['offset'] + par['slope']*t + par['noiseAmp']*np.random.randn(len(t))
 
     # Select "late" values, i.e. with t>10
-    xHigh = x[t>10]
-    tHigh = t[t>10]
+    x_high = x[t>10]
+    t_high = t[t>10]
 
     # Plot the "late" data
     plt.close()
-    plt.plot(tHigh, xHigh)
+    plt.plot(t_high, x_high)
 
     # Determine the best-fit line
     # To do so, you have to generate a matrix with "time" in the first
     # column, and a column of "1" in the second column:
-    xMat = np.vstack((tHigh, np.ones_like(tHigh))).T
-    slope, intercept = np.linalg.lstsq(xMat, xHigh, rcond=None)[0]
+    xMat = np.vstack((t_high, np.ones_like(t_high))).T
+    slope, intercept = np.linalg.lstsq(xMat, x_high, rcond=None)[0]
 
     # Show and plot the fit, and save it to a PNG-file with a medium resolution.
     # The "modern" way of Python-formatting is used
-    plt.plot(tHigh, intercept + slope*tHigh, 'r')
+    plt.plot(t_high, intercept + slope*t_high, 'r')
     plt.title('Hit any key to continue')
     plt.savefig('linefit.png', dpi=200)
     plt.waitforbuttonpress()
     plt.close()
-    print(('Fit line: intercept = {0:5.3f}, and slope = {1:5.3f}'.format(intercept, slope)))
+    print(f'Fit line: intercept = {intercept:5.3f}, and slope = {slope:5.3f}')
 
     # If you want to know confidence intervals, best switch to "pandas"
     # Note that this is an advanced topic, and requires new data structures
@@ -86,16 +87,17 @@ def main():
     import statsmodels.formula.api as smf
     
     # Put the data into a pandas DataFrame
-    myDict = {'x':tHigh, 'y':xHigh}
+    myDict = {'x':t_high, 'y':x_high}
     df = pd.DataFrame(myDict)
     
-    # Fit the model: here the "formula"-syntax commonly used in statistics is employed
-    # 'y~x' means "y is a linear function of x, taking a possible offset into consideration"
+    # Fit the model: here the "formula"-syntax commonly used in statistics
+    # is employed 'y~x' means "y is a linear function of x, taking a possible
+    # offset into consideration"
     results = smf.ols('y~x', data=df).fit()
     
     # Print the results
     print(results.summary())
-    #raw_input('These are the summary results from Pandas - Hit any key to continue')
+    #raw_input('These are the Pandas summary results - Hit any key to continue')
 
 
 if __name__=='__main__':

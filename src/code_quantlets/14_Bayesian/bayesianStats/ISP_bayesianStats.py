@@ -6,7 +6,7 @@ Input data are the recorded O-ring performances of the space shuttles
 before 1986.
 """
 
-# author: Thomas Haslwanter, date: Feb-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import numpy as np
@@ -215,12 +215,15 @@ def showProbabilities(linearTemperature, temperature, failures,
     plt.figure(figsize=(12.5, 4))
     setFonts(18)
     
-    plt.plot(linearTemperature, mean_prob_t, lw=3, label="Average posterior\n \
-    probability of defect")
-    plt.plot(linearTemperature, p_t[0, :], ls="--", label="Realization from posterior")
-    plt.plot(linearTemperature, p_t[-2, :], ls="--", label="Realization from posterior")
+    plt.plot(linearTemperature, mean_prob_t, lw=3,
+            label="Average posterior\n probability of defect")
+    plt.plot(linearTemperature, p_t[0, :], ls="--",
+            label="Realization from posterior")
+    plt.plot(linearTemperature, p_t[-2, :], ls="--",
+            label="Realization from posterior")
     plt.scatter(temperature, failures, color="k", s=50, alpha=0.5)
-    plt.title("Posterior expected value of probability of defect, plus realizations")
+    plt.title("Posterior expected value of probability of defect, '+
+            'plus realizations")
     plt.legend(loc="lower left")
     plt.ylim(-0.1, 1.1)
     plt.xlim(linearTemperature.min(), linearTemperature.max())
@@ -237,7 +240,8 @@ def showProbabilities(linearTemperature, temperature, failures,
     plt.fill_between(linearTemperature[:, 0], *quantiles, alpha=0.7,
                      color="#7A68A6")
     
-    plt.plot(linearTemperature[:, 0], quantiles[0], label="95% CI", color="#7A68A6", alpha=0.7)
+    plt.plot(linearTemperature[:, 0], quantiles[0], label="95% CI",
+            color="#7A68A6", alpha=0.7)
     
     plt.plot(linearTemperature, mean_prob_t, lw=1, ls="--", color="k",
              label="average posterior \nprobability of defect")
@@ -260,8 +264,11 @@ if __name__=='__main__':
     (alpha, beta) = mcmcSimulations(temperature, failures)
     showSimResults(alpha, beta)
     
-    (linearTemperature, mean_p, p, quantiles) = calculateProbability(alpha, beta, temperature, failures)
-    showProbabilities(linearTemperature, temperature, failures, mean_p, p, quantiles)
+    (linearTemperature, mean_p, p, quantiles) = calculateProbability(alpha,
+            beta, temperature, failures)
+
+    showProbabilities(linearTemperature, temperature, failures,
+            mean_p, p, quantiles)
     
     
     

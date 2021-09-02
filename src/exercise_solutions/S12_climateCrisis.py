@@ -2,7 +2,7 @@
   of the chapter 'Linear Regresison Models' """
 
 # author:   Thomas Haslwanter
-# date:     Aug-2021
+# date:     Sept-2021
 
 # Import standard packages
 import numpy as np
@@ -15,6 +15,7 @@ import seaborn as sns
 # modules from 'statsmodels'
 from statsmodels.tsa.seasonal import seasonal_decompose
 import statsmodels.formula.api as smf
+
 
 def get_CO2_data() -> pd.DataFrame:
     """Read in data, and return them as a pandas DataFrame
@@ -89,6 +90,7 @@ def find_best_fit(df: pd.DataFrame) -> None:
     
     plt.show()
     return 
+
 
 if __name__ == '__main__':
     data = get_CO2_data()

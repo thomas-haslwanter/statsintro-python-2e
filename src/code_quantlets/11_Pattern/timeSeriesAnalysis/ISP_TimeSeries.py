@@ -1,6 +1,6 @@
 """ Time Series Analysis of  global CO2-levels """
 
-# author: thomas haslwantere; date: aug-2021
+# author: thomas haslwantere; date: Sept-2021
 
 # Standard modules
 import numpy as np

@@ -15,7 +15,8 @@ The examples contain:
 - 3D surface and wireframe plots
 '''
 
-# Copyright(c) 2021, Thomas Haslwanter. All rights reserved, under the CC BY-SA 4.0 International License
+# Copyright(c) 2021, Thomas Haslwanter.
+# All rights reserved, under the CC BY-SA 4.0 International License
 
 # First, import the libraries that you are going to need. You could also do
 # that later, but it is better style to do that at the beginning.
@@ -48,6 +49,7 @@ except ImportError:
         plt.show()
         return
 
+
 def printout(outFile, xlabel = '', ylabel='', title='', outDir = '.'):
     '''Save the current figure to a file, and then display it'''
     
@@ -70,7 +72,8 @@ def printout(outFile, xlabel = '', ylabel='', title='', outDir = '.'):
     plt.show()
     plt.close()
     
-def simplePlots():
+
+def simple_plots():
     '''Demonstrate the generation of different statistical standard plots'''
     
     # Univariate data -------------------------
@@ -188,6 +191,7 @@ def simplePlots():
     plt.axis('equal')
     printout('piePlot.png', title=' ')
 
+
 def show3D():
     '''Generation of 3D plots'''
     
@@ -231,6 +235,7 @@ def show3D():
 
     showData('3dGraph.png')
     
+
 if __name__ == '__main__':
-    simplePlots()
+    simple_plots()
     show3D()

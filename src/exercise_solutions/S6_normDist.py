@@ -1,6 +1,6 @@
 """ Solution to Exercise "Normal Distribution" """
 
-# author: Thomas Haslwanter, date: Feb-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 import numpy as np
 import matplotlib.pyplot as plt

@@ -1,6 +1,6 @@
 """ Graphical display of data within 1,2,3 SD. """
 
-# author: Thomas Haslwanter, date: Feb-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import numpy as np

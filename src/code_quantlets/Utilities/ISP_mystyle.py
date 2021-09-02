@@ -1,9 +1,9 @@
-"""Common formatting and print commands for ISP
+""" Common formatting and print commands for ISP
 These commands ensure a common layout, and reduce the code required to generate
 plots in the other modules.
 """
 
-# author: Thomas Haslwanter, date: Feb-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import matplotlib.pyplot as plt

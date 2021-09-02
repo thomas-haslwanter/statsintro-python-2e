@@ -32,11 +32,13 @@ def main():
     N = 20
     study_duration = 12
     
-    # Note: a constant dropout rate is equivalent to an exponential distribution!
+    # Note: a constant dropout rate is equivalent to an
+    # exponential distribution!
     subsciption_list = [ [exponential(18), exponential(3)][uniform()<0.5] \
             for i in range(N) ]
     actual_subscriptiontimes = np.array(subsciption_list)
-    observed_subscriptiontimes = np.minimum(actual_subscriptiontimes,study_duration)
+    observed_subscriptiontimes = \
+            np.minimum(actual_subscriptiontimes,study_duration)
     observed= actual_subscriptiontimes < study_duration
     
     # Show the data

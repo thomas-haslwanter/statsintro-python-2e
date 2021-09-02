@@ -2,7 +2,7 @@
 Read in weight-data recorded from newborns, and analyze the
 data based on the gender of the baby."""
 
-# author: Thomas Haslwanter, date: Oct-2015
+# author: Thomas Haslwanter, date: Sept-2021
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -11,8 +11,9 @@ import pandas as pd
 import seaborn as sns
 import os
 
+
 def getData():
-    """Read in data from a text-file, and return them as labelled DataFrame"""
+    """ Read in data from a text-file, and return them as labelled DataFrame """
     
     # Set directory and infile
     dataDir = '.'
@@ -28,8 +29,9 @@ def getData():
     
     return(df)
 
+
 def showData(df):
-    """Graphical data display"""
+    """ Graphical data display """
     
     # Show the data: first all of them ....
     plt.plot(df.Weight, 'o')
@@ -77,9 +79,8 @@ def showData(df):
     plt.ylabel('PDF(Weight)')
     plt.show()
 
-# Statistics: are the data normally distributed?
 def isNormal(data, dataType):
-    """Check if the data are normally distributed"""
+    """ Check if the data are normally distributed """
     alpha = 0.05
     (k2, pVal) = stats.normaltest(data)
     if pVal < alpha:
@@ -87,14 +88,16 @@ def isNormal(data, dataType):
     else:
         print('{0} are normally distributed.'.format(dataType))
         
+
 def checkNormality(df):
-    """Check selected data vlaues for normality"""
+    """ Check selected data vlaues for normality """
     
     grouped = df.groupby('sex')
     
     # Run the check for male and female groups
     isNormal(grouped.get_group('male').Weight, 'male')
     isNormal(grouped.get_group('female').Weight, 'female')
+
 
 if __name__ == '__main__':
     """Main Program"""

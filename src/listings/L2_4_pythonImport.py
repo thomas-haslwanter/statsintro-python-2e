@@ -1,6 +1,6 @@
-"""Demonstration of importing a Python module
+""" Demonstration of importing a Python module """
 
-author: ThH, date: May-2015"""
+# author: ThH, date: Sept-2021
 
 # Import standard packages
 import numpy as np

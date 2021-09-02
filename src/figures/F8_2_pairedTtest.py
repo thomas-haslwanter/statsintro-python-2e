@@ -1,5 +1,6 @@
 """ Paired T-test """
-# author: Thomas Haslwanter, Feb-2021
+
+# author: Thomas Haslwanter, Sept-2021
 
 # Import standard packages
 import numpy as np

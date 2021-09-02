@@ -1,6 +1,6 @@
-"""Solution for Exercise "Comparing Groups" """
+""" Solution for Exercise 'Comparing Groups' """
 
-# author: Thomas Haslwanter, date: April-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 import numpy as np
 import matplotlib.pyplot as plt

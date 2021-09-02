@@ -5,7 +5,7 @@ Strongly based on a blog by Connor Johnson.
 http://connor-johnson.com/2014/02/18/linear-regression-with-python/
 """
 
-# author: Thomas Haslwanter, date: Feb-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import numpy as np

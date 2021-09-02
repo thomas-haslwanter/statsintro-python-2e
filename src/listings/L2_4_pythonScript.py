@@ -1,10 +1,6 @@
-"""
-Short demonstration of a Python script.
+""" Short demonstration of a Python script. """
 
-author: Thomas Haslwanter
-date:   May-2015
-ver:    1.0
-"""
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import numpy as np

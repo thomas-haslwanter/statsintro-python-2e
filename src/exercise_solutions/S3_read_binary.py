@@ -4,7 +4,7 @@ Read in binary data, with an 256 byte ASCII-header.
 """
 
 # author:   Thomas Haslwanter
-# date:     June-2020
+# date:     Sept-2021
 
 # Import the required packages
 import numpy as np

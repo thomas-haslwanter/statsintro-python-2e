@@ -1,7 +1,7 @@
 """ Probability Mass Function (PMF), for throwing dice """
 
 # author:   Thomas Haslwanter
-# date:     July-2021
+# date:     Sept-2021
 
 # Import standard packages
 import numpy as np

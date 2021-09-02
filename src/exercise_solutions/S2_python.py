@@ -1,6 +1,6 @@
 """ Solution to Exercise "Data Input" """
 
-# author: Thomas Haslwanter, date: [xxx]-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -29,6 +29,7 @@ def getDataDobson(url: str, inFile: str) -> pd.DataFrame:
     df  = xls.parse('Sheet1', skiprows=2)
 
     return df
+
 
 if __name__ == '__main__':
     # 1.1 Numpy --------------------

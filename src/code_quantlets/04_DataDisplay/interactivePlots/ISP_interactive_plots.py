@@ -14,7 +14,7 @@ license: Creative Commons Zero (almost public domain) http://scpyce.org/cc0
 """
 
 # author:   Thomas Haslwanter
-# date:     April-2021
+# date:     Aug-2021
 
 # Import standard packages
 import numpy as np
@@ -42,7 +42,7 @@ def normalPlot() -> None:
     plt.show()
     
 
-def positionOnScreen() -> None:
+def position_on_screen() -> None:
     """Position two plots on your screen.
     This uses the Tickle-backend, which I think is the default on all platforms.
     """
@@ -92,7 +92,7 @@ def positionOnScreen() -> None:
     plt.show()
 
 
-def showAndPause() -> None: 
+def show_and_pause() -> None: 
     """Show a plot only for 2 seconds, and then proceed automatically."""
     
     plt.plot(t,s)
@@ -104,7 +104,7 @@ def showAndPause() -> None:
     plt.close()
     
 
-def waitForInput() -> None:    
+def wait_for_input() -> None:    
     """ This time, proceed with a click or by hitting any key """
     
     plt.plot(t,c)
@@ -114,7 +114,7 @@ def waitForInput() -> None:
     plt.close()
 
 
-def keySelection() -> None:
+def key_selection() -> None:
     """Wait for user intput, and proceed depending on the key entered.
     This is a bit complex. But None of the versions I tried without
     key binding were completely stable.
@@ -172,8 +172,8 @@ def plotly_demo() -> None:
 
 if __name__ == '__main__':
     normalPlot()    
-    positionOnScreen()    
-    showAndPause()    
-    waitForInput()    
-    keySelection()
+    position_on_screen()    
+    show_and_pause()    
+    wait_for_input()    
+    key_selection()
     plotly_demo()

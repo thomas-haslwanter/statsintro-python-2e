@@ -1,6 +1,6 @@
 """ Figure explaining the power of a test """
 
-# author: Thomas Haslwanter, date: July-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import numpy as np

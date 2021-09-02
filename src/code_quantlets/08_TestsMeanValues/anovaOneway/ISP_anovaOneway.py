@@ -24,13 +24,18 @@ from statsmodels.stats.anova import anova_lm
 def anova_oneway() -> tuple[float, float]:
     """ One-way ANOVA: test if results from 3 groups are equal.
     
-    Twenty-two patients undergoing cardiac bypass surgery were randomized to one of three ventilation groups:
+    Twenty-two patients undergoing cardiac bypass surgery were randomized to
+    one of three ventilation groups:
     
-    Group I: Patients received 50% nitrous oxide and 50% oxygen mixture continuously for 24 h.
-    Group II: Patients received a 50% nitrous oxide and 50% oxygen mixture only dirng the operation.
-    Group III: Patients received no nitrous oxide but received 35-50% oxygen for 24 h.
+    Group I: Patients received 50% nitrous oxide and 50% oxygen mixture
+             continuously for 24 h.
+    Group II: Patients received a 50% nitrous oxide and 50% oxygen mixture
+              only during the operation.
+    Group III: Patients received no nitrous oxide but received 35-50% oxygen
+               for 24 h.
     
-    The data show red cell folate levels for the three groups after 24h' ventilation.
+    The data show red cell folate levels for the three groups after
+    24h ventilation.
     
     Returns
     -------
@@ -57,7 +62,7 @@ def anova_oneway() -> tuple[float, float]:
     # First, check if the variances are equal, with the "Levene"-test
     (W,p) = stats.levene(group1, group2, group3)
     if p<0.05:
-        print(('Warning: the p-value of the Levene test is <0.05: p={0}'.format(p)))
+        print(f'Warning: the p-value of the Levene test is <0.05: p={p}')
     
     # Do the one-way ANOVA, first with scipy.stats ...
     F_statistic, pVal = stats.f_oneway(group1, group2, group3)
@@ -85,7 +90,8 @@ def anova_oneway() -> tuple[float, float]:
     # Check if the two results are equal. If they are, there is no output
     np.testing.assert_almost_equal(F_statistic, sm_results['F'][0])
     
-    return (F_statistic, pVal) # should be (3.711335988266943, 0.043589334959179327)
+    return (F_statistic, pVal)
+    # should be (3.711335988266943, 0.043589334959179327)
 
 
 def show_teqf() -> float:
@@ -115,8 +121,8 @@ def show_teqf() -> float:
 
 
 def anova_byHand() -> tuple[float, float]:
-    """ Calculate the ANOVA by hand. While you would normally not do that, this
-    function shows how the underlying values can be calculated.
+    """ Calculate the ANOVA by hand. While you would normally not do that,
+    this function shows how the underlying values can be calculated.
     
     Returns
     -------
@@ -138,7 +144,8 @@ def anova_byHand() -> tuple[float, float]:
     (ss_treatments, ss_error) = (0, 0)
     for val, group in groups:
         ss_error += sum((group['values'] - group['values'].mean())**2)
-        ss_treatments += len(group) * (group['values'].mean() - df['values'].mean())**2
+        ss_treatments += len(group) * \
+                (group['values'].mean() - df['values'].mean())**2
 
     df_groups = len(groups)-1
     df_residuals = len(data)-len(groups)

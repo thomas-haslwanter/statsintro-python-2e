@@ -1,7 +1,7 @@
-"""Solution to Exercise 'Modifying Text Files' of the chapter 'Data Input' """
+""" Solution to Exercise 'Modifying Text Files' of the chapter 'Data Input' """
 
 # author:   Thomas Haslwanter
-# date:     June-2020
+# date:     Sept-2021
 
 # Import the required packages
 import numpy as np

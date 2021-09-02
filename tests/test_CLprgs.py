@@ -1,8 +1,6 @@
-""" Test routine for Statsintro
+""" Test routine for Statsintro """
 
-"""
-
-# author: Thomas Haslwanter, date: Nov-2015
+# author: Thomas Haslwanter, date: Sept-2015
 
 # Import standard packages
 import numpy as np

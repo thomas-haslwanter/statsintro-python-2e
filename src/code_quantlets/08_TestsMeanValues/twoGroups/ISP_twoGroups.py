@@ -1,9 +1,10 @@
-''' Comparison of two groups
+""" Comparison of two groups
 - Analysis of paired data
 - Analysis of unpaired data
-'''
+"""
 
-# Copyright(c) 2020, Thomas Haslwanter. All rights reserved, under the CC BY-SA 4.0 International License
+# Copyright(c) 2020, Thomas Haslwanter. All rights reserved,
+# under the CC BY-SA 4.0 International License
 
 # Import standard packages
 import numpy as np
@@ -12,8 +13,8 @@ import matplotlib.pyplot as plt
 import scipy.stats as stats
 
 def paired_data():
-    '''Analysis of paired data
-    Compare mean daily intake over 10 pre-menstrual and 10 post-menstrual days (in kJ).'''
+    """Analysis of paired data: Compare mean daily intake over
+    10 pre-menstrual and 10 post-menstrual days (in kJ)."""
     
     # Get the data:  daily intake of energy in kJ for 11 women
     inFile = 'altman_93.txt'
@@ -44,8 +45,8 @@ def paired_data():
 
 
 def unpaired_data():
-    ''' Then some unpaired comparison: 24 hour total energy expenditure (MJ/day),
-    in groups of lean and obese women'''
+    """ Then some unpaired comparison: 24 hour total energy
+    expenditure (MJ/day), in groups of lean and obese women"""
     
     # Get the data: energy expenditure in mJ and stature (0=obese, 1=lean)
     inFile = 'altman_94.txt'
@@ -91,12 +92,14 @@ def unpaired_data():
     #df = pd.DataFrame(energ, columns = ['energy', 'weightClass'])
     #grouped = df.groupby('weightClass')
     #grouped.mean()
-    #t_statistic, p_value = stats.ttest_ind(grouped.get_group(0).energy, grouped.get_group(1).energy)    
+    #t_statistic, p_value = stats.ttest_ind(grouped.get_group(0).energy,
+    # grouped.get_group(1).energy)    
     #grouped.energy.plot(marker='o', lw=0)
     #plt.legend(['obese', 'lean'])
     #plt.show()
     
     return p_value  # should be 0.0021216133858800489
+
 
 if __name__ == '__main__':
     paired_data()    

@@ -1,6 +1,6 @@
-"""Demonstration of a Python Function
+""" Demonstration of a Python Function
 
-author: thomas haslwanter, date: [xxx]-2021
+author: thomas haslwanter, date: Sept-2021
 """
 
 # Import standard packages

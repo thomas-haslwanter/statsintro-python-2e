@@ -4,7 +4,7 @@ can contain further details.
 """
 
 # author: Thomas Haslwanter
-# date:   Aug-2021
+# date:   Sept-2021
 
 # Import standard packages
 import numpy as np

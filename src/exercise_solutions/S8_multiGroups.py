@@ -1,6 +1,6 @@
 """ Solution for Exercise "Comparing Multiple Groups" """
 
-# author: Thomas Haslwanter, date: April-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Load the required modules ---------------------------------------------------
 # Standard modules

@@ -1,6 +1,6 @@
-"""Solution for Exercise "Correlation" in Chapter 11 """
+""" Solution for Exercise "Correlation" in Chapter 11 """
 
-# author: Thomas Haslwanter, date: Feb-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 import numpy as np
 import pandas as pd

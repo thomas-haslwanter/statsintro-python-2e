@@ -5,7 +5,7 @@
 """
 
 # author:   Thomas Haslwanter
-# date:     Jun-2021
+# date:     Aug-2021
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -160,5 +160,3 @@ if __name__ == '__main__':
     5  5.0  26.0
     6  6.0  36.0
     """
-      
-

@@ -1,20 +1,17 @@
-# Source: http://scipy-central.org/item/84/1/simple-interactive-matplotlib-plots
-
-"""Interactive graphs with Matplotlib have haunted me. So here I have collected
-a number of tricks that should make interactive use of plots simpler. The
-functions below show how to
+""" Interactive graphs with Matplotlib have haunted me. So here I have
+collected a number of tricks that should make interactive use of plots simpler.
+The functions below show how to
 
 - Position figures on the screen (e.g. top left half of display)
 - Pause to display the plot, and proceed automatically after a few sec
 - Proceed on a click, or a keyboard hit
 - Evaluate keyboard inputs
 
-author: Thomas Haslwanter
-date:   [xxx]-2021
-ver:    1.2
-license: Creative Commons Zero (almost public domain) http://scpyce.org/cc0
-
 """
+
+# author: Thomas Haslwanter, date:   Sept-2021
+# license: Creative Commons Zero (almost public domain) http://scpyce.org/cc0
+
 # Import standard packages
 import numpy as np
 import matplotlib.pyplot as plt

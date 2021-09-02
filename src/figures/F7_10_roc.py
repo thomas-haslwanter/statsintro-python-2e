@@ -1,10 +1,10 @@
-"""Show the origin of ROC-curves
+""" Show the origin of ROC-curves
 ROC curves plot "sensitivity" against "1-specificity".
 The example here uses two normally distributed groups, with a mean of 1 and 6,
 respectively, and a standard deviation of 2.
 """
 
-# author: Thomas Haslwanter, date: Feb-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import numpy as np

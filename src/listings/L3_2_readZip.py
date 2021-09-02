@@ -1,6 +1,6 @@
-"""Get data from MS-Excel files, which are stored zipped on the WWW. """
+""" Get data from MS-Excel files, which are stored zipped on the WWW """
 
-# author: Thomas Haslwanter, date: [xxx]-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import pandas as pd

@@ -1,7 +1,7 @@
 """Get data from MS-Excel files, which are stored zipped on the WWW. """
 
 # author:   Thomas Haslwanter
-# date:     June-2020
+# date:     Aug-2021
 
 # Import standard packages
 import pandas as pd
@@ -12,22 +12,22 @@ import zipfile
 from urllib.request import urlopen
     
 
-def getDataDobson(url: str, inFile: str) -> pd.DataFrame:
+def get_data_dobson(url: str, inFile: str) -> pd.DataFrame:
     """ Extract data from a zipped-archive on the web. """
 
     # get the zip-archive
     GLM_archive = urlopen(url).read()
 
     # make the archive available as a byte-stream
-    zipdata = io.BytesIO()
-    zipdata.write(GLM_archive)
+    zip_data = io.BytesIO()
+    zip_data.write(GLM_archive)
 
     # extract the requested file from the archive, as a pandas XLS-file
-    myzipfile = zipfile.ZipFile(zipdata)
-    xlsfile = myzipfile.open(inFile)
+    my_zipfile = zipfile.ZipFile(zip_data)
+    xls_file = my_zipfile.open(inFile)
 
     # read the xls-file into Python, using Pandas, and return the extracted data
-    xls = pd.ExcelFile(xlsfile)
+    xls = pd.ExcelFile(xls_file)
     df  = xls.parse('Sheet1', skiprows=2)
 
     return df
@@ -38,7 +38,7 @@ if __name__ == '__main__':
     url = 'https://www.routledge.com/downloads/K32369/GLM.dobson.data.zip'
     inFile = r'Table 2.8 Waist loss.xls'
 
-    df = getDataDobson(url, inFile)
+    df = get_data_dobson(url, inFile)
     print(df)
 
     #input('All done!')

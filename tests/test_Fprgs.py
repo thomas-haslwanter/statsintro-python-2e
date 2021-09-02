@@ -1,8 +1,6 @@
-""" Test routine for source code that generates "F"igures
+""" Test routine for source code that generates Figures """
 
-"""
-
-# author: Thomas Haslwanter, date: Nov-2015
+# author: Thomas Haslwanter, date: Sept-2021
 
 # additional packages
 import os

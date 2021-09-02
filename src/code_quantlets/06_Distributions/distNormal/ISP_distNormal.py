@@ -1,10 +1,11 @@
-''' Simple manipulations of normal distribution functions.
+""" Simple manipulations of normal distribution functions.
 - Different displays of normally distributed data
 - Compare different samples from a normal distribution
 - Work with the cumulative distribution function (CDF)
-'''
+"""
 
-# Copyright(c) 2020, Thomas Haslwanter. All rights reserved, under the CC BY-SA 4.0 International License
+# Copyright(c) 2020, Thomas Haslwanter. All rights reserved,
+# under the CC BY-SA 4.0 International License
 
 # Import standard packages
 import numpy as np
@@ -29,8 +30,9 @@ except ImportError:
 # General formatting options
 sns.set(context='poster', style='ticks', palette='muted')
 
+
 def simple_normal():
-    ''' Different aspects of a normal distribution'''
+    """ Different aspects of a normal distribution"""
     
     # Generate the data
     x = np.arange(-4,4,0.1) # generate the desirded x-values
@@ -95,10 +97,11 @@ def simple_normal():
     outFile = 'DistributionFunctions.png'
     showData(outFile)
 
+
 def shifted_normal():
-    '''PDF and scatter plot'''
+    """PDF and scatter plot"""
     
-    # Plot 3 PDFs (Probability density functions) for normal distributions ----------
+    # Plot 3 PDFs (Probability density functions) for normal distributions ---
     
     # Select 3 mean values, and 3 SDs
     myMean = [0,0,0,-2]
@@ -109,7 +112,8 @@ def shifted_normal():
     with sns.color_palette('hls', 4):
         for mu,sigma in zip(myMean, np.sqrt(mySD)):
             y = stats.norm.pdf(t, mu, sigma)
-            plt.plot(t,y, label='$\mu={0}, \; \t\sigma={1:3.1f}$'.format(mu,sigma))
+            plt.plot(t, y,
+                    label=f'$\mu={mu}, \; \t\sigma={sigma:3.1f}$')
         
     # Format the plot
     plt.legend()
@@ -120,7 +124,7 @@ def shifted_normal():
     outFile = 'Normal_Distribution_PDF.png'
     showData(outFile)
     
-    # Generate random numbers with a normal distribution ------------------------
+    # Generate random numbers with a normal distribution ---------------------
     myMean = 0
     mySD = 3
     numData = 500
@@ -135,9 +139,11 @@ def shifted_normal():
     plt.ylim([-10,10])
     plt.show()
     plt.close()
+
     
 def many_normals():
-    '''Show the histograms of 25 samples distributions, and compare the mean values '''
+    """Show the histograms of 25 samples distributions, and compare
+    the mean values """
     
     # Set the parameters
     numRows = 5
@@ -176,9 +182,10 @@ def many_normals():
         myMeans[ii] = np.mean(data)
     print(('The standard error of the mean, with {0} samples, is {1}'.format(numData, np.std(myMeans))))
 
+
 def values_fromCDF():
-    '''Calculate an empirical cumulative distribution function, compare it with the exact one, and
-    find the exact point for a specific data value.'''
+    """ Calculate an empirical cumulative distribution function, compare it
+    with the exact one, and find the exact point for a specific data value. """
     
     # Generate normally distributed random data
     myMean = 5
@@ -204,14 +211,17 @@ def values_fromCDF():
     myMean = 5
     mySD = 2
     cdf = stats.norm.cdf(value, myMean, mySD)
-    print(('With a threshold of {0:4.2f}, you get {1}% of the data'.format(value, round(cdf*100))))
+    print(f'With a threshold of {value:4.2f} you get {round(cdf*100)}% ' +
+            ' of the data')
     
     # For the percentile corresponding to a certain value: 
     # the "inverse cumulative distribution function" 
     value = 0.025
     icdf = stats.norm.isf(value, myMean, mySD)
-    print(('To get {0}% of the data, you need a threshold of {1:4.2f}.'.format((1-value)*100, icdf)))
+    print(f'To get {(1-value)*100}% of the data you need a ' +
+            f'threshold of {icdf:4.2f}.')
     plt.show()
+
 
 if __name__ == '__main__':
     many_normals()

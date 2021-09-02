@@ -1,12 +1,13 @@
-''' Different continuous distribution functions.
+""" Different continuous distribution functions.
 - T-distribution
 - F-distribution
 - Chi2-distribution
 - Exponential
 - Weibull
-'''
+"""
 
-# Copyright(c) 2020, Thomas Haslwanter. All rights reserved, under the CC BY-SA 4.0 International License
+# Copyright(c) 2020, Thomas Haslwanter. All rights reserved,
+# under the CC BY-SA 4.0 International License
 
 # Import standard packages
 import numpy as np
@@ -31,9 +32,9 @@ except ImportError:
 
 sns.set(context='poster', style='ticks', palette='muted', font_scale=1.5)
 
-#----------------------------------------------------------------------
+
 def showT():
-    '''Utility function to show T distributions'''
+    """Utility function to show T distributions"""
     
     t = np.arange(-5, 5, 0.05)
     TVals = [1,5]
@@ -55,9 +56,9 @@ def showT():
     outFile = 'dist_t.png'
     showData(outFile)
     
-#----------------------------------------------------------------------
+
 def showChi2():
-    '''Utility function to show Chi2 distributions'''
+    """Utility function to show Chi2 distributions"""
     
     t = np.arange(0, 8, 0.05)
     Chi2Vals = [1,2,3,5]
@@ -74,9 +75,9 @@ def showChi2():
     outFile = 'dist_chi2.png'
     showData(outFile)
     
-#----------------------------------------------------------------------
+
 def showF():
-    '''Utility function to show F distributions'''
+    """Utility function to show F distributions"""
     
     t = np.arange(0, 3, 0.01)
     d1s = [1,2,5,100]
@@ -95,9 +96,9 @@ def showF():
     outFile = 'dist_f.png'
     showData(outFile)
 
-#----------------------------------------------------------------------
+
 def showExp():
-    '''Utility function to show exponential distributions'''
+    """Utility function to show exponential distributions"""
     
     t = np.arange(0, 3, 0.01)
     lambdas = [0.5, 1, 1.5]
@@ -115,9 +116,9 @@ def showExp():
     outFile = 'dist_exp.png'
     showData(outFile)
     
-#----------------------------------------------------------------------
+
 def showWeibull():
-    '''Utility function to show Weibull distributions'''
+    """Utility function to show Weibull distributions"""
     
     t = np.arange(0, 2.5, 0.01)
     lambdaVal = 1
@@ -136,7 +137,7 @@ def showWeibull():
     outFile = 'Weibull_PDF.png'
     showData(outFile)
     
-#----------------------------------------------------------------------
+
 if __name__ == '__main__':
     showT()
     showChi2()
