@@ -1,14 +1,11 @@
 """ Demonstration of the hypergometrical distribution """
 
-# Copyright(c) 2021, Thomas Haslwanter.
-# All rights reserved, under the CC BY-SA 4.0 International License
-
 # Import the required packages
 import numpy as np
 from scipy.stats import hypergeom
 import matplotlib.pyplot as plt
 
-# Define the problme
+# Define the problem
 [M, n, N] = [20, 7, 12]
 
 # The solution

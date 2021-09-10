@@ -14,7 +14,7 @@ import os
 import sys
 sys.path.append(os.path.join('..', 'Code_Quantlets', 'Utilities'))
 try:
-    from ISP_mystyle import showData 
+    from ISP_mystyle import showData, setFonts
     
 except ImportError:
 # Ensure correct performance otherwise
@@ -37,7 +37,7 @@ def skewness(ax):
     ax.xaxis.set_ticks_position('bottom')
     ax.yaxis.set_ticks_position('left')
     ax.margins(0,0)
-    ax.legend()
+    ax.legend(loc='lower left')
     
     
 def kurtosis(ax):
@@ -61,12 +61,13 @@ def kurtosis(ax):
     
 if __name__=='__main__':
     # Make 2 plots, side-by-side
-    fig, axs = plt.subplots(1,2)    
+    setFonts(18)
+    fig, axs = plt.subplots(1,2, figsize=(10,6))    
     
     # In the first plot demonstrate "skewness", in the second plot "kurtosis"
     skewness(axs[0])
     kurtosis(axs[1])    
 
     # Save and show
-    outFile = 'Skewness.png'
+    outFile = 'Skewness.jpg'
     showData(outFile)

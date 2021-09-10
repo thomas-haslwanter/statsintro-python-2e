@@ -29,10 +29,12 @@ setFonts(18)
 def plot_histogram(ax, data):
     """ Left plot: histogram """
     
-    ax.hist(data, bins=6, range=[-4, 8], density=True)
+    ax.hist(data, bins=6, range=[-4, 8], density=True, ls='-', lw=1, ec=(0.2,
+        0.2, 0.5))
     
     ax.set_xlim(-6, 11)
     ax.set_ylim(-0.005, 0.18)
+    ax.set_yticks(np.linspace(0, 0.15, 4))
     ax.set_xlabel('x')
     ax.set_ylabel('Density Function')
     
@@ -71,6 +73,7 @@ def explain_KDE(ax, data):
     # Plot individual Gaussians
     ax.set_xlim(-6, 11)
     ax.set_ylim(-0.005, 0.18)
+    ax.set_yticks(np.linspace(0, 0.15, 4))
     ax.set_xlabel('x')
     ax.axhline(0)
     
@@ -98,7 +101,7 @@ def main():
     explain_KDE(axs[1], x)
     
     # Save and show
-    showData('KDEexplained.png')
+    showData('KDEexplained.jpg', '.')
     plt.show()
     
     

@@ -35,7 +35,8 @@ def get_data_dobson(url: str, inFile: str) -> pd.DataFrame:
 
 if __name__ == '__main__':
     # Select archive (on the web) and the file in the archive
-    url = 'https://www.routledge.com/downloads/K32369/GLM.dobson.data.zip'
+    # url = 'https://www.routledge.com/downloads/K32369/GLM.dobson.data.zip'
+    url = 'https://work.thaslwanter.at/sapy/GLM.dobson.data.zip'
     inFile = r'Table 2.8 Waist loss.xls'
 
     df = get_data_dobson(url, inFile)

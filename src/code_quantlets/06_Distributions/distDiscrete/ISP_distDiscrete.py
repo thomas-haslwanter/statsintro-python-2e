@@ -30,13 +30,13 @@ except ImportError:
         return
 
 # General formatting options
-sns.set(context='poster', style='ticks')
+sns.set(context='notebook', style='ticks')
 sns.set_palette(sns.color_palette('hls', 3))
-setFonts(24)
+setFonts(18)
 
 
 def show_binomial():
-    """Show an example of binomial distributions"""
+    """ Show an example of binomial distributions """
     
     # Arbitrarily select 3 total numbers, and 3 probabilities
     ns = [20,20,40]
@@ -58,6 +58,32 @@ def show_binomial():
     
     # Show and save the plot
     showData('Binomial_distribution_pmf.png')
+    
+
+def show_hypergeometric():
+    """ Show an example of hypergeometric distributions """
+    
+    # Arbitrarily select 3 total numbers, and 3 probabilities
+    M, n, N = 20, 7, 12
+    
+    hd = stats.hypergeom(M, n, N)  # generate the "frozen function"
+    x = np.arange(n+1)          # generate the x-values
+    fig = plt.Figure(figsize=(10,4))
+    plt.plot(x, hd.pmf(x), 'o')
+    plt.text(0, 0.3, f'number of animals = {M}\n' +
+            f'number of dogs = {N}\n' +
+            f'animals selected = {n}', fontsize=14)
+    plt.vlines(x, 0, hd.pmf(x), lw=2)
+    plt.axhline(0, ls='--')
+    
+    # Format the plot
+    plt.legend()
+    plt.title('Hypergeometric distribution')
+    plt.xlabel('X')
+    plt.ylabel('P(X)')
+    
+    # Show and save the plot
+    showData('Hypergeometrical_distribution_pmf.jpg')
     
 
 def show_poisson():
@@ -112,6 +138,7 @@ def show_poisson_views():
     
 
 if __name__ == '__main__':
-    show_binomial()
-    show_poisson()
-    show_poisson_views()
+    # show_binomial()
+    # show_poisson()
+    # show_poisson_views()
+    show_hypergeometric()
