@@ -19,12 +19,12 @@ it by default when the module is imported by the main program, is a bit
 superfluous. But it shows good Python coding style.
 '''
 
-# Copyright(c) 2021, Thomas Haslwanter
-# All rights reserved, under the CC BY-SA 4.0 International License
+# author: Thomas Haslwanter, date: Sept-2021
 
 # In contrast to MATLAB, you explicitly have to load the modules that you need.
 import numpy as np
 import matplotlib.pyplot as plt
+
 
 def main():
     '''Define the main function. '''

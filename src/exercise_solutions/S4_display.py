@@ -1,6 +1,6 @@
-""" Solution for Exercise "Data Display" 
+""" Solution for Exercise 'Data Display' 
 Read in weight-data recorded from newborns, and analyze the
-data based on the gender of the baby."""
+data based on the gender of the baby. """
 
 # author: Thomas Haslwanter, date: Sept-2021
 
@@ -13,7 +13,9 @@ import os
 
 
 def getData():
-    """ Read in data from a text-file, and return them as labelled DataFrame """
+    """ Read in data from a text-file, and return them as
+        labelled DataFrame
+    """
     
     # Set directory and infile
     dataDir = '.'
@@ -21,8 +23,9 @@ def getData():
     
     # Read and label the data
     os.chdir(dataDir)
-    data = pd.read_csv(inFile, header=None, delim_whitespace=True,
-                       names= ['TOB', 'sex', 'Weight', 'Minutes'])
+    data = pd.read_csv(inFile, header=None,
+                        delim_whitespace=True,
+                   names= ['TOB', 'sex', 'Weight', 'Minutes'])
     
     # Eliminate "Minutes", since this is redundant
     df = data[['Minutes', 'sex', 'Weight']]
@@ -41,7 +44,8 @@ def showData(df):
     plt.ylabel('Weight [g]')
     plt.show()
     
-    # To make the plots easier to read, replace "1/2" with "female/male"
+    # To make the plots easier to read, replace "1/2"
+    # with "female/male"
     df.sex = df.sex.replace([1,2], ['female', 'male'])
     
     # ... then show the grouped plots
@@ -52,41 +56,46 @@ def showData(df):
     grouped = df.groupby('sex')
     print(grouped.describe())
     
-    # This is a bit fancier: scatter plots, with labels and individual symbols
+    # This is a bit fancier: scatter plots, with labels and
+    # individual symbols
     symbols = ['o', 'D']
     colors = ['r', 'b']
     
     fig = plt.figure()
     ax = fig.add_subplot(111)
     
-    # "enumerate" provides a counter, and variables can be assigned names in one
-    # step if the "for"-loop uses a tuple as input for each loop:
+    # "enumerate" provides a counter, and variables can be
+    # assigned names in one step if the "for"-loop uses a tuple
+    # as input for each loop:
     for (ii, (sex, group)) in enumerate(grouped):
-        ax.plot(group['Weight'], marker = symbols[ii], linewidth=0,
-                color=colors[ii], label=sex)
+        ax.plot(group['Weight'], marker = symbols[ii],
+                linewidth=0, color=colors[ii], label=sex)
         
     ax.legend()
     ax.set_ylabel('Weight [g]')
     plt.show()
 
     # Fancy finish: a kde-plot
-    df.Weight = np.double(df.Weight)    # kdeplot requires doubles
+    df.Weight = np.double(df.Weight) # kdeplot requires doubles
     
-    sns.kdeplot(grouped.get_group('male').Weight, color='b', label='male')
-    sns.kdeplot(grouped.get_group('female').Weight, color='r', label='female')
+    sns.kdeplot(grouped.get_group('male').Weight,
+                 color='b', label='male')
+    sns.kdeplot(grouped.get_group('female').Weight,
+                 color='r', label='female')
     
     plt.xlabel('Weight [g]')
     plt.ylabel('PDF(Weight)')
     plt.show()
+
 
 def isNormal(data, dataType):
     """ Check if the data are normally distributed """
     alpha = 0.05
     (k2, pVal) = stats.normaltest(data)
     if pVal < alpha:
-        print('{0} are NOT normally distributed.'.format(dataType))
+        print(f'{dataType} are NOT normally distributed.')
     else:
-        print('{0} are normally distributed.'.format(dataType))
+        print(f'{dataType} are normally distributed.')
         
 
 def checkNormality(df):

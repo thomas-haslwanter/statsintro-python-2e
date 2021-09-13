@@ -5,7 +5,7 @@
 """
 
 # author:   Thomas Haslwanter
-# date:     Aug-2021
+# date:     Sept-2021
 
 import numpy as np
 import matplotlib.pyplot as plt

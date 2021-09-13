@@ -20,11 +20,12 @@ def getDataDobson(url: str, inFile: str) -> pd.DataFrame:
     zipdata = io.BytesIO()
     zipdata.write(GLM_archive)
 
-    # extract the requested file from the archive, as a pandas XLS-file
+    # extract requested file from archive, as a pandas XLS-file
     myzipfile = zipfile.ZipFile(zipdata)
     xlsfile = myzipfile.open(inFile)
 
-    # read the xls-file into Python, using Pandas, and return the extracted data
+    # read xls-file into Python, using Pandas, and return
+    # the extracted data
     xls = pd.ExcelFile(xlsfile)
     df  = xls.parse('Sheet1', skiprows=2)
 
@@ -47,7 +48,7 @@ if __name__ == '__main__':
 
     # Read in a zipped data-file from the WWW
     # Select archive (on the web) and the file in the archive
-    url = 'https://s3-eu-west-1.amazonaws.com/s3-euw1-ap-pe-ws4-cws-documents.ri-prod/9781138741515/GLM_data.zip'
+    url = 'https://work.thaslwanter.at/sapy/GLM.dobson.data.zip'
     inFile = r'Table 2.8 Waist loss.xls'
 
     df = getDataDobson(url, inFile)

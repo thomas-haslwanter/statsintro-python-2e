@@ -10,10 +10,10 @@ _, p = stats.chisquare(obs)
 
 print('\n--- Chi2-oneway ---')
 if p < 0.05:
-    print('The difference in opinion between the different age groups is' +
-          f' significant (p={p:6.4f})')
+    print('The difference in opinion between the different ' +
+         f'age groups is significant (p={p:6.4f})')
 else:
-    print('The difference in opinion between the different age groups is' +
-    f' NOT significant (p={p:6.4f})')
+    print('The difference in opinion between the different ' +
+         f'age groups is NOT significant (p={p:6.4f})')
 
 print(f'DOF={len(obs)-1:3d}')

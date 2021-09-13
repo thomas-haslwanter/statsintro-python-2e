@@ -2,8 +2,7 @@
 Taken from http://www.brightstat.com/index.php?option=com_content&task=view&id=41&Itemid=1&limit=1&limitstart=2
 """
 
-# Copyright(c) 2015, Thomas Haslwanter. All rights reserved,
-# under the CC BY-SA 4.0 International License
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import numpy as np
@@ -13,7 +12,8 @@ from scipy.stats.mstats import kruskalwallis
 
 
 def main():
-    """These data could be a comparison of the smog levels in four different cities. """
+    """These data could be a comparison of the smog levels
+    in four different cities. """
     
     # Get the data
     city1 = np.array([68, 93, 123, 83, 108, 122])

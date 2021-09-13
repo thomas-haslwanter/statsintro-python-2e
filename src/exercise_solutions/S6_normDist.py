@@ -9,7 +9,7 @@ import pandas as pd
 import seaborn as sns
 
 
-# Generate a PDF, with a mean of 5 and a standard deviation of 3
+# Generate a PDF with a mean of 5 and a standard deviation of 3
 nd = stats.norm(5,3)
 
 # Generate 1000 data from this distribution
@@ -31,5 +31,6 @@ print('95% Confidence interval: '+
 nd = stats.norm()
 numSDs = nd.isf(0.0005)
 tolerance = 1/numSDs
-print(f'The required SD to fulfill both requirements = {tolerance:6.4f} mm')
+print('The required SD to fulfill both ' +
+      f'requirements = {tolerance:6.4f} mm')
 

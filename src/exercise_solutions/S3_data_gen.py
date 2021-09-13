@@ -3,16 +3,16 @@
 It shows how to generate
 - formatted text-strings
 - CSV files                      -> 'data.csv'
-- otherwise formmated TXT-files  -> 'data_tab.txt', 'data_modified.txt'
+- otherwise formmated TXT-files  -> 'data_tab.txt',
+                                    'data_modified.txt'
 - Excel files                    -> 'data.xls'
 - Matlab files                   -> 'data.mat'
 - Binary data                    -> 'data.raw'
 
-One may have to install the package "xlwt" for this solution to run.
+Requires the package "xlwt"
 """
 
-# author:   Thomas Haslwanter
-# date:     Sept-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import the required packages
 import numpy as np
@@ -26,8 +26,8 @@ def save_txt(df: pd.DataFrame, out_file='data.csv') -> None:
     Parameters
     ----------
     df : Input data
-    out_file : Output file; two other ASCII-files with same stem
-               are also generated
+    out_file : Output file; two other ASCII-files with same
+               stem are also generated
     """
 
     # Saves the data to CSV-format, which means by default
@@ -41,7 +41,7 @@ def save_txt(df: pd.DataFrame, out_file='data.csv') -> None:
     print(f'Data have been saved in CSV-format to {out_file}')
 
     # For earlier versions of Python you have to use
-    # print('Data have been saved in CSV-format to {0}'.format(out_file))
+    # print(f'CSV-Data have been saved to {out_file}')
 
     # Simple file, tab-separated, no header, no index
     simple_file = out_file.replace('.csv', '_tab.txt')
@@ -72,10 +72,11 @@ def save_xls(df: pd.DataFrame, out_file='data.xls') -> None:
 
     # Save data to Excel-format
     df.to_excel(out_file, index=False)
-    print(f'Data have been saved in MS-Excel format, to {out_file}')
+    print(f'MS-Excel data have been saved to {out_file}')
 
 
-def save_matlab(t: np.ndarray, data: np.ndarray, out_file='data.mat') -> None:
+def save_matlab(t: np.ndarray, data: np.ndarray,
+                out_file='data.mat') -> None:
     """ Save data to Matlab-format
 
     Parameters
@@ -84,29 +85,31 @@ def save_matlab(t: np.ndarray, data: np.ndarray, out_file='data.mat') -> None:
     data : sine-wave
     out_file : Name of output file
     """
-    # To save data to Matlab-format, we need the package "scipy.io", ...
+
+    # Saving data to Matlab-format requires "scipy.io", ...
     from scipy.io import savemat
 
     # ... and we have to put the data into a Python-dictionary
-    # For this example, I add an information-text, and format the data as matrix
+    # For this example I add an information-text and format
+    # the data as matrix
     data_mat = np.column_stack( (t, data) )
-    data_dict = {'info':'These are demo-data, showing a sine-wave',
-                'data': data_mat}
+    data_dict = {'data': data_mat,
+            'info':'These are demo-data, showing a sine-wave'}
 
     savemat(out_file, data_dict)
-    print(f'Data have been saved in Matlab format, to {out_file}')
+    print(f'Matlab data have been saved to {out_file}')
 
 
 def generate_binary(out_file='data.raw') -> None:
-    """Generate binary data, with an ASCII-header with 256 byte, and
-    three columns of data.
+    """Generate binary data, with an ASCII-header with
+       256 byte, and three columns of data.
 
     Parameters
     ----------
     out_file : name of outfile
     """
 
-    # To generate a more interesting signal, I produce a "chirp"
+    # To generate a more interesting signal I produce a "chirp"
     from scipy.signal import chirp
 
     # Set the parameters
@@ -132,7 +135,7 @@ def generate_binary(out_file='data.raw') -> None:
     # Also write them to a file
     fh.write(data.tobytes())
     fh.close()
-    print(f'Data have been written in binary form to {out_file}')
+    print(f'Binary data have been written to {out_file}')
 
 
 if __name__ == '__main__':
@@ -150,7 +153,8 @@ if __name__ == '__main__':
     omega = 2*np.pi*freq
 
     t = np.arange(0, duration, dt)
-    data = amp * np.sin(omega*t + delta) + noise_amp * np.random.randn(len(t))
+    data = amp * np.sin(omega*t + delta) +
+           noise_amp * np.random.randn(len(t))
 
     # Put them in a pandas-DataFrame, for easier text output
     df = pd.DataFrame({'t':t, 'values':data})
@@ -164,5 +168,3 @@ if __name__ == '__main__':
     save_xls(df)
     save_matlab(t, data)
     generate_binary()
-
-

@@ -14,7 +14,7 @@ from S11_correlation import getModelData
 # get the data
 data = getModelData(show=False)
 
-# Regression --------------------------------------------------------
+# Regression -------------------------------------------------
 # For "ordinary least square" models, you can do the model 
 # with the formula-approach from statsmodels:
 # offsets are automatically included in the model
@@ -29,8 +29,9 @@ plt.show()
 # Is the inclination significant?
 ci = results.conf_int()
 
-# This line is a bit tricky: if both are above or both below zero
-#  the product is positive:
-# we look at the coefficient that describes the correlation with "year"
+# This line is a bit tricky: if both are above or both below
+# zero the product is positive:
+# we look at the coefficient that describes the correlation
+# with "year"
 if np.prod(ci.loc['year'])>0:
     print('The slope is significant')

@@ -3,7 +3,7 @@ Based on original code in https://github.com/fabianp/minirank
 """
 
 # author:   Thomas Haslwanter
-# date:     Feb-2021
+# date:     Sept-2021
 
 # Import standard packages
 import numpy as np

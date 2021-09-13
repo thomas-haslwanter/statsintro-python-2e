@@ -1,6 +1,6 @@
 """ Calculation and visualization of correlation matrix """
 
-# author: thomas haslwantere; date: aug-2021
+# author: Thomas Haslwanter; date: Sept-2021
 
 # Import the required packages
 import numpy as np

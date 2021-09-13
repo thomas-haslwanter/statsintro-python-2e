@@ -4,8 +4,7 @@
 - Work with the cumulative distribution function (CDF)
 """
 
-# Copyright(c) 2020, Thomas Haslwanter. All rights reserved,
-# under the CC BY-SA 4.0 International License
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import numpy as np
@@ -180,7 +179,8 @@ def many_normals():
     for ii in range(numTrials):
         data = stats.norm.rvs(myMean, mySD, size=numData)
         myMeans[ii] = np.mean(data)
-    print(('The standard error of the mean, with {0} samples, is {1}'.format(numData, np.std(myMeans))))
+    print('The standard error of the mean, ' + \
+         f'with {numData} samples, is {np.std(myMeans)}')
 
 
 def values_fromCDF():
@@ -201,7 +201,6 @@ def values_fromCDF():
     
     # compare with the exact CDF
     plt.step(bin_edges[1:],cdf)
-    plt.hold(True)
     x = np.arange(-5,15,0.1)
     plt.plot(x, stats.norm.cdf(x, myMean, mySD),'r')
     

@@ -1,7 +1,6 @@
-""" Solution to Exercise 'Reading in Data' of the chapter 'Data Input' """
+""" Solution to Ex. 'Reading in Data', chapter 'Data Input' """
 
-# author:   Thomas Haslwanter
-# date:     Sept-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import the standard packages
 import numpy as np
@@ -40,4 +39,3 @@ print(data_dict['info'])
 data = data_dict['data']
 plt.plot(data[:,0], data[:,1])
 plt.show()
-

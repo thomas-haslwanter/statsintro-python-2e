@@ -1,7 +1,6 @@
 """ Trigger an error that can be investigated with a debugger. """
 
-# author:   Thomas Haslwanter
-# date:     Sept-2020
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import the required packages
 import numpy as np

@@ -1,6 +1,15 @@
-""" Test routine for Statsintro """
+""" Test routine for Statsintro
+you may have to install
 
-# author: Thomas Haslwanter, date: Sept-2015
+pip install lifelines
+pip install scikits.bootstrap
+pip install mord
+
+ToDo:
+- fork "bootstrap", and replace scipy.mean with np.mean
+"""
+
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import numpy as np
@@ -16,43 +25,61 @@ for dirName, subdirList, fileList in os.walk(rootDir, topdown=False):
 # additional packages
 import unittest
 
-import L13_1_logitShort
-import L3_2_readZip
-import ISP_bayesianStats
-import ISP_mystyle
-import ISP_gettingStarted
-import ISP_showPlots
-import ISP_binomialTest
-import ISP_distDiscrete
-import ISP_centralLimitTheorem
-import ISP_distNormal
-import ISP_distContinuous
-import ISP_checkNormality
-import ISP_sampleSize
-import ISP_oneGroup
-import ISP_twoGroups 
 import ISP_anovaOneway
-import ISP_kruskalWallis
-import ISP_multipleTesting
 import ISP_anovaTwoway
-import ISP_compGroups
-import ISP_lifelinesDemo
-import ISP_bivariate
-import ISP_fitLine
-import ISP_modelImplementations
 import ISP_anscombe
-import ISP_simpleModels
+import ISP_bayesianStats
+import ISP_binomialTest
+import ISP_bivariate
 import ISP_bootstrapDemo
-import ISP_multipleRegression
+import ISP_centralLimitTheorem
+import ISP_checkNormality
+import ISP_compGroups
+import ISP_confidence_intervals as ISP_ci        # todo
+import ISP_correlation                  # todo
+import ISP_corrVis                       # todo
+import ISP_distContinuous
+import ISP_distDiscrete
+import ISP_distNormal
+import ISP_fitLine
+import ISP_gettingStarted
+import ISP_HypothesisTests_vs_Modeling
+import ISP_interactive_plots
+import ISP_kruskalWallis
+import ISP_lifelinesDemo
+#import ISP_linearRegression             # todo
 import ISP_logisticRegression
+import ISP_matlab_data                  # todo
+import ISP_modelImplementations
+import ISP_multipleRegression
+import ISP_multipleTesting
+import ISP_mystyle
+import ISP_oneGroup
 import ISP_ordinalLogisticRegression
-import L2_4_pythonScript
+import ISP_read_zip                     # todo
+import ISP_sampleSize
+import ISP_showPandas                   # todo
+import ISP_showPlots
+import ISP_simpleModels
+import ISP_TimeSeries                   # todo
+import ISP_twoGroups
+
+import L2_1_square_me                   # todo
+import L2_2_python_module               # todo
+import L2_3_python_import               # todo
 import L2_4_pythonFunction
-import L2_4_pythonImport
+import L2_4_python_script               # todo
+import L2_4_python_script_wfunc         # todo
 import L3_2_readZip
-import L4_1_interactivePlots
+import L3_2_readZip
+import L4_1_interactivePlots           # ????
+import L4_1_simple_Figure               # todo
+import L4_5_plots3D                     # todo
+import L8_1_HypothesisTests_vs_Modeling # todo
+import L9_hypergeometric                # todo
 import L10_1_weibullDemo
 import L10_2_lifelinesSurvival
+import L13_1_logitShort
 
 
 class TestSequenceFunctions(unittest.TestCase):
@@ -61,25 +88,81 @@ class TestSequenceFunctions(unittest.TestCase):
         x = np.sin(t)
         self.data = x
         
+
+    def test_CIs(self):
+        alpha = 0.05
+        ci_level = int( (1-alpha)*100 )
+
+        cis = ISP_ci.binomial(5, 100, alpha=alpha, ci_type='two-sided')
+        self.assertAlmostEqual(cis[0], 0.0164318792)
+
+        cis = ISP_ci.binomial(1, 20, alpha=0.01, ci_type='upper')
+        self.assertAlmostEqual(cis[0], 0.288790368)
+
+        cis = ISP_ci.binomial(30, 1200, alpha=0.01)
+        self.assertAlmostEqual(cis[0], 0.0148760034)
+
+        cis = ISP_ci.binomial(30, 1200, alpha=0.05, ci_type='two-sided')
+        self.assertAlmostEqual(cis[0], 0.0169295121)
+
+        cis = ISP_ci.binomial_newton(30, 1200, alpha=0.05, ci_type='two-sided')
+        self.assertAlmostEqual(cis[0], 0.0169295121)
+
+        cis = ISP_ci.binomial_approx(30, 1200, alpha=0.05, ci_type='two-sided')
+        self.assertAlmostEqual(cis[0], 0.0165832284)
+
+        cis = ISP_ci.sigma(sigma_data=30, num=10, ci_type='upper')
+        self.assertAlmostEqual(cis[0], 41.1326848195)
+
+        cis = ISP_ci.sigma(sigma_data=30, num=10, ci_type='upper', alpha=0.01)
+        self.assertAlmostEqual(cis[0], 46.5467446052)
+
+        cis = ISP_ci.binomial(2, 120, alpha=0.01, ci_type='upper')
+        self.assertAlmostEqual(cis[0], 0.0682058584)
+
+        expected = 12
+        cis = ISP_ci.poisson(expected, alpha=0.01, ci_type='two-sided')
+        self.assertAlmostEqual(cis[0], 4.9431167511)
+
+        (expected, total) = (14, 400)
+        cis = ISP_ci.poisson_newton(expected, alpha=0.05, ci_type='two-sided')
+        self.assertAlmostEqual(cis[0], 7.6539302763)
+
+        data = [89, 104.1, 92.3, 106.2, 96.3, 107.8, 102.5, 121.2,
+                98, 109.4, 99.7, 111.6, 101.4, 113.8, 116.6]
+        cis = ISP_ci.mean(data, ci_type='lower', alpha=0.01)
+        self.assertAlmostEqual(cis[0], 98.5585492011)
+
+        data = [49.93, 50.03, 49.99, 50.08, 49.96, 50.03]
+        cis = ISP_ci.sigma(data, alpha=0.01)
+        self.assertAlmostEqual(cis[0], 0.0296584368)
+
+        cis = ISP_ci.mean(values=75, num_and_sigma = (10, 12))
+        self.assertAlmostEqual(cis[0], 67.5624596123)
+
+
     def test_lifelinesDemo(self):
         ISP_lifelinesDemo.main()
         
-    def test_figs_BasicPrinciples(self):
-        ISP_showPlots.simplePlots()
+
+    def test_figs_BasicPrinciples(self):   # interactive
+        ISP_showPlots.simple_plots()
         ISP_showPlots.show3D()
         
-    def test_figs_DistributionNormal(self):
+
+    def test_figs_DistributionNormal(self):    # interactive
         ISP_distNormal.simple_normal()
         ISP_distNormal.shifted_normal()
         ISP_distNormal.many_normals()
         
-    def test_figs_DistContinuous(self):
+        
+    def test_figs_DistContinuous(self):    # interactive
         ISP_distContinuous.show_t()
         ISP_distContinuous.show_chi2()
         ISP_distContinuous.show_f()
         ISP_distContinuous.show_exp()
         
-    def test_figs_DistDiscrete(self):
+    def test_figs_DistDiscrete(self):  # interactive
         ISP_distDiscrete.show_binomial()
         ISP_distDiscrete.show_poisson()
         
@@ -95,13 +178,12 @@ class TestSequenceFunctions(unittest.TestCase):
         F = ISP_anovaOneway.show_teqf()
         self.assertAlmostEqual(F, 2083.481, places=2)
         
-        F = ISP_anovaOneway.anova_statsmodels()         
-        self.assertAlmostEqual(F, 933.18460306573411)
 
     def test_anovaTwoway(self):
         F = ISP_anovaTwoway.anova_interaction()
         self.assertAlmostEqual(F, 2113.101449275357)
         
+
     def test_bayesianStats(self):
         np.random.seed(1234)
         (temperature, failures) = ISP_bayesianStats.getData()    
@@ -112,21 +194,24 @@ class TestSequenceFunctions(unittest.TestCase):
         self.assertAlmostEqual(mean_p[20], 0.573, places=1) 
         self.assertLess(mean_p[20]-0.573, 0.1)
 
+
     def test_binomialTest(self):
         p1,p2 = ISP_binomialTest.binomial_test(51)
         self.assertAlmostEqual(p1, 0.0265442457117)
         self.assertAlmostEqual(p2, 0.0437479701824)
         
+
     def test_bootstrapDemo(self):
         data = ISP_bootstrapDemo.generate_data()
         CI = ISP_bootstrapDemo.calc_bootstrap(data)        
         self.assertAlmostEqual(CI[0], 1.884, places=2)
         
+
     def test_checkNormality(self):
-        data = ISP_checkNormality.generate_data(show_flag=False)
-        ps = ISP_checkNormality.check_normality(data, show_flag=False)
-        self.assertAlmostEqual(ps.iloc[-1], 0.8929212868117488)
+        p = ISP_checkNormality.check_normality(show_flag=False)
+        self.assertAlmostEqual(p, 0.47144747394230224)
         
+
     def test_compGroups(self):
         ci = ISP_compGroups.oneProportion()
         self.assertAlmostEqual(ci[0], 0.130, places=2)
@@ -137,6 +222,7 @@ class TestSequenceFunctions(unittest.TestCase):
         fisher = ISP_compGroups.fisherExact()
         self.assertAlmostEqual(fisher[1], 0.035, places=2)
         
+
     def test_fitLine(self):
         
         # example data
@@ -153,16 +239,19 @@ class TestSequenceFunctions(unittest.TestCase):
         self.assertAlmostEqual(a,1.09781487777)
         self.assertAlmostEqual(b,0.02196252226)
         
+
     def test_gettingStarted(self):
         ISP_gettingStarted.main()
         
+
     def test_interactivePlots(self):
-        L4_1_interactivePlots.normalPlot()    
-        L4_1_interactivePlots.positionOnScreen()    
-        L4_1_interactivePlots.showAndPause()    
-        L4_1_interactivePlots.waitForInput()    
-        L4_1_interactivePlots.keySelection()
+        ISP_interactive_plots.normalPlot()    
+        ISP_interactive_plots.positionOnScreen()    
+        ISP_interactive_plots.showAndPause()    
+        ISP_interactive_plots.waitForInput()    
+        ISP_interactive_plots.keySelection()
         
+
     def test_KruskalWallis(self):
         h = ISP_kruskalWallis.main()
         self.assertAlmostEqual(h, 16.028783253379856)
@@ -219,13 +308,15 @@ class TestSequenceFunctions(unittest.TestCase):
         p2 = ISP_oneGroup.compareWithNormal()
         self.assertAlmostEqual(p2, 0.054201154690070759)
 
-    def test_readZip(self):
-        url = 'https://s3-eu-west-1.amazonaws.com/s3-euw1-ap-pe-ws4-cws-documents.ri-prod/9781138741515/GLM_data.zip'
+
+    def test_read_zip(self):
+        url = 'https://work.thaslwanter.at/sapy/GLM.dobson.data.zip'
         inFile = 'Table 2.8 Waist loss.xls'
-        df = L3_2_readZip.get_dataDobson(url, inFile)
+        df = ISP_read_zip.get_data_dobson(url, inFile)
         
         self.assertAlmostEqual(df['after'][0], 97)
         
+
     def test_sampleSize(self):
         n1 = ISP_sampleSize.sampleSize_oneGroup(0.5)
         self.assertEqual(n1, 31)
@@ -233,14 +324,17 @@ class TestSequenceFunctions(unittest.TestCase):
         n2 = ISP_sampleSize.sampleSize_twoGroups(0.4, sigma1=0.6, sigma2=0.6)
         self.assertEqual(n2, 35)
         
+
     def test_twoSample(self):
         p1 = ISP_twoGroups.paired_data()
-        self.assertAlmostEqual(p1, 0.0033300139117459797) 
+        self.assertAlmostEqual(p1, 0.0009765625) 
         
         p2 = ISP_twoGroups.unpaired_data()
-        self.assertAlmostEqual(p2, 0.0010608066929400244)
+        self.assertAlmostEqual(p2, 0.002121613385880049)
         
-    '''
+    
+"""
+    # Older functions
     
     def test_figROC(self):
         fig_roc.main()
@@ -261,16 +355,16 @@ class TestSequenceFunctions(unittest.TestCase):
     def test_showStats(self):
         showStats.main()
         
-    '''
+"""
         
         
 if __name__ == '__main__':
-    testAll = False
+    testAll = True
     if testAll:
         unittest.main()
     else:
         suite = unittest.TestSuite()
-        suite.addTest(TestSequenceFunctions('test_bayesianStats'))
+        suite.addTest(TestSequenceFunctions('test_oneSample'))
         runner = unittest.TextTestRunner()
         runner.run(suite)
     

@@ -38,7 +38,8 @@ if __name__ == '__main__':
     
     vector = [2,1]
     # Draw a green line from [0,0] to [2,1]
-    plt.plot([0,vector[0]], [0, vector[1]], 'g', label='original')
+    plt.plot([0,vector[0]], [0, vector[1]], 'g',
+            label='original')
     
     # Coordinate system
     plt.hlines(0, -2, 2, linestyles='dashed')

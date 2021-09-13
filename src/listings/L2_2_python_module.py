@@ -39,5 +39,6 @@ if __name__=='__main__':
         print('Congratulations: Your first transaction was a gain!')
         
     (my_income, my_expenses) = income_and_expenses(testData)
-    print(f'You have earned {my_income:5.2f} EUR, and spent {-my_expenses:5.2f} EUR.')
+    print(f'You have earned {my_income:5.2f} EUR, ' + \
+            f'and spent {-my_expenses:5.2f} EUR.')
 

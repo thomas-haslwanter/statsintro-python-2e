@@ -222,8 +222,8 @@ def showProbabilities(linearTemperature, temperature, failures,
     plt.plot(linearTemperature, p_t[-2, :], ls="--",
             label="Realization from posterior")
     plt.scatter(temperature, failures, color="k", s=50, alpha=0.5)
-    plt.title("Posterior expected value of probability of defect, '+
-            'plus realizations")
+    plt.title('Posterior expected value of probability of defect, ' + \
+              'plus realizations')
     plt.legend(loc="lower left")
     plt.ylim(-0.1, 1.1)
     plt.xlim(linearTemperature.min(), linearTemperature.max())

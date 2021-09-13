@@ -1,4 +1,4 @@
-""" Solution to Exercise 'Translation', the Chapter 'Python' """
+""" Solution to Exercise 'Translation', Chapter 'Python' """
 
 # author:   Thomas Haslwanter
 # date:     Sept-2021

@@ -7,8 +7,7 @@
 
 """
 
-# Copyright(c) 2021, Thomas Haslwanter.
-# All rights reserved, under the CC BY-SA 4.0 International License
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import numpy as np
@@ -268,9 +267,9 @@ def tryMcnemar():
 
 
 if __name__ == '__main__':
-    oneProportion()
+    #oneProportion()
     chiSquare()
-    fisherExact()
-    tryMcnemar()
-    cochranQ()
+    #fisherExact()
+    #tryMcnemar()
+    #cochranQ()
 

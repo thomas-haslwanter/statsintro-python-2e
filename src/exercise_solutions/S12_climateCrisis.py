@@ -22,16 +22,17 @@ def get_CO2_data() -> pd.DataFrame:
 
     Returns
     -------
-    df : time stamped recordings of CO2-levels at Mauna Loa, Hawaii
+    df : time stamped CO2-levels at Mauna Loa, Hawaii
     """
     
     # Get the data, display a few values, and show the data
     url = 'https://www.esrl.noaa.gov/gmd/webdata/ccgg/trends/co2/co2_mm_mlo.txt'
     df = pd.read_csv(url,
-                     skiprows=53,
-                     delim_whitespace=True,
-                     names = ['year', 'month', 'time', 'co2', 'deseasoned',
-                               'nr_days', 'std_days', 'uncertainty'])
+             skiprows=53,
+             delim_whitespace=True,
+             names = ['year', 'month', 'time', 'co2',
+                 'deseasoned', 'nr_days', 'std_days',
+                 'uncertainty'])
 
     ##  show CO2-levels as a function of time
     #df.plot('time', 'co2')
@@ -45,14 +46,17 @@ def decompose(df: pd.DataFrame) -> np.array:
 
     Parameters
     ----------
-    df : time stamped recordings of CO2-levels at Mauna Loa, Hawaii
+    df : time stamped CO2-levels at Mauna Loa, Hawaii
 
     Returns
     -------
-    decomposed : 
+    decomposed : trend, seasonal, and residual data
     """
+
     # Seasonal decomposition
-    result_add = seasonal_decompose(df['co2'], model='additive', period=12,
+    result_add = seasonal_decompose(df['co2'],
+            model='additive',
+            period=12,
             extrapolate_trend='freq')
     
     ## Show the decomposed data
@@ -63,7 +67,8 @@ def decompose(df: pd.DataFrame) -> np.array:
 
 
 def find_best_fit(df: pd.DataFrame) -> None:
-    """ Take the trend-data from the CO2 measurements, and find the best fit
+    """ Take the trend-data from the CO2 measurements,
+        and find the best fit
      
     Parameters
     ----------
@@ -73,7 +78,8 @@ def find_best_fit(df: pd.DataFrame) -> None:
     # Fit the models, and show the results
     linear = smf.ols('co2 ~ year', df).fit()
     quadratic = smf.ols('co2 ~ year+I(year**2)', df).fit()
-    cubic = smf.ols('co2 ~ year+I(year**2)+I(year**3)', df).fit()    
+    cubic = smf.ols('co2 ~ year+I(year**2)+I(year**3)',
+                                                 df).fit()    
     
     df['linear'] = linear.predict()
     df['quadratic'] = quadratic.predict()
@@ -96,5 +102,6 @@ if __name__ == '__main__':
     data = get_CO2_data()
     trend = decompose(data)
     
-    time_co2 = pd.concat({'year': data.time, 'co2': trend}, axis=1)
+    time_co2 = pd.concat({'year': data.time, 'co2': trend},
+                          axis=1)
     find_best_fit(time_co2)

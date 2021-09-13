@@ -6,4 +6,5 @@ import numpy as np
 
 x = np.linspace(1, 10, 10)
 std = np.std(x, ddof=1)
-print(f'The standard deviation of the numbers from 1 to 10 is {std:4.2f}')
+print('The standard deviation of the numbers from 1 to 10 ' + 
+      f'is {std:4.2f}')

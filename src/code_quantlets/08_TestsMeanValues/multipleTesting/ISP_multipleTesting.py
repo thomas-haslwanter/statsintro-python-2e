@@ -18,8 +18,7 @@ effectiveness.
 Taken from an example by Josef Perktold (http://jpktd.blogspot.co.at/)
 """
 
-# Copyright(c) 2021, Thomas Haslwanter.
-# All rights reserved, under the CC BY-SA 4.0 International License
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import numpy as np

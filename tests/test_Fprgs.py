@@ -6,7 +6,7 @@
 import os
 import sys
 
-figDir = os.path.join('..', 'Figures')
+figDir = os.path.join('..', 'src', 'figures')
 os.chdir(figDir)
 startNr = 0     # if you don't want to go through all files
 

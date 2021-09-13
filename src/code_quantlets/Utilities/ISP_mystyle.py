@@ -75,6 +75,5 @@ def showData(out_file: str, out_dir: str='.') -> None:
     plt.close()
 
 
-
 if __name__ == '__main__':
     setFonts()

@@ -1,7 +1,6 @@
 """ Equivalence between T-Test and Statistical Model """
 
-# Copyright(c) 2021, Thomas Haslwanter.
-# All rights reserved, under the CC BY-SA 4.0 International License
+# author: Thomas Haslwanter, date: Sept-2021
 
 
 # Import standard packages

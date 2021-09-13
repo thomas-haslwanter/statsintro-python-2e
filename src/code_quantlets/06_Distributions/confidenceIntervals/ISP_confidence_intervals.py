@@ -129,7 +129,8 @@ def binomial_approx(n_success: int, n_total: int,
     -------
     cis : float or Vector
         If ci_type is "upper" or "lower": upper/lower confidence limit
-        If ci_type is "two-sided": ndarray, containing lower and upper confidence limit
+        If ci_type is "two-sided": ndarray, containing lower and upper
+                                   confidence limit
 
     Example
     -------
@@ -248,8 +249,8 @@ def poisson(n: int, alpha: float =0.05,
 
 def poisson_newton(mu: float, alpha: float=0.05,
         ci_type: str ='two-sided') -> np.ndarray:
-    """Exact confidence interval for the estimated probability of the Poisson distribution
-    Numerical calculation
+    """Exact confidence interval for the estimated probability of the Poisson
+       distribution - numerical calculation
 
     Parameters
     ----------
@@ -363,12 +364,11 @@ def sigma(sigma_data: np.ndarray, alpha: float =0.05,
 
 if __name__ == '__main__':
     alpha = 0.05
-    cis = binomial(5, 100, alpha=alpha, ci_type='two-sided')
     ci_level = int( (1-alpha)*100 )
-    np.set_printoptions(precision = 3)
+    cis = binomial(5, 100, alpha=alpha, ci_type='two-sided')
+    np.set_printoptions(precision = 10)
     print(f'The {ci_level}% CI for the Binomial probability is: {cis} (exact)')
 
-    """
     # All the examples below are taken from the book Timischl:
     # Qualitaetssicherung, 4 ed
 
@@ -425,4 +425,5 @@ if __name__ == '__main__':
     cis = mean(values=75, num_and_sigma = (10, 12))
     print(f'The confidence limit for the mean from exact inputs is: {cis}')
 
+    """
     """

@@ -6,8 +6,7 @@
 - Weibull
 """
 
-# Copyright(c) 2020, Thomas Haslwanter. All rights reserved,
-# under the CC BY-SA 4.0 International License
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import numpy as np
@@ -33,7 +32,7 @@ except ImportError:
 sns.set(context='poster', style='ticks', palette='muted', font_scale=1.5)
 
 
-def showT():
+def show_t():
     """Utility function to show T distributions"""
     
     t = np.arange(-5, 5, 0.05)
@@ -57,7 +56,7 @@ def showT():
     showData(outFile)
     
 
-def showChi2():
+def show_chi2():
     """Utility function to show Chi2 distributions"""
     
     t = np.arange(0, 8, 0.05)
@@ -76,7 +75,7 @@ def showChi2():
     showData(outFile)
     
 
-def showF():
+def show_f():
     """Utility function to show F distributions"""
     
     t = np.arange(0, 3, 0.01)
@@ -97,14 +96,15 @@ def showF():
     showData(outFile)
 
 
-def showExp():
+def show_exp():
     """Utility function to show exponential distributions"""
     
     t = np.arange(0, 3, 0.01)
     lambdas = [0.5, 1, 1.5]
     
     for par in lambdas:
-        plt.plot(t, stats.expon.pdf(t, 0, par), label='$\lambda={0:3.1f}$'.format(par))
+        plt.plot(t, stats.expon.pdf(t, 0, par),
+                label='$\lambda={0:3.1f}$'.format(par))
     plt.legend()
         
     plt.xlim(0,3)
@@ -117,7 +117,7 @@ def showExp():
     showData(outFile)
     
 
-def showWeibull():
+def show_weibull():
     """Utility function to show Weibull distributions"""
     
     t = np.arange(0, 2.5, 0.01)
@@ -139,8 +139,8 @@ def showWeibull():
     
 
 if __name__ == '__main__':
-    showT()
-    showChi2()
-    showF()
-    showExp()
-    showWeibull()
+    show_t()
+    show_chi2()
+    show_f()
+    show_exp()
+    show_weibull()

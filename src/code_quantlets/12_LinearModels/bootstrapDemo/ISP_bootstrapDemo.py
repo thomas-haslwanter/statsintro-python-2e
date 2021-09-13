@@ -1,9 +1,12 @@
 """ Example of bootstrapping the confidence interval for the mean
 This function requires "bootstrap.py", which is available from
 https://github.com/cgevans/scikits-bootstrap
+and can be installed with
+`pip install scikits.bootstrap`
+
 """
 
-# author: Thomas Haslwanter, date: Feb-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import matplotlib.pyplot as plt

@@ -15,15 +15,17 @@ _, p2 = mcnemar(obs2)
 
 print('\n--- McNemar Test ---')
 if p < 0.05:
-    print('The results from the neurologist are' +
-    f' significanlty different from the questionnaire (p={p:5.3f}).')
+    print('The results from the neurologist are ' +
+          'significanlty different ' +
+         f'from the questionnaire (p={p:5.3f}).')
 else:
     print('The results from the neurologist are' +
-          f' NOT significanlty different from the questionnaire (p={p:5.3f}).')
+          ' NOT significanlty different ' +
+         f'from the questionnaire (p={p:5.3f}).')
     
 if (p<0.05 == p2<0.05):
-    print('The results would NOT change' +
-          ' if the expert had diagnosed all "sane" people correctly.')
+    print('The results would NOT change if the ' +
+          ' expert had diagnosed all "sane" people correctly.')
 else:
-    print('The results would change' +
-          ' if the expert had diagnosed all "sane" people correctly.')
+    print('The results would change if the' +
+          ' expert had diagnosed all "sane" people correctly.')

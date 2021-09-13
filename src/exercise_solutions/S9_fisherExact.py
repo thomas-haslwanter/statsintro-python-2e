@@ -12,5 +12,5 @@ _, p = stats.fisher_exact(obs, alternative='greater')
 #stats.fisher_exact(obs2, alternative='greater')
 
 print('\n--- A Lady Tasting Tea (Fisher Exact Test) ---')
-print('The chance that the lady selects 3 or more cups correctly' +
-      f' by chance is {p:5.3f}')
+print('The chance that the lady selects 3 or more cups ' +
+     f'correctly by chance is {p:5.3f}')

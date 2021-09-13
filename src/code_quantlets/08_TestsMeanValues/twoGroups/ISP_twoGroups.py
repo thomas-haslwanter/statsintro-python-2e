@@ -3,8 +3,7 @@
 - Analysis of unpaired data
 """
 
-# Copyright(c) 2020, Thomas Haslwanter. All rights reserved,
-# under the CC BY-SA 4.0 International License
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import numpy as np
@@ -41,7 +40,7 @@ def paired_data():
     # --- >>> STOP stats <<< ---
     print(("Wilcoxon-Signed-Rank-Sum test", p_value))
     
-    return p_value # should be 0.0033300139117459797
+    return p_value # should be 0.0009765625 
 
 
 def unpaired_data():

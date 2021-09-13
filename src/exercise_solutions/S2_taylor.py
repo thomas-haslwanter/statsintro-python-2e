@@ -10,7 +10,8 @@ from typing import Tuple
 
 
 def approximate(angle:np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
-    """Function that calculates a second order approximation to sine and cosine
+    """Function that calculates a second order approximation
+    to sine and cosine
     
     Parameters
     ----------
@@ -48,8 +49,10 @@ if __name__ == '__main__':
     sin_approx, cos_approx = approximate(theta)
     
     # Plot the data
-    plt.plot(theta_deg, np.column_stack((np.sin(theta), np.cos(theta))), label='exact')    
-    plt.plot(theta_deg, np.column_stack((sin_approx, cos_approx)), 
+    plt.plot(theta_deg, np.column_stack((np.sin(theta),
+              np.cos(theta))), label='exact')    
+    plt.plot(theta_deg,
+             np.column_stack((sin_approx, cos_approx)), 
              linestyle='dashed', 
              label='approximated')             
     plt.legend()    

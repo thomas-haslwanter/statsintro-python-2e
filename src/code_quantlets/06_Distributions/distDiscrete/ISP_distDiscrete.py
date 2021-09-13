@@ -3,8 +3,7 @@
 - Poisson distribution (PMF, CDF, and PPF)
 '''
 
-# Copyright(c) 2015, Thomas Haslwanter. All rights reserved,
-# under the CC BY-SA 4.0 International License
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import numpy as np
@@ -31,7 +30,7 @@ except ImportError:
 
 # General formatting options
 sns.set(context='notebook', style='ticks')
-sns.set_palette(sns.color_palette('hls', 3))
+# sns.set_palette(sns.color_palette('hls', 3))
 setFonts(18)
 
 
@@ -57,7 +56,7 @@ def show_binomial():
                  arrowprops=dict(shrink=0.05))
     
     # Show and save the plot
-    showData('Binomial_distribution_pmf.png')
+    showData('Binomial_distribution_pmf.jpg')
     
 
 def show_hypergeometric():
@@ -105,7 +104,7 @@ def show_poisson():
     plt.ylabel('P(X)')
     
     # Show and save the plot
-    showData('Poisson_distribution_pmf.png')
+    showData('Poisson_distribution_pmf.jpg')
     
 
 def show_poisson_views():

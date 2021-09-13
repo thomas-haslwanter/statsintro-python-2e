@@ -4,8 +4,7 @@
     - Comparing two groups
 """
 
-# Copyright(c) 2015, Thomas Haslwanter. All rights reserved,
-# under the CC BY-SA 4.0 International License
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import numpy as np
@@ -20,7 +19,7 @@ def sampleSize_oneGroup(d, alpha=0.05, beta=0.2, sigma=1):
     
     n = np.round((norm.ppf(1-alpha/2.) + norm.ppf(1-beta))**2 * sigma**2 / d**2)
     
-    print(f'To detect a change of {d} in a group with an SD of {sigma}, ' +)
+    print(f'To detect a change of {d} in a group with an SD of {sigma}, ' +
         f'with significance {alpha} and test-power {100*(1-beta)}, ' +
         f'you need at least {int(n):d} subjects.')
     

@@ -20,11 +20,12 @@ superfluous. But it shows good Python coding style.
 """
 
 # author:   Thomas Haslwanter
-# date:     Aug-2021
+# date:     Sept-2021
 
 # In contrast to MATLAB, you explicitly have to load the modules that you need.
 import numpy as np
 import matplotlib.pyplot as plt
+
 
 def main() -> None:
     """Define the main function. """

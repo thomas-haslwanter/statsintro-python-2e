@@ -49,7 +49,8 @@ if __name__ == '__main__':
     sns.set_style('whitegrid')
     setFonts(14)
     
-    # Create 2 plots of 3 different, normally distributed data groups, with different SDs
+    # Create 2 plots of 3 different, normally distributed data groups, with
+    # different SDs
     fig, axs = plt.subplots(1, 2)
     centers = [5, 5.3, 4.7]
     stds = [0.1, 2]

@@ -8,8 +8,7 @@
     sample numbers (>300)
 """
 
-# Copyright(c) 2021, Thomas Haslwanter. All rights reserved,
-# under the CC BY-SA 4.0 International License
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import numpy as np
@@ -22,7 +21,7 @@ import pingouin as pg
 from statsmodels.stats.diagnostic import lilliefors
 
 
-def check_normality():
+def check_normality(show_flag: bool=False):
     """Check if the distribution is normal."""
     
     # Set the parameters
@@ -36,15 +35,17 @@ def check_normality():
     # Generate and show random data
     data = stats.norm.rvs(myMean, mySD, size=numData)
     fewData = data[:100]
-    plt.hist(data)
-    plt.show()
+    if show_flag:
+        plt.hist(data)
+        plt.show()
 
     # --- >>> START stats <<< ---
     # Graphical test: if the data lie on a line, they are pretty much
     # normally distributed
     # _ = stats.probplot(data, plot=plt)
-    pg.qqplot(data)
-    plt.show()
+    if show_flag:
+        pg.qqplot(data)
+        plt.show()
 
     pVals = pd.Series()
     pFewVals = pd.Series()

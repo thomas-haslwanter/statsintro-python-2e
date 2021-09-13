@@ -155,7 +155,7 @@ def fitLine(x, y, alpha=0.05, newx=[], plotFlag=1):
         print(f'Image saved to {out_file}')
         plt.show()
         
-    if newx != []:
+    if len(newx)>0:
         try:
             newx.size
         except AttributeError:

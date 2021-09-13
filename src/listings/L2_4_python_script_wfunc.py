@@ -6,7 +6,6 @@ further details.
 # Import standard packages
 import numpy as np
 import matplotlib.pyplot as plt
-from collections import tup
 
 def get_data(amp:float = 1, freq:float=0.5, duration:float=10): 
     """ Generate a sine-wave

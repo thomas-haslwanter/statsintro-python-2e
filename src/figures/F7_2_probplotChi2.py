@@ -74,7 +74,8 @@ def generate_probplot():
     return(data)
     """
     # To get an idea how probplot works, calculate the quantiles directly.
-    # in "probplot", Filliben's estimate is used, which changes the values slightly
+    # in "probplot", Filliben's estimate is used, which changes the values
+    # slightly
     data.sort()
     mark_y = data[:-1]
     
@@ -123,10 +124,12 @@ def KS_principle(inData):
     arrowDelta = arrowEnd - arrowStart
     
     plt.arrow(arrowStart[0], arrowStart[1], 0, arrowDelta[1],
-              width=0.05, length_includes_head=True, head_length=0.04, head_width=0.4, color='k')
+              width=0.05, length_includes_head=True, head_length=0.04,
+              head_width=0.4, color='k')
     
     plt.arrow(arrowStart[0], arrowStart[1]+arrowDelta[1], 0, -arrowDelta[1],
-              width=0.05, length_includes_head=True, head_length=0.04, head_width=0.4, color='k')
+              width=0.05, length_includes_head=True, head_length=0.04,
+              head_width=0.4, color='k')
     
     outFile = 'KS_Example.png'
     showData(outFile)

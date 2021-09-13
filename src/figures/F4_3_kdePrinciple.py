@@ -13,7 +13,7 @@ import os
 import sys
 sys.path.append(os.path.join('..', 'Code_Quantlets', 'Utilities'))
 try:
-    from ISP_mystyle import setFonts, showData 
+    from ISP_mystyle import setetonts, showData 
     
 except ImportError:
 # Ensure correct performance otherwise
@@ -22,8 +22,6 @@ except ImportError:
     def showData(*options):
         plt.show()
         return
-
-setFonts(18)
 
 
 def plot_histogram(ax, data):
@@ -92,6 +90,7 @@ def main():
     x = np.array([-2.1, -1.3, -0.4, 1.9, 5.1, 6.2])
     
     # Define the two plots
+    setFonts(14)
     fig, axs = plt.subplots(1,2)
     
     # Generate the left plot

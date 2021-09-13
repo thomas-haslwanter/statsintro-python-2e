@@ -17,7 +17,7 @@ data = getModelData(show=False)
 model = sm.ols('AvgTmp ~ year', data)
 results = model.fit()
 
-# Normality check ----------------------------------------------------
+# Normality check --------------------------------------------
 res_data = results.resid    # Get the values for the residuals
 
 # QQ-plot, for a visual check
@@ -27,6 +27,7 @@ plt.show()
 # Normality test, for a quantitative check:
 _, pVal = stats.normaltest(res_data)
 if pVal < 0.05:
-    print(f'WARNING: The data are not normally distributed (p = {pVal})')
+    print('WARNING: The data are not normally distributed ' +
+          f'(p = {pVal})')
 else:
     print('Data are normally distributed.')

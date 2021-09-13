@@ -74,8 +74,10 @@ def taylor(axis):
     plt.sca(axis)
     plt.plot(theta_deg, np.sin(theta), label='sin')
     plt.plot(theta_deg, np.cos(theta), label='cos')
-    plt.plot(theta_deg, sin_approx, linestyle='dashed', label='sin approx')
-    plt.plot(theta_deg, cos_approx, linestyle='dashed', label='cos approx')
+    plt.plot(theta_deg, sin_approx, linestyle='dashed',
+              label='sin approx')
+    plt.plot(theta_deg, cos_approx, linestyle='dashed',
+              label='cos approx')
     plt.legend()    
 
     # Coordinate system

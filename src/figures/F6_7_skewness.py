@@ -33,11 +33,11 @@ def skewness(ax):
     chi2 = stats.chi2.pdf(t, 3)
     
     ax.plot(t, normal, '--', label='normal')
-    ax.plot(t, chi2, label='positive skew')
+    ax.plot(t, chi2, label='positive\nskew')
     ax.xaxis.set_ticks_position('bottom')
     ax.yaxis.set_ticks_position('left')
     ax.margins(0,0)
-    ax.legend(loc='lower left')
+    ax.legend(loc='upper right')
     
     
 def kurtosis(ax):

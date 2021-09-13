@@ -20,8 +20,8 @@ def getModelData(show: bool=True) ->None:
     # First, define the in-file and get the data
     in_file = 'AvgTemp.xls'
     
-    # When the data are neatly organized, they can be read in directly with
-    # the pandas-functions:
+    # When the data are neatly organized, they can be read in
+    # directly with the pandas-functions:
     # with "ExcelFile" you open the file ...
     xls = pd.ExcelFile(in_file)
     
@@ -41,11 +41,14 @@ def getModelData(show: bool=True) ->None:
 if __name__=='__main__':
     data = getModelData()
     
-    # Correlation ------------------------------------------------------
+    # Correlation --------------------------------------------
     # Calculate and show the different correlation coefficients
-    pearson = data['year'].corr(data['AvgTmp'], method = 'pearson') 
-    spearman = data['year'].corr(data['AvgTmp'], method = 'spearman') 
-    tau = data['year'].corr(data['AvgTmp'], method = 'kendall') 
+    pearson = data['year'].corr(data['AvgTmp'],
+            method = 'pearson') 
+    spearman = data['year'].corr(data['AvgTmp'],
+            method = 'spearman') 
+    tau = data['year'].corr(data['AvgTmp'],
+            method = 'kendall') 
     
     print(f'Pearson correlation coefficient: {pearson:5.3f}')
     print(f'Spearman correlation coefficient: {spearman:5.3f}')

@@ -1,10 +1,9 @@
-"""Solution to Exercise 'Binary Data' of the chapter 'Data Input' 
+"""Solution to Exercise 'Binary Data', chapter 'Data Input' 
 
-Read in binary data, with an 256 byte ASCII-header.
+   Read in binary data, with an 256 byte ASCII-header.
 """
 
-# author:   Thomas Haslwanter
-# date:     Sept-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import the required packages
 import numpy as np
@@ -29,7 +28,7 @@ bin_data = fh.read()
 # Interpret them as 'double', and reshape them to an ndarray
 double = 8  # byte
 num_cols = 3
-num_data = int(len(bin_data)/(num_cols*double))    # needs to be an integer
+num_data = int(len(bin_data)/(num_cols*double))  # must be int
 values = array.array('d', bin_data)
 mat = np.reshape(values, (num_data,-1))
 

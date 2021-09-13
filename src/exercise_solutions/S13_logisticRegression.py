@@ -1,7 +1,6 @@
 """ Solution to Exercise 'Logistic Regression' of the chapter 'GLM' """
 
-# author:   Thomas Haslwanter
-# date:     Sept-2021
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import numpy as np
@@ -37,13 +36,15 @@ def prepare_fit(in_data: np.ndarray) -> pd.DataFrame:
     df['num_others'] = 0
     df.index = df.length    # make the 'length' the index
     
-    # Count the number of 'setosa' and 'others', for each length
+    # Count number of 'setosa' and 'others', for each length
     for cur_length in df.length:
         df.loc[cur_length, 'num_setosa'] = \
-        ((iris.sepal_length == cur_length) & (iris.species == 'setosa')).sum()
+        ((iris.sepal_length == cur_length) &
+                (iris.species == 'setosa')).sum()
         
         df.loc[cur_length, 'num_others'] = \
-        ((iris.sepal_length == cur_length) & (iris.species != 'setosa')).sum()
+        ((iris.sepal_length == cur_length) &
+                (iris.species != 'setosa')).sum()
     
     # Just to check the total number
     df['total'] = df.num_setosa + df.num_others
@@ -51,7 +52,8 @@ def prepare_fit(in_data: np.ndarray) -> pd.DataFrame:
     return df
 
 
-def logistic(x: np.ndarray, beta:float, alpha:float=0) -> np.ndarray:
+def logistic(x: np.ndarray, beta:float,
+              alpha:float=0) -> np.ndarray:
     """ Logistic Function """
     
     return 1.0 / (1.0 + np.exp(np.dot(beta, x) + alpha))
@@ -63,7 +65,8 @@ def show_results(iris_data: np.ndarray, model) -> None:
     Paramters
     ---------
     iris_data : input data
-    model : model results (statsmodels.genmod.generalized_linear_model.GLM)
+    model : model results
+           (statsmodels.genmod.generalized_linear_model.GLM)
     
     """
     
@@ -79,7 +82,8 @@ def show_results(iris_data: np.ndarray, model) -> None:
     plt.yticks(np.linspace(0, 1, 11))
     plt.ylabel("Setosa")
     plt.xlabel("Sepal Length (cm)")
-    plt.title("Probability of 'setosa', as function of sepal-length")
+    plt.title("Probability of 'setosa', " +
+              "as function of sepal-length")
     plt.tight_layout
     
     # Plot the fit
@@ -99,7 +103,8 @@ def show_results(iris_data: np.ndarray, model) -> None:
     return(x, y)
     
     
-def find_probabilities(x: np.arange, px: np.arange, lengths: list) -> None:
+def find_probabilities(x: np.arange, px: np.arange,
+                        lengths: list) -> None:
     """ Find the probability that flower is a 'setosa'
     
     Parameters
@@ -112,15 +117,17 @@ def find_probabilities(x: np.arange, px: np.arange, lengths: list) -> None:
     # find the closest x-value
     for length in lengths:
         index = np.max(np.where(x<length))
-        print(f'For a length of {length:4.2f} cm, the probability of' +
-              f'being a "setosa" is {px[index]:5.3f}')
+        print(f'For a length of {length:4.2f} cm, the ' +
+       f'probability of being a "setosa" is {px[index]:5.3f}')
         
-    # Find maximum length of having at least a 10% chance of being a 'setosa'
+    # Find maximum length of having at least a 10% chance of
+    # being a 'setosa'
     chance = 10/100 # [%]
     
     max_index = np.max(np.where(px>chance))
-    print(f'The maximum length where you still have a {chance*100:3.0f}%  ' +
-           f'chance of being a "setosa" is {x[max_index]:3.1f}cm.')
+    print('The maximum length where you still have a ' +
+    f'{chance*100:3.0f}% chance of being a "setosa" is ' +
+    f'{x[max_index]:3.1f}cm.')
     
     
     
@@ -128,8 +135,9 @@ if __name__ == '__main__':
     # Get the data
     iris = sns.load_dataset('iris')
     
-    # Count occurences of 'setosa' and 'others', for each length
-    df_fit = prepare_fit(iris)
+    # Count occurences of 'setosa' and 'others',
+    # for each length
+     f_fit = prepare_fit(iris)
     
     # fit the model
     # --- >>> START stats <<< ---

@@ -6,7 +6,7 @@
   six-dimensional datasets.
 """
 
-# author: Thomas Haslwanter, date: Nov-2015
+# author: Thomas Haslwanter, date: Sept-2021
 
 # Import standard packages
 import numpy as np
