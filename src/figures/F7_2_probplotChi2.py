@@ -1,4 +1,5 @@
-""" Demonstration of the probplot of a non-normal distribution """
+""" Demonstration of the probplot of a non-normal distribution,
+and the principle behind the 'Kolmogorov-Smirnov'-Test """
 
 # author: Thomas Haslwanter, date: Sept-2021
 
@@ -60,8 +61,8 @@ def generate_probplot():
     
     # Plot probplot
     # plt.axes(axs[1])
-    pg.qqplot(data, ax=axs[1])
-    # stats.probplot(data, plot=plt)
+    # pg.qqplot(data, ax=axs[1])
+    stats.probplot(data, plot=plt)
     
     x0, x1 = axs[1].get_xlim()
     y0, y1 = axs[1].get_ylim()

@@ -1,4 +1,4 @@
-""" Demo-plot of residuals to a best-fit line """
+""" AR- and MA-plots, for Time-Series-Analysis """
 
 # author: Thomas Haslwanter, date: Sept-2021
 
