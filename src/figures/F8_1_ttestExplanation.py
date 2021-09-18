@@ -15,7 +15,7 @@ import os
 import sys
 sys.path.append(os.path.join('..', 'Code_Quantlets', 'Utilities'))
 try:
-    from ISP_mystyle import showData 
+    from ISP_mystyle import showData, setFonts
     
 except ImportError:
 # Ensure correct performance otherwise
@@ -37,23 +37,24 @@ print('Real SD: {0:5.3f}; Sample SD: {1:5.3f}'.format(3, stdVal))
 sns.set_context('notebook')
 sns.set_style('ticks')
 fig, axs = plt.subplots(1,2)
+setFonts(14)
 
 # Left plot ------------------------------------
 # Plot the histogram of the data, superposed with the normal fit
 xval = np.linspace(-5,20, 100)
 yval = stats.norm(meanVal,stdVal).pdf(xval)
 
-axs[0].hist(data, density=True, color='#eeefff')
-axs[0].plot(xval, yval, 'g', label='normal-fit')
-axs[0].set_title('Recorded data')
+axs[0].hist(data, density=True, color='C0', alpha=0.1)
+axs[0].plot(xval, yval, 'C0', label='normal fit')
+axs[0].set_title('recorded data')
 axs[0].legend()
 
 # Mark the mean value, as well as the value of interest
 checkVal = 6.5
-axs[0].plot(checkVal, 0, marker='d', color='r', ms=15)
-axs[0].plot(meanVal, 0, marker='d', color='y', ms=15)
-axs[0].set_xlabel('Value [x]')
-axs[0].set_ylabel('Density(x)')
+axs[0].plot(meanVal, 0, marker='d', color='C0', ms=12, alpha=0.5)
+axs[0].plot(checkVal, 0, marker='d', color='C1', ms=12, alpha=0.5)
+axs[0].set_xlabel('value [x]')
+axs[0].set_ylabel('density(x)')
 
 sns.despine()
 
@@ -73,17 +74,17 @@ print('t-statistic={0:5.3f}, p={1:6.4f}'.format(float(tstatistic), pVal))
 tFill = yv2.copy()
 tFill[(xv2>-tstatistic) & (xv2<tstatistic)] = 0
 
-axs[1].plot(xv2, yv2, label='df=n-1')
-axs[1].fill_between(xv2, tFill, color='r', alpha=0.3, lw=0)
-axs[1].plot(tVal, 0, 'rd', ms=25)
-axs[1].plot(0, 0, 'yd', ms=25)
+axs[1].plot(xv2, yv2, color='C1')
+axs[1].fill_between(xv2, tFill, color='C1', alpha=0.3, lw=0)
+axs[1].plot(tVal, 0, marker='d', color='C1', ms=12)
+axs[1].plot(0, 0, marker='d', color='C0', ms=12)
 axs[1].set_xlabel('t-statistic')
-axs[1].set_title('t-distribution PDF')
+axs[1].set_title('t-distribution, df=n-1')
 axs[1].margins(y=0)
-axs[1].legend()
+# axs[1].legend(loc='upper right')
 
 sns.despine()
 
 # Save image
-outFile = 'ttestExplained.png'
+outFile = 'ttestExplained.jpg'
 showData(outFile)

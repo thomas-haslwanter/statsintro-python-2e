@@ -1,4 +1,6 @@
-""" Demonstration of the package "lifelines"
+""" Demonstration of the package 'lifelines'
+This module requires the installation of 'lifelines', which can be done with
+`pip install lifelines`.
 
 Based on the demo-code by Cam Davidson-Pilon (http://lifelines.readthedocs.org) 
 """
@@ -18,7 +20,7 @@ sys.path.append(os.path.join('..', '..', 'Utilities'))
 
 try:
 # Import formatting commands if directory "Utilities" is available
-    from ISP_mystyle import setFonts
+    from ISP_mystyle import setFonts, showData
     
 except ImportError:
 # Ensure correct performance otherwise
@@ -42,13 +44,16 @@ def main():
     observed= actual_subscriptiontimes < study_duration
     
     # Show the data
+    plot_lifetimes(observed_subscriptiontimes, event_observed=observed)
+
     setFonts(18)
     plt.xlim(0,24)
     plt.vlines(12, 0, 30, lw=2, linestyles="--")
     plt.xlabel('time')
     plt.title('Subscription Times, at $t=12$  months')
-    plot_lifetimes(observed_subscriptiontimes, event_observed=observed)
-    plt.show()
+
+    out_file = 'lifelines.jpg'
+    showData(out_file)
     
     print(f'Observed subscription time at time {study_duration:d}', \
             observed_subscriptiontimes)

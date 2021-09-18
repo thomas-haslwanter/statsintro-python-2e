@@ -76,7 +76,7 @@ def generateData() -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     ax.set_zlabel('Z')
     fig.colorbar(surf, shrink=0.6)
     
-    outFile = '3dSurface.png'
+    outFile = '3dSurface.jpg'
     showData(outFile)
     
     return (X.flatten(), Y.flatten(), Z.flatten())
@@ -141,7 +141,7 @@ def scatterplot() -> None:
     
     df = sns.load_dataset("iris")
     sns.pairplot(df, hue="species", size=2.5)    
-    showData('multiScatterplot.png')
+    showData('multiScatterplot.jpg')
     
     
 if __name__ == '__main__':

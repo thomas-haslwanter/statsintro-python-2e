@@ -1,7 +1,7 @@
-""" Graphical representation of survival curves, and comparison of two
-curves with logrank test.
-"miR-137" is a short non-coding RNA molecule that functions to regulate
-the expression levels of other genes.
+""" Graphical representation of survival curves, and comparison
+of two curves with logrank test.
+"miR-137" is a short non-coding RNA molecule that functions to
+regulate the expression levels of other genes.
 """
 
 # author: Thomas Haslwanter, date: Sept-2021
