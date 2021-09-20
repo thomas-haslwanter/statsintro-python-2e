@@ -66,11 +66,11 @@ def arma_plot(arma_list: list, title: str) -> None:
         print(model_fit.summary())
 
         # Plotdata,  ACF and PACF
-        axs[0, ii].plot(y)
+        axs[0, ii].plot(y, lw=0.5)
         axs[0, ii].axhline(0, ls='dotted')
         axs[0, ii].set_title(f'ar={ar}, ma={ma}')
-        plot_acf(y, ax=axs[1, ii]);
-        plot_pacf(y, ax=axs[2, ii])
+        plot_acf(y, ax=axs[1, ii], lw=0.5, markersize=3)
+        plot_pacf(y, ax=axs[2, ii], lw=0.5, markersize=3)
         # plt.tight_layout()
 
     out_file = title + '.jpg'

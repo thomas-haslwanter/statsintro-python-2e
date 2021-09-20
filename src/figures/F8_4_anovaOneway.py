@@ -34,7 +34,7 @@ def show_fig(std, ax, title):
     for ii in range(3):
         data = stats.norm(centers[ii], std).rvs(numData)
         offset = ii*numData
-        ax.plot( offset+np.arange(numData), data, '.', ms=10)
+        ax.plot( offset+np.arange(numData), data, '.', ms=8)
         
     ax.xaxis.set_ticks([50,150,250])
     ax.set_xticklabels(['Group1', 'Group2', 'Group3'])
@@ -58,4 +58,4 @@ if __name__ == '__main__':
     show_fig(0.1, axs[0], 'SD=0.1')
     show_fig(2,   axs[1], 'SD=2.0')
     
-    showData('anova_oneway.png')
+    showData('anova_oneway.jpg')

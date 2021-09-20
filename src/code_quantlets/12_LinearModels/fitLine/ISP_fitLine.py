@@ -81,7 +81,7 @@ def fitLine(x, y, alpha=0.05, newx=[], plotFlag=1):
     se_a = sd_res*np.sqrt(np.sum(x**2)/(n*Sxx))
     
     df = n-2                            # degrees of freedom
-    tval = stats.t.isf(alpha/2., df) 	# appropriate t value
+    tval = stats.t.isf(alpha/2, df) 	# appropriate t value
     
     ci_a = a + tval*se_a*np.array([-1,1])
     ci_b = b + tval*se_b*np.array([-1,1])
@@ -113,7 +113,7 @@ def fitLine(x, y, alpha=0.05, newx=[], plotFlag=1):
         # Plot the data
         plt.figure()
         
-        plt.plot(px, fit(px),'k', label='Regression line')
+        plt.plot(px, fit(px),color='C0', label='Regression line')
         #plt.plot(x,y,'k.', label='Sample observations', ms=10)
         plt.plot(x,y,'k.')
         
@@ -121,36 +121,40 @@ def fitLine(x, y, alpha=0.05, newx=[], plotFlag=1):
         limit = (1-alpha)*100
         plt.plot(x, fit(x)+tval*se_fit(x),
                  ls='--', 
-                 color='r', 
+                 color='C1', 
                  lw=2, 
                  label = f'Confidence limit ({limit:.1f}%)' )
         plt.plot(x, fit(x)-tval*se_fit(x),
                     ls='--',
-                    color='r', 
+                    color='C1', 
                     lw=2 )
         
         plt.plot(x, fit(x)+tval*se_predict(x),
                     ls='--',
                     lw=2,
-                    color=(0.2,1,0.2), 
+                    color='C2', alpha=0.4,     #(0.2,1,0.2), 
                     label = f'Prediction limit ({limit:.1f}%)' )
         plt.plot(x, fit(x)-tval*se_predict(x),
                  ls='--',
                  lw=2,
-                 color=(0.2,1,0.2) )
+                 color='C2', alpha=0.4)
 
-        plt.xlabel('X values')
-        plt.ylabel('Y values')
-        plt.title('Linear regression and confidence limits')
+
+        plt.xlabel('X values', fontsize=12)
+        plt.ylabel('Y values', fontsize=12)
+        plt.title('Linear regression and confidence limits', fontsize=12) 
         
         # configure legend
         plt.legend(loc=0)
-        leg = plt.gca().get_legend()
+        ax = plt.gca()
+        leg = ax.get_legend()
+        ax.set_xticklabels([])
+        ax.set_yticklabels([])
         ltext = leg.get_texts()
-        plt.setp(ltext, fontsize=14)
+        plt.setp(ltext, fontsize=10)
 
         # show the plot
-        out_file = 'regression_wLegend.png'
+        out_file = 'regression_wLegend.jpg'
         plt.savefig(out_file, dpi=200)
         print(f'Image saved to {out_file}')
         plt.show()
@@ -184,5 +188,5 @@ if __name__ == '__main__':
                       
         goodIndex = np.invert(np.logical_or(np.isnan(x), np.isnan(y)))
         (a,b,(ci_a, ci_b), ri,newy) = fitLine(x[goodIndex], y[goodIndex],
-                                              alpha=0.01,
+                                              alpha=0.05,
                                               newx=np.array([1,4.5]) )        

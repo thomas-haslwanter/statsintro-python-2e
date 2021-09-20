@@ -35,7 +35,7 @@ def show_fig(std, ax, title):
     for ii in range(3):
         data = stats.norm(centers[ii], std).rvs(numData)
         offset = ii*numData
-        ax.plot( offset+np.arange(numData), data, '.', ms=18)
+        ax.plot( offset+np.arange(numData), data, '.', ms=10)
         groupMean.append(np.mean(data))
         
     ax.xaxis.set_ticks([50,150,250])
@@ -71,4 +71,4 @@ if __name__ == '__main__':
     show_fig(0.1, ax, 'Sum-Squares')
     
     # Save and show
-    showData('anova_annotated.png')
+    showData('anova_annotated.jpg')
