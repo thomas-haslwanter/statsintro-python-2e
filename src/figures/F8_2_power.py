@@ -43,8 +43,8 @@ alpha=0.05
 tc = nd.isf(alpha/2)
 large = x2>tc
 small = x2<-tc
-plt.fill_between(x2[large], y[large], color='C1')
-plt.fill_between(x2[small], y[small], color='C1')
+plt.fill_between(x2[large], y[large], color='C1', alpha=0.5)
+plt.fill_between(x2[small], y[small], color='C1', alpha=0.5)
 
 # Format the plot
 plt.plot([tc, tc], [0, nd.pdf(tc)], color='C0')

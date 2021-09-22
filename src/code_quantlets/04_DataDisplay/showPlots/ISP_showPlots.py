@@ -202,8 +202,8 @@ def simple_plots():
 
     # Grouped Boxplot
     sns.set_style('whitegrid')
+    setFonts(18)
     sns.boxplot(data=df)
-    setFonts(28)
     printout('groupedBoxplot.jpg', title='sns.boxplot')
 
     sns.set_style('ticks')
@@ -231,7 +231,7 @@ def show3D():
 
     # Twice as wide as it is tall.
     fig = plt.figure(figsize=plt.figaspect(0.5))
-    setFonts(16)
+    setFonts(14)
 
     #---- First subplot
     # Generate the data

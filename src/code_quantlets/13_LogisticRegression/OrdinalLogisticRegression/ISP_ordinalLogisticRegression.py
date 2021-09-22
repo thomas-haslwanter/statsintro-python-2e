@@ -1,4 +1,8 @@
 """ Implementation of logistic ordinal regression (aka proportional odds) model
+To run this program you need to install
+
+`pip install mord`
+
 Based on original code in https://github.com/fabianp/minirank
 """
 
@@ -15,6 +19,21 @@ from sklearn import linear_model, metrics, preprocessing, datasets
 from sklearn.model_selection import ShuffleSplit
 import mord
 
+# additional packages
+# Import formatting commands if directory "Utilities" is available
+import os
+import sys
+sys.path.append(os.path.join('..',  '..', 'Utilities'))
+try:
+    from ISP_mystyle import setFonts, showData 
+    
+except ImportError:
+# Ensure correct performance otherwise
+    def setFonts(*options):
+        return
+    def showData(*options):
+        plt.show()
+        return
 
 class Classifier:
     """ Classifiers, for comparing different models
@@ -125,20 +144,20 @@ def show_results(models, out_file: str) -> None:
     
     # Generate a horizontal bar-plot, with errorbars
     fig, ax = plt.subplots()
+    setFonts()
     y_pos = np.arange(len(names))
     ax.barh(y_pos, scores, xerr=errors, align='center')
     
     # Format the plot
     ax.set_yticks(y_pos)
-    ax.set_yticklabels(names, rotation=45)
-    ax.set_xlabel('Performance')
-    ax.set_title('Mean absolute error')
+    ax.set_yticklabels(names, rotation=45, fontsize=14)
+    ax.set_xlabel('Performance (lower is better)', fontsize=14)
+    ax.set_title('Mean absolute error', fontsize=14)
     
     # Save the result
-    print(f'Score-image saved to {out_file}.')
     plt.tight_layout()
-    plt.savefig(out_file, dpi=200)
-    plt.show()    
+    
+    showData(out_file)
     
     
 def printProgressBar (iteration: int,
@@ -173,7 +192,7 @@ def printProgressBar (iteration: int,
         
         
 if __name__ == '__main__':
-    out_file = 'ordinal_logistic_regression.jpg'
+    out_file = 'ordinal_bars.jpg'
     
     X, y = get_data()
     models = compare_models(X, y)
