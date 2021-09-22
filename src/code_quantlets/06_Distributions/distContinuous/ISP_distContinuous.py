@@ -16,20 +16,23 @@ import seaborn as sns
 import os
 
 # additional packages
-import sys
-sys.path.append(os.path.join('..', '..', 'Utilities'))
-
-try:
 # Import formatting commands if directory "Utilities" is available
-    from ISP_mystyle import showData 
+import os
+import sys
+sys.path.append(os.path.join('..',  '..', 'Utilities'))
+try:
+    from ISP_mystyle import setFonts, showData 
     
 except ImportError:
 # Ensure correct performance otherwise
+    def setFonts(*options):
+        return
     def showData(*options):
         plt.show()
         return
 
-sns.set(context='poster', style='ticks', palette='muted', font_scale=1.5)
+
+sns.set(context='notebook', style='ticks', palette='muted', font_scale=1.5)
 
 
 def show_t():
@@ -115,6 +118,24 @@ def show_exp():
         
     outFile = 'dist_exp.png'
     showData(outFile)
+
+
+def show_uniform():
+    """Utility function to show uniform distributions"""
+    
+    x = np.arange(0, 10, 0.1)
+    a,b = 4, 3
+
+    ud = stats.uniform(a, b)
+    plt.plot(x, ud.pdf(x))
+
+    plt.xlabel('X')
+    plt.ylabel('pdf(X)')
+    #plt.axis('tight')
+    plt.tight_layout()
+        
+    outFile = 'dist_uniform.jpg'
+    showData(outFile)
     
 
 def show_weibull():
@@ -139,8 +160,9 @@ def show_weibull():
     
 
 if __name__ == '__main__':
-    show_t()
-    show_chi2()
-    show_f()
-    show_exp()
-    show_weibull()
+    # show_t()
+    # show_chi2()
+    # show_f()
+    # show_exp()
+    # show_weibull()
+    show_uniform()

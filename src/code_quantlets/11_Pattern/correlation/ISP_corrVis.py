@@ -108,6 +108,12 @@ def corr_vis(x:np.ndarray, y:np.ndarray) -> None:
             print('you returned before it was over :(')
             return
         
+    # For a printout:
+    # out_file = 'corr_vis3.jpg'
+    # pil_kwargs = {'quality': 95}
+    # plt.savefig(out_file, dpi=300, pil_kwargs=pil_kwargs)
+    # print(f'Corr-vis saved to {out_file}')
+
     plt.show()
 
     
