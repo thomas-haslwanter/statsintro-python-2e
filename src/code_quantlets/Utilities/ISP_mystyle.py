@@ -61,10 +61,10 @@ def showData(out_file: str, out_dir: str='.') -> None:
         # Generate the plot
         saveTo = os.path.join(out_dir, out_file)
         if out_file[-3:].lower() == 'jpg':
-            pil_kwargs = {'quality': 90}
-            plt.savefig(saveTo, dpi=200, pil_kwargs=pil_kwargs)
+            pil_kwargs = {'quality': 95}
+            plt.savefig(saveTo, dpi=300, pil_kwargs=pil_kwargs)
         else:
-            plt.savefig(saveTo, dpi=200)
+            plt.savefig(saveTo, dpi=300)
     
         # Show the user where the file is saved to
         print('OutDir: {0}'.format(out_dir))
