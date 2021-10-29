@@ -1,4 +1,4 @@
-[<img src="../../../../resources/quantletLogo_FH.png" alt="Intro to Statistics with Python">](https://github.com/thomas-haslwanter/statsintro_python)
+[<img src="../../../../resources/quantletLogo_FH.png" alt="Intro to Statistics with Python">](https://github.com/thomas-haslwanter/statsintro-python-2e)
 
 ## [<img src="../../../../resources/qloqo.png" alt="Visit QuantNet">](http://quantlet.de/) **ISP_bayesianStats** [<img src="../../../../resources/QN2.png" width="60" alt="Visit QuantNet 2.0">](http://quantlet.de/)
 ```yaml
