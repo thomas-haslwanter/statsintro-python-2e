@@ -1,8 +1,6 @@
+[<img src="../../../../resources/quantletLogo_FH.png" alt="Intro to Statistics with Python">](https://github.com/thomas-haslwanter/statsintro_python)
 
-![quantletLogo FH](http://work.thaslwanter.at/quantletLogo_FH.png)
-
-## ![qlogo](http://quantnet.wiwi.hu-berlin.de/graphics/quantlogo.png) **ISP_logisticRegression**
-
+## [<img src="../../../../resources/qloqo.png" alt="Visit QuantNet">](http://quantlet.de/) **ISP_logisticRegression** [<img src="../../../../resources/QN2.png" width="60" alt="Visit QuantNet 2.0">](http://quantlet.de/)
 
 ```yaml
 Name of QuantLet: ISP_logisticRegression
