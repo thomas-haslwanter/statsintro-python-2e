@@ -2,11 +2,11 @@
 
 This script shows how to
 - Use a t-test for a single mean
-- Use a non-parametric test (Wilcoxon signed rank sum) to check a single mean 
+- Use a non-parametric test (Wilcoxon signed rank sum) to check a single mean
 - Compare the values from t-distribution with those of a normal distribution
 """
 
-# author: Thomas Haslwanter, date: Sept-2021
+# author: Thomas Haslwanter, date: Dec-2021
 
 
 # Import standard packages
@@ -16,16 +16,16 @@ import pingouin as pg
 from pprint import pprint
 
 
-def check_mean() -> float:        
+def check_mean() -> float:
     """Data from Altman, check for significance of mean value.
     Compare average daily energy intake (kJ) over 10 days of 11 healthy women,
     and compare it to the recommended level of 7725 kJ.
 
     Returns
     -------
-    p-value : just for testing the function 
+    p-value : just for testing the function
     """
-    
+
     # Get data from Altman
     inFile = 'altman_91.txt'
     data = np.genfromtxt(inFile, delimiter=',')
@@ -47,7 +47,7 @@ def check_mean() -> float:
     # --- >>> START stats <<< ---
     t, prob = stats.ttest_1samp(data, checkValue)
     if prob < 0.05:
-        print(f'{checkValue:4.2f} is significantly different '+ 
+        print(f'{checkValue:4.2f} is significantly different '+
               f'from the mean (p={prob:5.3f}).')
 
     # For not normally distributed data, use the Wilcoxon signed rank sum test
@@ -57,11 +57,11 @@ def check_mean() -> float:
     else:
       issignificant = 'likely'
     # --- >>> STOP stats <<< ---
-      
+
     print(f'It is {issignificant} that the value is {checkValue:d}')
-    
+
     return prob # should be 0.018137235176105802
- 
+
 
 def explain_power() -> None:
     """ Reproduce most of the parameters from pingouin's 'ttest' """
@@ -128,9 +128,9 @@ def compareWithNormal():
     # compare
     print(f'The probability from the t-test is ' + '{tProb:5.4f}, ' +
           f'and from the normal distribution {normProb:5.4f}')
-    
+
     return normProb # should be 0.054201154690070759
-           
+
 
 if __name__ == '__main__':
     check_mean()

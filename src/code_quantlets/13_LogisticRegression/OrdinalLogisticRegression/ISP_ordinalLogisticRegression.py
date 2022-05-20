@@ -7,7 +7,7 @@ Based on original code in https://github.com/fabianp/minirank
 """
 
 # author:   Thomas Haslwanter
-# date:     Sept-2021
+# date:     Dec-2021
 
 # Import standard packages
 import numpy as np
@@ -25,8 +25,8 @@ import os
 import sys
 sys.path.append(os.path.join('..',  '..', 'Utilities'))
 try:
-    from ISP_mystyle import setFonts, showData 
-    
+    from ISP_mystyle import setFonts, showData
+
 except ImportError:
 # Ensure correct performance otherwise
     def setFonts(*options):
@@ -40,7 +40,7 @@ class Classifier:
     name : name of the classifier
     clf : classifier, with the syntax of scikit-learn
     scores : scores of the training runs
-    
+
     """
 
     def __init__(self, name: str, model):
@@ -52,114 +52,114 @@ class Classifier:
 
 def get_data() -> Tuple[np.ndarray, np.ndarray]:
     """Get and preprocess the Boston Housing data
-    
+
     Returns
     -------
     X : features
     y : targets
     """
-    
+
     # Get the data
     boston = datasets.load_boston()
     X,y = boston.data, np.round(boston.target)
-    
+
     # Do a bit of pre-processing
     X = preprocessing.StandardScaler().fit(X).transform(X)
     y = np.int32(y) # required by mord
-    
+
     return (X, y)
 
 
 def compare_models(X: np.ndarray, y: np.ndarray) -> Tuple:
     """Fit and evaluate the different models
-    
+
     Parameters
     ----------
     X : features
     y : targets
-    
+
     Returns
     -------
     models : fitted models and fitting scores
     """
-    
+
     # Initialize the models
     models = []
-    
+
     # Create the 3 models
-    models.append( Classifier('logistic', 
+    models.append( Classifier('logistic',
         linear_model.LogisticRegression(C=1., random_state=0, max_iter=1000) ))
     models.append( Classifier('oridinal_logistic', mord.LogisticAT(alpha=1.)) )
     models.append( Classifier('ridge', linear_model.Ridge(alpha=1.)) )
-    
+
     # Perform repeated training, to provide a realistic comparison
     n_splits = 50
     rs = ShuffleSplit(n_splits=n_splits, test_size=0.1, random_state=0)
-    
+
     for ii, (train, test) in enumerate(rs.split(X)):
         printProgressBar(ii, n_splits, prefix = 'Progress:',
                          suffix = 'Complete', length = 40)
-        
+
         # we need the train set to contain all different classes
         if set(y[train]) != set(y):
             continue
-        
+
         # Logistic classifier
-        for model in models: 
+        for model in models:
             model.clf.fit(X[train], y[train])
             model.scores.append(
               metrics.mean_absolute_error(model.clf.predict(X[test]), y[test]) )
-        
+
     return models
 
 
 def show_results(models, out_file: str) -> None:
     """Generate a nice output plot
-    
+
     Parameters
     ----------
     models : fitted models
     out_file : name of out_file
-    
+
     """
-    
+
     # Extract and print the data
     names = []
     scores = []
     errors = []
-    
+
     print('------- Results ------\n')
     for model in models:
         name = model.name
         score = np.mean(model.scores)
         error = np.std(model.scores)
-        
+
         print(f'Mean absolute error {name.upper():18s}:',
               f'{score:.2f} +/- {error:.2f}' )
-              
+
         names.append(name)
         scores.append(score)
         errors.append(error)
-    
-    
+
+
     # Generate a horizontal bar-plot, with errorbars
     fig, ax = plt.subplots()
     setFonts()
     y_pos = np.arange(len(names))
     ax.barh(y_pos, scores, xerr=errors, align='center')
-    
+
     # Format the plot
     ax.set_yticks(y_pos)
     ax.set_yticklabels(names, rotation=45, fontsize=14)
     ax.set_xlabel('Performance (lower is better)', fontsize=14)
     ax.set_title('Mean absolute error', fontsize=14)
-    
+
     # Save the result
     plt.tight_layout()
-    
+
     showData(out_file)
-    
-    
+
+
 def printProgressBar (iteration: int,
                       total: int,
                       prefix: str = '',
@@ -169,7 +169,7 @@ def printProgressBar (iteration: int,
                       fill: str = '█',
                       printEnd: str = "\r") -> None:
     """ Call in a loop to create terminal progress bar
-    
+
     Parameters
     -----=----
     iteration: current iteration [required]
@@ -187,15 +187,15 @@ def printProgressBar (iteration: int,
     bar = fill * filledLength + '-' * (length - filledLength)
     print(f'\r{prefix} |{bar}| {percent}% {suffix}', end = printEnd)
     # Print New Line on Complete
-    if iteration == total: 
-        print()        
-        
-        
+    if iteration == total:
+        print()
+
+
 if __name__ == '__main__':
     out_file = 'ordinal_bars.jpg'
-    
+
     X, y = get_data()
     models = compare_models(X, y)
     show_results(models, out_file)
-    
-    
+
+

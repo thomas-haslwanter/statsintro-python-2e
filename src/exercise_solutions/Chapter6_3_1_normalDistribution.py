@@ -1,6 +1,6 @@
 """Solutions to 6.3.1 Examples of Normal Distributions"""
 
-# author: Thomas Haslwanter, date: Sept-2021
+# author: Thomas Haslwanter, date: Dec-2021
 
 # Import standard packages
 import numpy as np
@@ -10,7 +10,7 @@ from scipy import stats
 (avg_size, std) = (175, 6)
 nd = stats.norm(avg_size, std)
 p = nd.cdf(184) - nd.cdf(183)
-print('The chance that a randomly selected man is 183 cm ' + 
+print('The chance that a randomly selected man is 183 cm ' +
        f'tall is {p*100:.1f}%')
 
 # Example 2: Cans with a weight of at least 250g

@@ -1,6 +1,6 @@
 """ Sketch to indicate why the sample SD underestimates the population SD """
 
-# author: Thomas Haslwanter, date: Sept-2021
+# author: Thomas Haslwanter, date: Dec-2021
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -12,14 +12,14 @@ import os
 import sys
 sys.path.append(os.path.join('..', 'Code_Quantlets', 'Utilities'))
 try:
-    from ISP_mystyle import showData 
-    
+    from ISP_mystyle import showData
+
 except ImportError:
 # Ensure correct performance otherwise
     def showData(*options):
         plt.show()
         return
-    
+
 # Set up the three axes
 fig, axs = plt.subplots(3,1)
 

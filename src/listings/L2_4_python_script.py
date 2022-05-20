@@ -4,7 +4,7 @@ can contain further details.
 """
 
 # author: Thomas Haslwanter
-# date:   Sept-2021
+# date:   Dec-2021
 
 # Import standard packages
 import numpy as np
@@ -27,7 +27,7 @@ plt.ylabel('Values')
 
 # Generate a figure, one directory up, and let the user know about it
 out_file = '../Sinewave.jpg'
-plt.savefig(out_file, dpi=200, quality=90)
+plt.savefig(out_file, dpi=200)
 print(f'Image has been saved to {out_file}')
 
 # Put it on the screen

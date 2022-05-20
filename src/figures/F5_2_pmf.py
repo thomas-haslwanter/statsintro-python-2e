@@ -1,7 +1,7 @@
 """ Probability Mass Function (PMF), for throwing dice """
 
 # author:   Thomas Haslwanter
-# date:     Sept-2021
+# date:     Dec-2021
 
 # Import standard packages
 import numpy as np
@@ -15,8 +15,8 @@ import os
 import sys
 sys.path.append(os.path.join('..', 'Code_Quantlets', 'Utilities'))
 try:
-    from ISP_mystyle import setFonts, showData 
-    
+    from ISP_mystyle import setFonts, showData
+
 except ImportError:
 # Ensure correct performance otherwise
     def setFonts(*options):
@@ -24,7 +24,7 @@ except ImportError:
     def showData(*options):
         plt.show()
         return
-    
+
 sns.set(font_scale=1.5)
 sns.set_style('whitegrid')
 

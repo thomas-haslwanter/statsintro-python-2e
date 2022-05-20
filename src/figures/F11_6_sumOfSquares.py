@@ -1,6 +1,6 @@
 """ Visualization of the Sum-of-Squares. """
 
-# author: thomas haslwanter, date: Sept-2021
+# author: thomas haslwanter, date: Dec-2021
 
 # Import standard packages
 import numpy as np
@@ -16,13 +16,13 @@ import sys
 sys.path.append(os.path.join('..', 'Code_Quantlets', 'Utilities'))
 try:
     from ISP_mystyle import showData
-    
+
 except ImportError:
 # Ensure correct performance otherwise
     def showData(*options):
         plt.show()
         return
-    
+
 # Set the figure style
 sns.set_context('notebook')
 sns.set_style('ticks')

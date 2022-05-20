@@ -4,7 +4,7 @@ http://web.stanford.edu/~mwaskom/software/seaborn/examples/anscombes_quartet.htm
 Note that this program requires a web-connection to load the dataset!
 """
 
-# author: Thomas Haslwanter, date: Sept-2021
+# author: Thomas Haslwanter, date: Dec-2021
 
 # Import standard packages
 import seaborn as sns
@@ -16,8 +16,8 @@ sys.path.append(os.path.join('..', '..', 'Utilities'))
 
 try:
 # Import formatting commands if directory "Utilities" is available
-    from ISP_mystyle import showData 
-    
+    from ISP_mystyle import showData
+
 except ImportError:
 # Ensure correct performance otherwise
     def showData(*options):
@@ -35,11 +35,11 @@ sns.set(style="ticks")
 if __name__ == '__main__':
     # Load the example dataset for Anscombe's quartet
     df = sns.load_dataset("anscombe")
-    
+
     # Show the results of a linear regression within each dataset
     sns.lmplot(x="x", y="y", col="dataset", hue="dataset", data=df,
                col_wrap=2, ci=None, palette="muted", size=4,
-               scatter_kws={"s": 50, "alpha": 1})           
-    
-    outFile = 'Anscombes_quartet.png'
+               scatter_kws={"s": 50, "alpha": 1})
+
+    outFile = 'Anscombes_quartet.jpg'
     showData(outFile)

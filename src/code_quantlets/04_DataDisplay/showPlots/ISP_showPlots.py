@@ -1,4 +1,4 @@
-''' Show different ways to present statistical data
+""" Show different ways to present statistical data
 
 The examples contain:
 - scatter plots, with 1-dimensional and higher-dimensional data
@@ -14,7 +14,7 @@ The examples contain:
 - scatterplots, with markersize proportional to the value of a corresponding
    variable
 - 3D surface and wireframe plots
-'''
+"""
 
 # First, import the libraries that you are going to need. You could also do
 # that later, but it is better style to do that at the beginning.
@@ -37,7 +37,7 @@ import sys
 sys.path.append(os.path.join('..', '..', 'Utilities'))
 try:
 # Import formatting commands if directory "Utilities" is available
-    from ISP_mystyle import setFonts, showData 
+    from ISP_mystyle import setFonts, showData
 
 except ImportError:
 # Ensure correct performance otherwise
@@ -49,7 +49,7 @@ except ImportError:
 
 
 def printout(outFile, xlabel = '', ylabel='', title='', outDir = '.'):
-    '''Save the current figure to a file, and then display it'''
+    """Save the current figure to a file, and then display it"""
 
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
@@ -72,7 +72,7 @@ def printout(outFile, xlabel = '', ylabel='', title='', outDir = '.'):
 
 
 def simple_plots():
-    '''Demonstrate the generation of different statistical standard plots'''
+    """Demonstrate the generation of different statistical standard plots"""
 
     # Univariate data -------------------------
 
@@ -191,14 +191,17 @@ def simple_plots():
     ax.legend(df.columns, loc='upper right')
 
     showData('barplot.jpg')
+
     setFonts(28)
 
     # Bivariate Plots
     df2 = pd.DataFrame(np.random.rand(50, 3), columns=['a', 'b', 'c'])
-    df2.plot(kind='scatter', x='a', y='b', s=df2['c']*500);
-    plt.axhline(0, ls='--', color='#999999')
-    plt.axvline(0, ls='--', color='#999999')
+    # df2.plot(kind='scatter', x='a', y='b', s=df2['c']*500)
+    plt.scatter(df2.a, df2.b, s=df2.c*500)
+    plt.axhline(0, ls='--')
+    plt.axvline(0, ls='--')
     printout('bivariate.jpg')
+
 
     # Grouped Boxplot
     sns.set_style('whitegrid')
@@ -221,7 +224,7 @@ def simple_plots():
 
 
 def show3D():
-    '''Generation of 3D plots'''
+    """Generation of 3D plots"""
 
     # imports specific to the plots in this example
     from matplotlib import cm   # colormaps

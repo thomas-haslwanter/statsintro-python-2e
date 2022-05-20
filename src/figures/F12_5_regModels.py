@@ -5,7 +5,7 @@ Strongly based on a blog by Connor Johnson.
 http://connor-johnson.com/2014/02/18/linear-regression-with-python/
 """
 
-# author: Thomas Haslwanter, date: Sept-2021
+# author: Thomas Haslwanter, date: Dec-2021
 
 # Import standard packages
 import numpy as np
@@ -20,8 +20,8 @@ import os
 import sys
 sys.path.append(os.path.join('..', 'Code_Quantlets', 'Utilities'))
 try:
-    from ISP_mystyle import setFonts, showData 
-    
+    from ISP_mystyle import setFonts, showData
+
 except ImportError:
 # Ensure correct performance otherwise
     def setFonts(*options):
@@ -29,7 +29,7 @@ except ImportError:
     def showData(*options):
         plt.show()
         return
-    
+
 import matplotlib as mpl
 import statsmodels.formula.api as sm
 from sklearn.linear_model import LinearRegression
@@ -52,7 +52,7 @@ if sys.version_info[0] == 3:
     from io import StringIO
 else:
     from StringIO import StringIO
-    
+
 df = pd.read_csv(StringIO(data_str), sep=r'\s+')
 
 # Plot the data
@@ -214,12 +214,12 @@ plt.plot( df.Tobacco[:-1], df.Alcohol[:-1], 'bo', markersize=10,
     label=labelStart + clean_score )
 
 if sys.version_info[0] == 3:
-    labelStart = 'N. Ireland, outlier, $Rˆ2$ = ' 
+    labelStart = 'N. Ireland, outlier, $Rˆ2$ = '
 else:
     labelStart = 'N. Ireland, outlier, R2 = '
-    
+
 plt.plot( df.Tobacco[-1:], df.Alcohol[-1:], 'r*', ms=20, lw=10,
-    label=labelStart+original_score)    
+    label=labelStart+original_score)
 
 test = np.arange( 2.5, 4.85, 0.1 )
 test = np.array( np.matrix( test ).T )

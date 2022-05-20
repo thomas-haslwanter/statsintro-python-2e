@@ -2,7 +2,7 @@
 Chi2-test with frequency tables
 """
 
-# author: Thomas Haslwanter, date: Sept-2021
+# author: Thomas Haslwanter, date: Dec-2021
 
 from scipy import stats
 
@@ -14,7 +14,7 @@ if p < 0.05:
     print(f'p={p:6.4f}: the drug affects heart rate.')
 else:
     print(f'p={p:6.4f}: the drug does NOT affect heart rate.')
-    
+
 obs2 = [[36,14], [29,26]]
 chi2, p, dof, expected = stats.chi2_contingency(obs2)
 chi2, p2, dof, expected = stats.chi2_contingency(obs2,

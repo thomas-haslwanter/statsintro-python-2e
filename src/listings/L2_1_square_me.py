@@ -1,4 +1,4 @@
-# This file shows the square of the numbers from 0 to 5.
+# This file shows the square of the numbers 0-5.
 
 def squared(x=10):
     return x**2

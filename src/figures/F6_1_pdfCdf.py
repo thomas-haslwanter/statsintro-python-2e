@@ -1,7 +1,7 @@
 """ Graphical display of PDF (probability density function) and
     CDF (cumulative density function) """
 
-# author: Thomas Haslwanter, date: Sept-2021
+# author: Thomas Haslwanter, date: Dec-2021
 
 # Import standard packages
 import numpy as np
@@ -16,8 +16,8 @@ import os
 import sys
 sys.path.append(os.path.join('..', 'Code_Quantlets', 'Utilities'))
 try:
-    from ISP_mystyle import setFonts, showData 
-    
+    from ISP_mystyle import setFonts, showData
+
 except ImportError:
 # Ensure correct performance otherwise
     def setFonts(*options):

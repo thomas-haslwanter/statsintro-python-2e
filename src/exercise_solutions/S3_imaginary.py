@@ -1,7 +1,7 @@
 """ Solution to Exercise 'Modifying Text Files',
     chapter 'Data Input' """
 
-# author: Thomas Haslwanter, date: Sept-2021
+# author: Thomas Haslwanter, date: Dec-2021
 
 # Import the required packages
 import numpy as np

@@ -40,16 +40,16 @@ fig.text(0.8, 0.02, date.isoformat(date.today()))
 for ax in axs:
     lines = ax.get_lines()
     lines[0].set_linestyle('dashed')
-    
+
 # Add a legend to the first axis
 axs[0].legend(['x', 'y'])
 
 # Save the figure
 out_file = 'simple_figure.jpg'
-plt.savefig(out_file, dpi=200, quality=90)
+plt.savefig(out_file, dpi=200)
 
 # Always inform the user if any file has been added or modified
 # on the computer
 print(f'Image saved to {out_file}')
 
-plt.show()    
+plt.show()

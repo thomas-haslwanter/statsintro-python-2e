@@ -4,7 +4,7 @@ of two curves with logrank test.
 regulate the expression levels of other genes.
 """
 
-# author: Thomas Haslwanter, date: Sept-2021
+# author: Thomas Haslwanter, date: Dec-2021
 
 # Import standard packages
 import matplotlib.pyplot as plt
@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 # additional packages
 import sys
 sys.path.append(r'..\Code_Quantlets\Utilities')
-import ISP_mystyle 
+import ISP_mystyle
 
 from lifelines.datasets import load_waltons
 from lifelines import KaplanMeierFitter

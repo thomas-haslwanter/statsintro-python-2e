@@ -7,7 +7,7 @@
 
 """
 
-# author: Thomas Haslwanter, date: Sept-2021
+# author: Thomas Haslwanter, date: Dec-2021
 
 # Import standard packages
 import numpy as np
@@ -25,14 +25,14 @@ def cochran_matrix_2_events(in_mat: np.ndarray) -> pd.DataFrame:
     Parameters
     ----------
     in_mat : matrix, with the events for each category in row-form
-    
+
     Returns
     -------
     df : DataFrame, with columns ['subject', 'category', 'value']
 
     """
 
-    out = np.nan * np.ones((1, 3))  # Dummy-value for initiation output-matrix 
+    out = np.nan * np.ones((1, 3))  # Dummy-value for initiation output-matrix
 
     subjects = np.arange(in_mat.shape[1])
     categories = np.arange(in_mat.shape[0])
@@ -49,25 +49,25 @@ def cochran_matrix_2_events(in_mat: np.ndarray) -> pd.DataFrame:
 
 
 def freq2events(data: np.ndarray) -> np.ndarray:
-    """ Turn a frequency matrix into a corresponding event-matrix 
-    
+    """ Turn a frequency matrix into a corresponding event-matrix
+
     Parameters
     ----------
         data : 1d or 2d frequency matrix
-        
+
     Returns
     -------
         events : corresponding 1d or 2d event array
                  In the 1d case a vector is returned,
                  in the 2d case an n*2 matrix.
     """
-    
+
     if len(data.shape) == 1:
         events = np.array([])
-        
+
         for ii, value in enumerate(data):
             events = np.hstack( (events, ii*np.ones(value)) )
-            
+
     else:
         events = np.nan * np.ones( (1,2) ) # need a 2-col dummy start-matrix
 
@@ -76,9 +76,9 @@ def freq2events(data: np.ndarray) -> np.ndarray:
             for jj in range(data.shape[1]):
                 new = np.repeat([[ii, jj]], data[ii,jj], axis=0)
                 events = np.vstack((events, new))
-    
+
         events = events[1:,:]   # strip the dummy starter
-        
+
     return events
 
 
@@ -112,7 +112,7 @@ def oneProportion()-> np.ndarray:
     print('ONE PROPORTION ----------------------------------------')
     print('The confidence interval for the given sample is ' +
           f'{ci[0]:5.3f} to {ci[1]:5.3f}')
-    
+
     return ci
 
 
@@ -190,7 +190,7 @@ def fisherExact():
     print('The probability of obtaining a distribution at least as extreme ' +
             'as the one that was actually observed, assuming that the null ' +
             f'hypothesis is true, is: {fisher_result[1]:5.3f}.')
-    
+
     return fisher_result
 
 
@@ -201,14 +201,14 @@ def cochranQ():
     failed tasks 1 and 3.
     Is there a difference between the performance on the three tasks?
     """
-    
+
     tasks = np.array([[0,1,1,0,1,0,0,1,0,0,0,0],
                       [1,1,1,0,0,1,0,1,1,1,1,1],
                       [0,0,1,0,0,1,0,0,0,0,0,0]])
-    
+
     # I prefer a DataFrame here, as it indicates directly what the values mean
     df = pd.DataFrame(tasks.T, columns = ['Task1', 'Task2', 'Task3'])
-    
+
     # --- >>> START stats <<< ---
     # with statsmodels ...
     sm_results = cochrans_q(df)     #(Q, pVal)
@@ -229,14 +229,14 @@ def cochranQ():
     print(f'Q = {sm_results.statistic:5.3f}, p = {sm_results.pvalue:5.3f}')
     if sm_results.pvalue < 0.05:
         print("There is a significant difference between the three tasks.")
-    
+
 
 def tryMcnemar():
     """McNemars Test should be run in the "exact" version, even though
     approximate formulas are
     typically given in the lecture scripts. Just ignore the statistic that is
     returned, because it is different for the two options.
-    
+
     In the following example, a researcher attempts to determine if a drug has
     an effect on a particular disease. Counts of individuals are given in the
     table, with the diagnosis (disease: present or absent) before treatment
@@ -244,8 +244,8 @@ def tryMcnemar():
     test requires the same subjects to be included in the before-and-after
     measurements (matched pairs).
     """
-    
-    
+
+
     f_obs = np.array([[101, 121],[59, 33]])
 
     # with statsmodels ....
@@ -260,8 +260,8 @@ def tryMcnemar():
     print('\nMCNEMAR\'S TEST ---------------------------------------------')
     print(f'p = {sm_out.pvalue:5.3f}')
     if sm_out.pvalue < 0.05:
-        print("There was a significant change in the disease by the treatment.")    
-    
+        print("There was a significant change in the disease by the treatment.")
+
     print('\nPingouin:')
     print(pg_out[1:])
 

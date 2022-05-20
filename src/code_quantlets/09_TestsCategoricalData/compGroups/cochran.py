@@ -1,7 +1,7 @@
 """  Conversion for Cochran-Test """
 
 # author:	Thomas Haslwanter
-# date:		Sept-2021
+# date:		Dec-2021
 
 # Import the standard packages
 import numpy as np
@@ -18,14 +18,14 @@ def cochran_matrix_2_events(in_mat: np.ndarray) -> pd.DataFrame:
     Parameters
     ----------
     in_mat : matrix, with the events for each category in row-form
-    
+
     Returns
     -------
     df : DataFrame, with columns ['subject', 'category', 'value']
 
     """
 
-    out = np.nan * np.ones((1, 3))  # Dummy-value for initiation output-matrix 
+    out = np.nan * np.ones((1, 3))  # Dummy-value for initiation output-matrix
 
     subjects = np.arange(in_mat.shape[1])
     categories = np.arange(in_mat.shape[0])
@@ -42,7 +42,7 @@ def cochran_matrix_2_events(in_mat: np.ndarray) -> pd.DataFrame:
 
 
 if __name__ == '__main__':
-    
+
     # Dummy data
     tasks = np.array([[0,1,1,0,1,0,0,1,0,0,0,0],
                       [1,1,1,0,0,1,0,1,1,1,1,1],

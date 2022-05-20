@@ -1,6 +1,6 @@
 """ Solution for Exercise 'Comparing Groups' """
 
-# author: Thomas Haslwanter, date: Sept-2021
+# author: Thomas Haslwanter, date: Dec-2021
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -10,24 +10,24 @@ import os
 
 def oneGroup() -> None:
     """ Test of mean value of a single set of data """
-    
+
     print('Single group of data =============================')
-    
+
     # First get the data
     data = np.array([5260, 5470, 5640, 6180, 6390,
                      6515, 6805, 7515, 7515, 8230, 8770],
                      dtype=float)
     checkValue = 7725   # value to compare the data to
-    
-    
+
+
     # (1) Normality test
     # We don't need the first parameter, so we just assign
     # the output to the dummy variable "_"
     (_, p) = stats.normaltest(data)
     if p > 0.05:
         print(f'Data are distributed normally, p = {p:5.3f}')
-        
-        
+
+
     # (2) Do the onesample t-test
     t, prob = stats.ttest_1samp(data, checkValue)
     if prob < 0.05:
@@ -37,8 +37,8 @@ def oneGroup() -> None:
     else:
         print('No difference from reference value ' +
               'with onesample t-test.')
-    
-        
+
+
     # (3) This implementation of the Wilcoxon test checks for
     # the "difference" of one vector of data from zero
     (_,p) = stats.wilcoxon(data-checkValue, correction=True)
@@ -49,11 +49,11 @@ def oneGroup() -> None:
     else:
         print('No difference from reference value with ' +
               'Wilcoxon rank sum test.')
-    
-        
+
+
 def twoGroups() -> None:
     """Compare the mean of two groups"""
-    
+
     print('Two groups of data ===============================')
 
     # Enter the data
@@ -61,11 +61,11 @@ def twoGroups() -> None:
              75., 64., 76., 81., 86.]
     data2 = [64., 65., 56., 62., 59., 76., 66., 82., 91., 57.,
              92., 80., 82., 67., 54.]
-    
-    
-    # (1) Normality test 
+
+
+    # (1) Normality test
     print('\n Normality test --------------------------------')
-    
+
     # To do the test for both data-sets, make a tuple
     # with "(... , ...)", add a counter with "enumerate", and
     # and iterate over the set:
@@ -73,11 +73,11 @@ def twoGroups() -> None:
         (_, pval) = stats.normaltest(data)
         if pval > 0.05:
             print(f'Dataset # {ii} is normally distributed')
-    
-            
-    # (2) T-test of independent samples 
+
+
+    # (2) T-test of independent samples
     print('\n T-test of independent samples -----------------')
-    
+
     # Do the t-test for independent samples
     t, pval = stats.ttest_ind(data1, data2)
     if pval < 0.05:
@@ -86,7 +86,7 @@ def twoGroups() -> None:
     else:
         print('No difference between data1 and data2 ' +
               'with T-test.')
-        
+
     # (3) Mann-Whitney test -----------------------------------
     print('\n Mann-Whitney test -----------------------------')
     u, pval = stats.mannwhitneyu(data1, data2,
@@ -100,5 +100,5 @@ def twoGroups() -> None:
 
 
 if __name__ == '__main__':
-    oneGroup()    
+    oneGroup()
     twoGroups()

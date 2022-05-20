@@ -12,7 +12,7 @@ It shows how to generate
 Requires the package "xlwt"
 """
 
-# author: Thomas Haslwanter, date: Sept-2021
+# author: Thomas Haslwanter, date: Dec-2021
 
 # Import the required packages
 import numpy as np
@@ -51,7 +51,7 @@ def save_txt(df: pd.DataFrame, out_file='data.csv') -> None:
     # Show how to add a file-header to an existing text file
     with open(out_file, 'r') as original:
         text = original.read()
-        
+
     modified_file = out_file.replace('.csv', '_modified.txt')
     with open(modified_file, 'w') as modified:
         modified.write('This file was generated on Sept 19\n')
@@ -118,7 +118,7 @@ def generate_binary(out_file='data.raw') -> None:
     # Generate a dummy header text
     txt = """This is the header.
 
-    It has a length of 'length_header' byte. After the text, 
+    It has a length of 'length_header' byte. After the text,
     it is padded with whitespaces."""
     out_txt = txt + ' '*(length_header-len(txt))
 

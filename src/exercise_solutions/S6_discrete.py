@@ -1,6 +1,6 @@
 """Solution for Exercise "Continuous Distribution Functions" """
 
-# author: Thomas Haslwanter, date: Sept-2021
+# author: Thomas Haslwanter, date: Dec-2021
 
 from scipy import stats
 

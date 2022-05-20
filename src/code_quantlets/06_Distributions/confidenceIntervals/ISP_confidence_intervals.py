@@ -6,7 +6,7 @@
 """
 
 # author: Thomas Haslwanter
-# date:   Sept-2021
+# date:   Dec-2021
 
 # Import the standard packages
 import numpy as np
@@ -20,7 +20,7 @@ def mean(values: np.ndarray,
         ci_type: str ='two-sided',
         num_and_sigma: Tuple[int, float] =None) -> np.ndarray:
     """ Confidence interval for the mean value
-    
+
     Parameters
     ----------
     values : sample values. If "values" is only one value, "num_and_sigma" also
@@ -63,15 +63,15 @@ def mean(values: np.ndarray,
         ci_upper = distribution.ppf(1-alpha/2)
         return np.array([ci_lower, ci_upper])
 
-        
+
     elif ci_type == 'lower':
         ci_lower = distribution.ppf(alpha)
         return np.array([ci_lower])
-        
+
     elif ci_type == 'upper':
         ci_upper = distribution.ppf(1-alpha)
         return np.array([ci_upper])
-    
+
     else:
         print('Do not know the type {0}'.format(ci_type))
 
@@ -384,7 +384,7 @@ if __name__ == '__main__':
 
     cis = binomial_newton(30, 1200, alpha=0.05, ci_type='two-sided')
     print(f'The CI limit for the Binomial probability: {cis} (numerical)')
-    
+
     cis = binomial_approx(30, 1200, alpha=0.05, ci_type='two-sided')
     print(f'The CI for the Binomial probability: {cis} (approximate)')
 

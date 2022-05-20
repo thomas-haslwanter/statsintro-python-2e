@@ -1,6 +1,6 @@
 """ Time Series Analysis of  global CO2-levels """
 
-# author: thomas haslwantere; date: Sept-2021
+# author: thomas haslwantere; date: Dec-2021
 
 # Standard modules
 import numpy as np
@@ -25,8 +25,8 @@ sys.path.append(os.path.join('..', 'Utilities'))
 
 try:
 # Import formatting commands if directory "Utilities" is available
-    from ISP_mystyle import setFonts, showData 
-    
+    from ISP_mystyle import setFonts, showData
+
 except ImportError:
 # Ensure correct performance otherwise
     def setFonts(*options):
@@ -44,7 +44,7 @@ def get_CO2_data() -> pd.DataFrame:
     -------
     df : time stamped recordings of CO2-levels at Mauna Loa, Hawaii
     """
-    
+
     # Get the data, display a few values, and show the data
     url = 'https://www.esrl.noaa.gov/gmd/webdata/ccgg/trends/co2/co2_mm_mlo.txt'
     df = pd.read_csv(url,
@@ -101,7 +101,7 @@ def fit_ARIMA_models(seasonal_decomposition: pd.DataFrame) -> None:
     ----------
     seasonal_decomposition : Trend, Seasonal, and Residuals from the CO2-data
     """
-        
+
     # ARIMA models of the data, to interpret the remaining residuals
     # Fit two different ARIMA-models:
     orders = [(1, 0, 1),
@@ -118,7 +118,7 @@ def fit_ARIMA_models(seasonal_decomposition: pd.DataFrame) -> None:
     x = [0, 0]
     for ii in range(200):
         x.append(x[-1] - 0.5*x[-2] + float(np.random.randn(1)))
-        
+
     plt.plot(x)
     plt.show()
 

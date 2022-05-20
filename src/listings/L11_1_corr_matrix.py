@@ -16,9 +16,9 @@ sns.set_theme(style="white")
 # The syntax here is sligthly different from the previously
 # used np.random.seed. For details, see
 # https://stackoverflow.com/questions/5836335/consistently-create-same-random-numpy-array
-rs = np.random.RandomState(33)
+rs = np.random.RandomState(1234)
 df = pd.DataFrame(data=rs.normal(size=(100, 26)),
-                 columns=list(ascii_letters[26:]))
+                  columns=list(ascii_letters[26:]))
 
 # Compute the correlation matrix
 corr = df.corr()
@@ -29,8 +29,8 @@ mask = np.triu(np.ones_like(corr, dtype=bool))
 # Set up the matplotlib figure
 f, ax = plt.subplots(figsize=(11, 9))
 
-# Generate a custom diverging colormap
-cmap = sns.diverging_palette(230, 20, as_cmap=True)
+# Generate a custom colormap
+cmap = sns.color_palette("viridis", as_cmap=True)
 
 # Draw the heatmap with the mask and correct aspect ratio
 sns.heatmap(corr, mask=mask, cmap=cmap, vmax=.3, center=0,

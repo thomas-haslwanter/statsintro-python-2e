@@ -1,6 +1,6 @@
 """ Figure explaining the T-Test """
 
-# author: Thomas Haslwanter, date: Sept-2021
+# author: Thomas Haslwanter, date: Dec-2021
 
 # Import standard packages
 import numpy as np
@@ -16,7 +16,7 @@ import sys
 sys.path.append(os.path.join('..', 'Code_Quantlets', 'Utilities'))
 try:
     from ISP_mystyle import showData, setFonts
-    
+
 except ImportError:
 # Ensure correct performance otherwise
     def showData(*options):

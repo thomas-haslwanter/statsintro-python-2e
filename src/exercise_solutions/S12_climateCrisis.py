@@ -2,7 +2,7 @@
   of the chapter 'Linear Regresison Models' """
 
 # author:   Thomas Haslwanter
-# date:     Sept-2021
+# date:     Dec-2021
 
 # Import standard packages
 import numpy as np
@@ -24,7 +24,7 @@ def get_CO2_data() -> pd.DataFrame:
     -------
     df : time stamped CO2-levels at Mauna Loa, Hawaii
     """
-    
+
     # Get the data, display a few values, and show the data
     url = 'https://www.esrl.noaa.gov/gmd/webdata/ccgg/trends/co2/co2_mm_mlo.txt'
     df = pd.read_csv(url,
@@ -58,7 +58,7 @@ def decompose(df: pd.DataFrame) -> np.array:
             model='additive',
             period=12,
             extrapolate_trend='freq')
-    
+
     ## Show the decomposed data
     #result_add.plot()
     #plt.show()
@@ -69,39 +69,39 @@ def decompose(df: pd.DataFrame) -> np.array:
 def find_best_fit(df: pd.DataFrame) -> None:
     """ Take the trend-data from the CO2 measurements,
         and find the best fit
-     
+
     Parameters
     ----------
     df : 'year' in years (decimal), and 'co2': trend of the CO2-data
     """
-    
+
     # Fit the models, and show the results
     linear = smf.ols('co2 ~ year', df).fit()
     quadratic = smf.ols('co2 ~ year+I(year**2)', df).fit()
     cubic = smf.ols('co2 ~ year+I(year**2)+I(year**3)',
-                                                 df).fit()    
-    
+                                                 df).fit()
+
     df['linear'] = linear.predict()
     df['quadratic'] = quadratic.predict()
     df['cubic'] = cubic.predict()
-    
+
     # Show the data
     df.plot('year', ['co2', 'linear', 'quadratic', 'cubic'])
-    
+
     # Select the best fit
     aics = [linear.aic, quadratic.aic, cubic.aic]
     index = np.argmin(aics)
-    
+
     print(f'The best fit is of the order {index+1}.')
-    
+
     plt.show()
-    return 
+    return
 
 
 if __name__ == '__main__':
     data = get_CO2_data()
     trend = decompose(data)
-    
+
     time_co2 = pd.concat({'year': data.time, 'co2': trend},
                           axis=1)
     find_best_fit(time_co2)

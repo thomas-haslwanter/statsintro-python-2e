@@ -18,7 +18,7 @@ effectiveness.
 Taken from an example by Josef Perktold (http://jpktd.blogspot.co.at/)
 """
 
-# author: Thomas Haslwanter, date: Sept-2021
+# author: Thomas Haslwanter, date: Dec-2021
 
 # Import standard packages
 import numpy as np
@@ -33,8 +33,8 @@ sys.path.append(os.path.join('..', '..', 'Utilities'))
 
 try:
 # Import formatting commands if directory "Utilities" is available
-    from ISP_mystyle import showData 
-    
+    from ISP_mystyle import showData
+
 except ImportError:
 # Ensure correct performance otherwise
     def showData(*options):
@@ -48,7 +48,7 @@ from statsmodels.stats.multicomp import (pairwise_tukeyhsd,
 from statsmodels.formula.api import ols
 from statsmodels.stats.anova import anova_lm
 from statsmodels.stats.libqsturng import psturng
-    
+
 
 def setData() -> np.array:
     """ Set up the data, as a structured array.
@@ -57,7 +57,7 @@ def setData() -> np.array:
     -------
     data : structured array, containing ('idx', 'Treatment', 'Stressreduction')
     """
-    
+
     # The first and last field are 32-bit intergers; the second field is an
     # 8-byte string. Note that here we can also give names to the individual
     # fields!
@@ -96,7 +96,7 @@ def setData() -> np.array:
                                     ('StressReduction', '<i4')])
     return data
 
-    
+
 def doAnova(data: np.ndarray) -> None:
     """one-way ANOVA
 
@@ -104,17 +104,17 @@ def doAnova(data: np.ndarray) -> None:
     ----------
     data : structured array, containing ('Treatment', 'StressReduction')
     """
-    
+
     df = pd.DataFrame(data)
     model = ols('StressReduction ~ C(Treatment)',df).fit()
-    
+
     anovaResults =  anova_lm(model)
     print(anovaResults)
     if anovaResults['PR(>F)'][0] < 0.05:
         print('One of the groups is different.')
 
 
-def doTukey(data: np.ndarray, multiComp: MultiComparison) -> None:    
+def doTukey(data: np.ndarray, multiComp: MultiComparison) -> None:
     """Do a pairwise comparison, and show the confidence intervals
 
     Parameters
@@ -123,46 +123,46 @@ def doTukey(data: np.ndarray, multiComp: MultiComparison) -> None:
     multiComp : statsmodels class containing test for multiple comparisons
 
     """
-    
+
     print((multiComp.tukeyhsd().summary()))
-    
+
     # Calculate the p-values:
     res2 = pairwise_tukeyhsd(data['StressReduction'], data['Treatment'])
     df = pd.DataFrame(data)
     numData = len(df)
     numTreatments = len(df.Treatment.unique())
     dof = numData - numTreatments
-    
+
     # Show the group names
     print((multiComp.groupsunique))
-    
+
     # Generate a print -------------------
-    
+
     # Get the data
     xvals = np.arange(3)
     res2 = pairwise_tukeyhsd(data['StressReduction'], data['Treatment'])
     errors = np.ravel(np.diff(res2.confint)/2)
-    
+
     # Plot them
     plt.plot(xvals, res2.meandiffs, 'o')
     plt.errorbar(xvals, res2.meandiffs, yerr=errors, fmt='o')
-    
+
     # Put on labels
     pair_labels = \
           multiComp.groupsunique[np.column_stack(res2._multicomp.pairindices)]
     plt.xticks(xvals, pair_labels)
-    
+
     # Format the plot
     xlim = -0.5, 2.5
     plt.hlines(0, *xlim)
     plt.xlim(*xlim)
     plt.title('Multiple Comparison of Means - Tukey HSD, FWER=0.05' +
-              '\n Pairwise Mean Differences')          
-    
+              '\n Pairwise Mean Differences')
+
     # Save to outfile, and show the data
     outFile = 'multComp.png'
     showData(outFile)
-    
+
 
 def Holm_Bonferroni(multiComp: MultiComparison) -> None:
     """ Instead of the Tukey's test, we can do pairwise t-test
@@ -173,18 +173,18 @@ def Holm_Bonferroni(multiComp: MultiComparison) -> None:
     multiComp : statsmodels class containing test for multiple comparisons
 
     """
-    
+
     # First, with the "Holm" correction
     rtp = multiComp.allpairtest(stats.ttest_rel, method='Holm')
     print((rtp[0]))
-    
+
     # and then with the Bonferroni correction
     print((multiComp.allpairtest(stats.ttest_rel, method='b')[0]))
-    
+
     # Any value, for testing the program for correct execution
     checkVal = rtp[1][0][0,0]
     return checkVal
-    
+
 
 def main() -> float:
     """
@@ -194,18 +194,18 @@ def main() -> float:
     """
     # Get the data
     data = setData()
-    
+
     # Do a one-way ANOVA
     doAnova(data)
-    
+
     #Then, do the multiple testing
     multiComp = MultiComparison(data['StressReduction'], data['Treatment'])
-    
+
     doTukey(data, multiComp)    # Tukey's HSD test
     checkVal = Holm_Bonferroni(multiComp)  # Alternatives to Tukey's HSD test
-    
+
     return checkVal     # this is only for regression testing of the program
-    
+
 
 if __name__ == '__main__':
     main()

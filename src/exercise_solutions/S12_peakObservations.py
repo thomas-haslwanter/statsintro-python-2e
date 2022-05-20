@@ -5,7 +5,7 @@ Requires the package 'xlrd' to be installed, with
 
 """
 
-# author: Thomas Haslwanter, date: Sept-2021
+# author: Thomas Haslwanter, date: Dec-2021
 
 # Import the required libraries
 import numpy as np
@@ -22,25 +22,25 @@ def getModelData(show: bool=True) ->None:
     ----------
     show : boolean flag, controlling the display
     """
-    
+
     # First, define the in-file and get the data
     in_file = '..\..\data\AvgTemp.xls'
-    
+
     # When the data are neatly organized, they can be read in
     # directly with the pandas-functions:
     # with "ExcelFile" you open the file ...
     xls = pd.ExcelFile(in_file)
-    
+
     # ... and with "parse" you get get the data from the file,
     # from the specified Excel-sheet
     data = xls.parse('Tabelle1')
-    
+
     if show:
         data.plot('year', 'AvgTmp')
         plt.xlabel('Year')
         plt.ylabel('Average Temperature')
         plt.show()
-    
+
     return data
 
 
@@ -50,12 +50,12 @@ def correlation(data):
     """
 
     pearson = data['year'].corr(data['AvgTmp'],
-            method = 'pearson') 
+            method = 'pearson')
     spearman = data['year'].corr(data['AvgTmp'],
-            method = 'spearman') 
+            method = 'spearman')
     tau = data['year'].corr(data['AvgTmp'],
-            method = 'kendall') 
-    
+            method = 'kendall')
+
     print(f'Pearson correlation coefficient: {pearson:4.3f}')
     print(f'Spearman correlation coefficient: {spearman:4.3f}')
     print(f'Kendall tau: {tau:4.3f}')
@@ -88,7 +88,7 @@ def regression(data):
     """ Exercise Peak observations - Regression """
 
     # Regression -------------------------------------------------
-    # For "ordinary least square" models, you can do the model 
+    # For "ordinary least square" models, you can do the model
     # with the formula-approach from statsmodels:
     # offsets are automatically included in the model
     model = sm.ols('AvgTmp ~ year', data)

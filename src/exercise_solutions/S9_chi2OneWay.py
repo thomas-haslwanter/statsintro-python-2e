@@ -1,6 +1,6 @@
 """ Solution for Exercise 'Categorical Data' """
 
-# author: Thomas Haslwanter, date: Sept-2021
+# author: Thomas Haslwanter, date: Dec-2021
 
 from scipy import stats
 

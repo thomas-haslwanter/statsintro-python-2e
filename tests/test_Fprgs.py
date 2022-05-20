@@ -1,6 +1,6 @@
 """ Test routine for source code that generates Figures """
 
-# author: Thomas Haslwanter, date: Sept-2021
+# author: Thomas Haslwanter, date: Dec-2021
 
 # additional packages
 import os
@@ -18,4 +18,4 @@ for number, file in enumerate(pyList):
     print( '{0}/{1}: {2}'.format(number+1, len(pyList), file) )
     if number >= startNr:
         exec(open(file).read())
-    
+

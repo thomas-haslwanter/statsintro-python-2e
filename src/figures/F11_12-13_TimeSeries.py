@@ -1,6 +1,6 @@
 """ AR- and MA-plots, for Time-Series-Analysis """
 
-# author: Thomas Haslwanter, date: Sept-2021
+# author: Thomas Haslwanter, date: Dec-2021
 
 # Standard packages
 import numpy as np
@@ -24,8 +24,8 @@ sys.path.append(os.path.join('..', 'Code_Quantlets', 'Utilities'))
 
 try:
 # Import formatting commands if directory "Utilities" is available
-    from ISP_mystyle import setFonts, showData 
-    
+    from ISP_mystyle import setFonts, showData
+
 except ImportError:
 # Ensure correct performance otherwise
     def setFonts(*options):
@@ -76,7 +76,7 @@ def arma_plot(arma_list: list, title: str) -> None:
     out_file = title + '.jpg'
     fig.suptitle(title)
     showData(out_file)
-    
+
     plt.show()
 
 

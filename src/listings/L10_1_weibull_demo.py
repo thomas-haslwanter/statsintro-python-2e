@@ -1,6 +1,6 @@
 """ Example of fitting the Weibull modulus. """
 
-# author: Thomas Haslwanter, date: Sept-2021
+# author: Thomas Haslwanter, date: Dec-2021
 
 # Import standard packages
 import matplotlib.pyplot as plt

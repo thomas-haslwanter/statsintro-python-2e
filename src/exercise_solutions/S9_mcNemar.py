@@ -2,7 +2,7 @@
 McNemar's Test
 """
 
-# author: Thomas Haslwanter, date: Sept-2021
+# author: Thomas Haslwanter, date: Dec-2021
 
 from scipy import stats
 from statsmodels.sandbox.stats.runs import mcnemar
@@ -22,7 +22,7 @@ else:
     print('The results from the neurologist are' +
           ' NOT significanlty different ' +
          f'from the questionnaire (p={p:5.3f}).')
-    
+
 if (p<0.05 == p2<0.05):
     print('The results would NOT change if the ' +
           ' expert had diagnosed all "sane" people correctly.')

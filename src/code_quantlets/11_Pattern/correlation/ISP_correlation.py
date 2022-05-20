@@ -1,6 +1,6 @@
 """ Calculation and visualization of correlation matrix """
 
-# author: Thomas Haslwanter; date: Sept-2021
+# author: Thomas Haslwanter; date: Dec-2021
 
 # Import the required packages
 import numpy as np
@@ -16,8 +16,8 @@ import os
 import sys
 sys.path.append(os.path.join('..',  '..', 'Utilities'))
 try:
-    from ISP_mystyle import setFonts, showData 
-    
+    from ISP_mystyle import setFonts, showData
+
 except ImportError:
 # Ensure correct performance otherwise
     def setFonts(*options):
@@ -25,7 +25,7 @@ except ImportError:
     def showData(*options):
         plt.show()
         return
-    
+
 def get_data() -> pd.DataFrame:
     """
     Returns
@@ -91,4 +91,4 @@ if __name__ == '__main__':
     corr_coeff(data)
     covariance_matrix(data)
 
-    
+
