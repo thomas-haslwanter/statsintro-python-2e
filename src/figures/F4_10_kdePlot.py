@@ -1,6 +1,6 @@
 """ Plot showing the effekt of a Kernel-Density-Estimation (KDE). """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 # Import standard packages
 from scipy import stats

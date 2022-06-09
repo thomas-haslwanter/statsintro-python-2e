@@ -6,7 +6,7 @@ This script shows how to
 - Compare the values from t-distribution with those of a normal distribution
 """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 
 # Import standard packages

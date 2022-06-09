@@ -1,6 +1,6 @@
 """ Short demo of how to check for the significance of an individual value. """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 # Import standard packages
 import numpy as np

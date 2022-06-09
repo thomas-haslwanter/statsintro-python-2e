@@ -2,7 +2,7 @@
     'A Lady Tasting Tea'
 """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 from scipy import stats
 obs = [[3,1], [1,3]]

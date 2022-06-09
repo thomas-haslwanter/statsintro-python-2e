@@ -1,7 +1,7 @@
 """ Demonstration of a Python Function """
 
 # author:   Thomas Haslwanter
-# date:     Dec-2021
+# date:     June-2022
 
 # Import standard packages
 import numpy as np
@@ -9,7 +9,8 @@ from typing import Tuple
 
 
 def income_and_expenses(data : np.ndarray) -> Tuple[float, float]:
-    """Find the sum of the positive numbers, and the sum of the negative ones.
+    """Find the sum of the positive numbers,
+       and the sum of the negative ones.
 
     Parameters
     ----------
@@ -33,12 +34,14 @@ if __name__=='__main__':
 
     # If only real banks would be so nice ;)
     if testData[0] < 0:
-        print('Your first transaction was a loss, and will be dropped.')
+        print('Your first transaction was a loss' +
+              ' and is dropped.')
         testData = np.delete(testData, 0)
     else:
-        print('Congratulations: Your first transaction was a gain!')
+        print('Congratulations: Your first transaction' +
+              ' is a gain!')
 
     (my_income, my_expenses) = income_and_expenses(testData)
-    print(f'You have earned {my_income:5.2f} EUR, ' + \
+    print(f'You have earned {my_income:5.2f} EUR, ' +
             f'and spent {-my_expenses:5.2f} EUR.')
 

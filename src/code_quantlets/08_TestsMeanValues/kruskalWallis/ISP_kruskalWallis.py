@@ -2,7 +2,7 @@
 Taken from http://www.brightstat.com/index.php?option=com_content&task=view&id=41&Itemid=1&limit=1&limitstart=2
 """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 # Import standard packages
 import numpy as np

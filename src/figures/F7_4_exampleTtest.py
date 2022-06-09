@@ -1,6 +1,6 @@
 """ Figure for a an example of a T-test for a mean value """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 # Import standard packages
 import numpy as np
@@ -35,12 +35,13 @@ weights = nd.rvs(10)
 
 # Make the plot
 plt.plot(weights, 'o')
-plt.axhline(110, ls='--')
-plt.axhline(np.mean(weights), ls='-.')
+plt.axhline(110, ls='-', label='Target')
+plt.axhline(np.mean(weights), ls='--', label='Measured mean')
 plt.xlim(-0.2, 9.2)
 plt.ylim(50, 130)
 plt.xlabel('Cookiebag-Nr')
 plt.ylabel('Weight [g]')
+plt.legend()
 
 outFile = 'fig_ExampleTtest.jpg'
 showData(outFile)

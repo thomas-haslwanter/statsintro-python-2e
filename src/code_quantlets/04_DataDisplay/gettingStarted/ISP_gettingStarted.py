@@ -19,7 +19,7 @@ it by default when the module is imported by the main program, is a bit
 superfluous. But it shows good Python coding style.
 '''
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 # In contrast to MATLAB, you explicitly have to load the modules that you need.
 import numpy as np

@@ -4,7 +4,7 @@ http://web.stanford.edu/~mwaskom/software/seaborn/examples/anscombes_quartet.htm
 Note that this program requires a web-connection to load the dataset!
 """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 # Import standard packages
 import seaborn as sns

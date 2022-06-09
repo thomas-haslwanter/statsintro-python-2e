@@ -1,6 +1,6 @@
 """ Solution for Exercise "Comparing Multiple Groups" """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 # Load the required modules ----------------------------------
 # Standard modules
@@ -83,6 +83,8 @@ def do_levene(data: pd.DataFrame) ->None:
 
 def do_ANOVA(data: pd.DataFrame) ->None:
     """Perform an ANOVA on the data
+    Result: the 3 groups are significantly different
+
 
     Parameters
     ----------
@@ -112,6 +114,7 @@ def do_ANOVA(data: pd.DataFrame) ->None:
 
 def compare_many(data: pd.DataFrame) -> None:
     """Multiple comparisons: Which one is different?
+    Result: only TreatmentA and TreatmentB differ from each other.
 
     Parameters
     ----------
@@ -185,6 +188,7 @@ def compare_many(data: pd.DataFrame) -> None:
 
 def KruskalWallis(data: pd.DataFrame) -> None:
     """Non-parametric comparison between the groups
+    Result: the same as with ANOVA
 
     Parameters
     ----------

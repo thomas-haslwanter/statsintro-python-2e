@@ -18,7 +18,7 @@ effectiveness.
 Taken from an example by Josef Perktold (http://jpktd.blogspot.co.at/)
 """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 # Import standard packages
 import numpy as np

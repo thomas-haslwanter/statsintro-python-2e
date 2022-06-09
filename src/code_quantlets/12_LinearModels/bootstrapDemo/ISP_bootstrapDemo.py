@@ -6,7 +6,7 @@ and can be installed with
 
 """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 # Import standard packages
 import matplotlib.pyplot as plt

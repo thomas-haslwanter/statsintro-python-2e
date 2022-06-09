@@ -2,7 +2,7 @@
 in Chapter 'Python' """
 
 # author:   Thomas Haslwanter
-# date:     Dec-2021
+# date:     June-2022
 
 # Import the required packages
 import numpy as np

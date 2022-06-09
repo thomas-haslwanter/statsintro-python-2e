@@ -1,6 +1,6 @@
 """ Visualization of the Sum-of-Squares. """
 
-# author: thomas haslwanter, date: Dec-2021
+# author: thomas haslwanter, date: June-2022
 
 # Import standard packages
 import numpy as np

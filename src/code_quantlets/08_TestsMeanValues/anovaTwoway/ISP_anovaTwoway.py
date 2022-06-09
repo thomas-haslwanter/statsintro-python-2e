@@ -3,7 +3,7 @@ The model is formulated using the "patsy" formula description. This is very
 similar to the way models are expressed in R.
 """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 # Import standard packages
 import numpy as np

@@ -1,6 +1,6 @@
 """ Test routine for source code that generates Figures """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 # additional packages
 import os

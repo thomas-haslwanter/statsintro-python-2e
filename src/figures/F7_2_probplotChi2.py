@@ -1,7 +1,7 @@
 """ Demonstration of the probplot of a non-normal distribution,
 and the principle behind the 'Kolmogorov-Smirnov'-Test """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 # Import standard packages
 import numpy as np

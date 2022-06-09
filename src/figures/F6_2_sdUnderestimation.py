@@ -1,6 +1,6 @@
 """ Sketch to indicate why the sample SD underestimates the population SD """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 import numpy as np
 import matplotlib.pyplot as plt

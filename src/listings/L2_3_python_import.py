@@ -3,7 +3,7 @@
 # Import standard packages
 import numpy as np
 
-# additional packages: this imports the function defined above
+# additional packages: this imports the function from above
 import L2_2_python_module as py_func
 
 # Generate test-data
@@ -13,4 +13,5 @@ testData = np.arange(-5, 10)
 out = py_func.income_and_expenses(testData)
 
 # Show some results
-print(f'You have earned {out[0]:5.2f} EUR, and spent {-out[1]:5.2f} EUR.')
+print(f'You have earned {out[0]:5.2f} EUR, ' +
+      f'and spent {-out[1]:5.2f} EUR.')

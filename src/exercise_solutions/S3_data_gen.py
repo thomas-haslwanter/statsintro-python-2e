@@ -12,7 +12,7 @@ It shows how to generate
 Requires the package "xlwt"
 """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 # Import the required packages
 import numpy as np

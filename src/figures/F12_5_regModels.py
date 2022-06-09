@@ -5,7 +5,7 @@ Strongly based on a blog by Connor Johnson.
 http://connor-johnson.com/2014/02/18/linear-regression-with-python/
 """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 # Import standard packages
 import numpy as np
@@ -53,7 +53,7 @@ if sys.version_info[0] == 3:
 else:
     from StringIO import StringIO
 
-df = pd.read_csv(StringIO(data_str), sep=r'\s+')
+df = pd.read_csv(StringIO(data_str), delim_whitespace=True)
 
 # Plot the data
 setFonts(18)
@@ -78,8 +78,8 @@ print('F-statistic: {:.3f},  p-value: {:.5f}'.format( F, p ))
 
 N = result.nobs
 SSR = result.ssr
-s2 = SSR / N
-L = ( 1.0/np.sqrt(2*np.pi*s2) ) ** N * np.exp( -SSR/(s2*2.0) )
+sigma2 = SSR / N
+L = (1.0 / np.sqrt(2 * np.pi * sigma2)) ** N * np.exp(-SSR / (2 * sigma2))
 print('ln(L) =', np.log( L ))
 
 print(result.params)
@@ -93,14 +93,11 @@ X = df[['Tobacco','Eins']][:-1]
 X = df.Tobacco[:-1]
 
 # add a column of ones for the constant intercept term
-X = np.vstack(( np.ones(X.size), X ))
-
-# convert the NumPy arrray to matrix
-X = np.matrix( X )
+X = np.column_stack((np.ones_like(X), X))
 
 # perform the matrix multiplication,
 # and then take the inverse
-C = np.linalg.inv( X * X.T )
+C = np.linalg.inv(X.T @ X)
 
 # multiply by the MSE of the residual
 C *= result.mse_resid
@@ -113,7 +110,7 @@ print(SE)
 
 i = 1
 beta = result.params[i]
-se = SE[i,i]
+se = SE[i, i]
 t = beta / se
 print('t =', t)
 
@@ -192,12 +189,12 @@ CN = np.sqrt( EV[0].max() / EV[0].min() )
 print('Condition No.: {:.5f}'.format( CN ))
 
 # sklearn ----------------
-data = np.matrix( df )
 cln = LinearRegression()
 org = LinearRegression()
 
-X, Y = data[:,2], data[:,1]
-cln.fit( X[:-1], Y[:-1] )
+data = df[['Alcohol', 'Tobacco']].values
+X, Y = np.c_[data[:, 0]], np.c_[data[:, 1]]
+cln.fit(X[:-1], Y[:-1])
 org.fit( X, Y )
 
 clean_score = '{0:.3f}'.format( cln.score( X[:-1], Y[:-1] ) )
@@ -211,7 +208,7 @@ else:
     labelStart = 'All other regions, R2 = '
 
 plt.plot( df.Tobacco[:-1], df.Alcohol[:-1], 'bo', markersize=10,
-    label=labelStart + clean_score )
+          label=labelStart + clean_score )
 
 if sys.version_info[0] == 3:
     labelStart = 'N. Ireland, outlier, $Rˆ2$ = '
@@ -219,7 +216,7 @@ else:
     labelStart = 'N. Ireland, outlier, R2 = '
 
 plt.plot( df.Tobacco[-1:], df.Alcohol[-1:], 'r*', ms=20, lw=10,
-    label=labelStart+original_score)
+          label=labelStart+original_score)
 
 test = np.arange( 2.5, 4.85, 0.1 )
 test = np.array( np.matrix( test ).T )

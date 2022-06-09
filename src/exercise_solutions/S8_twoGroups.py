@@ -1,6 +1,6 @@
 """ Solution for Exercise 'Comparing Groups' """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -10,6 +10,8 @@ import os
 
 def oneGroup() -> None:
     """ Test of mean value of a single set of data """
+    Result: the mean energy intake is significantly different from 7725 kJ,
+    p_ttest = 0.018, and p_wilxocon = 0.026
 
     print('Single group of data =============================')
 
@@ -18,6 +20,7 @@ def oneGroup() -> None:
                      6515, 6805, 7515, 7515, 8230, 8770],
                      dtype=float)
     checkValue = 7725   # value to compare the data to
+
 
 
     # (1) Normality test
@@ -52,7 +55,12 @@ def oneGroup() -> None:
 
 
 def twoGroups() -> None:
-    """Compare the mean of two groups"""
+    """Compare the mean of two groups
+
+    Result Normality-test: both data sets are normally distributed
+    Result t-test: the laxy patients are significantly heavier, p=0.045
+    Result Mann-Whitney: The lazy patients are also heavier: p = 0.039
+    """
 
     print('Two groups of data ===============================')
 

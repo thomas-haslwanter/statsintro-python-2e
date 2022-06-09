@@ -4,7 +4,7 @@
 - "polynomial_regression" shows how to work with simple design matrices
 """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 # Import standard packages
 import numpy as np

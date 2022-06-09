@@ -2,7 +2,7 @@
 McNemar's Test
 """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 from scipy import stats
 from statsmodels.sandbox.stats.runs import mcnemar

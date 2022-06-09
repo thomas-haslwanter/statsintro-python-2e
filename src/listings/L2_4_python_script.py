@@ -1,10 +1,7 @@
 """ Short demonstration of a Python script.
-After a short one-line description of the content, the header
-can contain further details.
+After a short one-line description of the content,
+the header can contain further details.
 """
-
-# author: Thomas Haslwanter
-# date:   Dec-2021
 
 # Import standard packages
 import numpy as np
@@ -25,7 +22,8 @@ plt.plot(t,x)
 plt.xlabel('Time[sec]')
 plt.ylabel('Values')
 
-# Generate a figure, one directory up, and let the user know about it
+# Generate a figure, one directory up,
+# and let the user know about it
 out_file = '../Sinewave.jpg'
 plt.savefig(out_file, dpi=200)
 print(f'Image has been saved to {out_file}')

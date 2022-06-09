@@ -1,7 +1,7 @@
 """Get data from MS-Excel files, which are stored zipped on the WWW. """
 
 # author:   Thomas Haslwanter
-# date:     Dec-2021
+# date:     June-2022
 
 # Import standard packages
 import pandas as pd

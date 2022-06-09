@@ -4,7 +4,7 @@
 - using the formula-based approach
 """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 # Import standard packages
 import numpy as np
@@ -61,17 +61,17 @@ def analyticalSolution(x: np.ndarray, y: np.ndarray) -> Tuple[np.ndarray,
     """
 
     # Create the Design Matrices
-    M1 = np.vstack( (np.ones_like(x), x) ).T
-    M2 = np.vstack( (np.ones_like(x), x, x**2) ).T
-    M3 = np.vstack( (np.ones_like(x), x, x**2, x**3) ).T
+    M1 = np.column_stack( (np.ones_like(x), x) )
+    M2 = np.column_stack( (np.ones_like(x), x, x**2) )
+    M3 = np.column_stack( (np.ones_like(x), x, x**2, x**3) )
 
     # an equivalent alternative solution with statsmodels would be e.g.
     # M1 = sm.add_constant(x)
 
     # Solve the equations
-    p1 = np.linalg.lstsq(M1, y)
-    p2 = np.linalg.lstsq(M2, y)
-    p3 = np.linalg.lstsq(M3, y)
+    p1 = np.linalg.lstsq(M1, y, rcond=-1)
+    p2 = np.linalg.lstsq(M2, y, rcond=-1)
+    p3 = np.linalg.lstsq(M3, y, rcond=-1)
 
     # Print the results
     np.set_printoptions(precision=2)

@@ -1,6 +1,6 @@
 """ Equivalence between T-Test and Statistical Model """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 
 # Import standard packages

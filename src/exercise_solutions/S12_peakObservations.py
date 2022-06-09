@@ -5,7 +5,7 @@ Requires the package 'xlrd' to be installed, with
 
 """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 # Import the required libraries
 import numpy as np

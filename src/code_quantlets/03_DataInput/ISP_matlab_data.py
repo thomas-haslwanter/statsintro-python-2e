@@ -12,7 +12,7 @@ The data were generated with the following Matlab commands:
 """
 
 # author:   Thomas Haslwanter
-# date:     Dec-2021
+# date:     June-2022
 
 # Import the required libraries
 import numpy as np

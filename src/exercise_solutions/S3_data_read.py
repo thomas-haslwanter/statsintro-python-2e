@@ -1,6 +1,6 @@
 """ Solution to Ex. 'Reading in Data', chapter 'Data Input' """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 # Import the standard packages
 import numpy as np

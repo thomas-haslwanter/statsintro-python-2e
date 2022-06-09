@@ -14,7 +14,7 @@ license: Creative Commons Zero (almost public domain) http://scpyce.org/cc0
 """
 
 # author:   Thomas Haslwanter
-# date:     Dec-2021
+# date:     June-2022
 
 # Import standard packages
 import numpy as np

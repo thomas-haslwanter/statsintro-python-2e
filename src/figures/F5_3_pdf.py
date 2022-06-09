@@ -1,6 +1,6 @@
 """ Plot demonstrating the integral as the area under a curve of a PDF. """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 # Import standard packages
 import numpy as np

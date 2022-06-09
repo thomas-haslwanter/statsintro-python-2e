@@ -1,6 +1,6 @@
 """Solution for Exercise "Continuous Distribution Functions" """
 
-# author: Thomas Haslwanter, date: Dec-2021
+# author: Thomas Haslwanter, date: June-2022
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -18,35 +18,60 @@ x = [52, 70, 65, 85, 62, 83, 59]
 # Generate the t-distribution: note that the degrees of freedom
 # is the length of the data minus 1.
 # In Python, the length of an object x is given by "len(x)"
-td = stats.t(len(x)-1)
+num = len(x)
+dof = num - 1
+mean = np.mean(x)
 alpha = 0.01
 
-# From the t-distribution, you use the "PPF" function and
-# multiply it with the standard error
-tval = abs( td.ppf(alpha/2)*stats.sem(x) )
-print(f'mean +/- 99%CI = {np.mean(x):3.1f} +/- {tval:3.1f}')
+td = stats.t(dof, loc=mean, scale=stats.sem(x))
+ci = td.interval(1-alpha)
+# This is equivalent to:
+# ci = td.ppf([alpha/2, 1-alpha/2])
+
+print(f'mean_weight = {mean:3.1f} kg, 99%CI = [{ci[0]:3.1f}, {ci[1]:3.1f}] kg')
 
 # Chi2-distribution, with 3 DOF -----------------------------
 # Define the normal distribution
 nd = stats.norm()
 
 # Generate three sets of random variates from this distribution
-numData = 1000
-data1 = nd.rvs(numData)
-data2 = nd.rvs(numData)
-data3 = nd.rvs(numData)
+num_data = 1000
+data = np.random.randn(num_data, 3)
 
 # Show histogram of the sum of the squares of these random data
-plt.hist(data1**2+data2**2 +data3**2, 100)
+plt.hist(np.sum(data**2, axis=1), bins=100, density=True)
+
+# Superpose it with the exact chi-square distribution
+x = np.arange(0, 18, 0.1)
+chi2 = stats.chi2(df=3)
+pdf = chi2.pdf(x)
+plt.plot(x, pdf, lw=3)
+plt.xlabel('x')
+plt.ylabel('Probability(x)')
 plt.show()
 
 # F-distribution ---------------------------------------------
-apples1 = [110, 121, 143]
-apples2 = [88, 93, 105, 124]
-fval = np.var(apples1, ddof=1)/np.var(apples2, ddof=1)
-fd = stats.distributions.f(len(apples1),len(apples2))
+# Enter the data
+femurs_1 = [32.0, 32.5, 31.5, 32.1, 31.8]
+femurs_2 = [33.2, 33.3, 33.8, 33.5, 34.0]
+
+# Do the calculations
+fval = np.var(femurs_1, ddof=1) / np.var(femurs_2, ddof=1)
+fd = stats.distributions.f(len(femurs_1),len(femurs_2))
 pval = fd.cdf(fval)
+
+# Show the results
 print(f'The p-value of the F-distribution = {pval:5.3f}.')
 if pval>0.025 and pval<0.975:
-    print('The variances are equal.')
+    print('The precisions of the two machines are equal.')
+else:
+    print('The precisions of the two machines are NOT equal.')
+
+# Uniform distribution ---------------------------------------------
+ud = stats.uniform(0, 1)
+data = ud.rvs(1000)
+plt.plot(data, '.')
+plt.title('Uniform Distribution')
+for ci in [0.95, 0.999]:
+    print(f'The {ci*100:.1f}-% confidence interval is {np.float16(ud.interval(ci))}')
 

@@ -8,12 +8,13 @@ from statsmodels.formula.api import glm
 from statsmodels.genmod.families import Binomial
 
 # Get the data
-inFile = '..\data\challenger_data.csv'
+inFile = '..\..\data\challenger_data.csv'
 challenger_data = np.genfromtxt(inFile, skip_header=1,
                     usecols=[1, 2], missing_values='NA',
                     delimiter=',')
 # Eliminate NaNs
-challenger_data = challenger_data[~np.isnan(challenger_data[:, 1])]
+challenger_data = \
+        challenger_data[~np.isnan(challenger_data[:, 1])]
 
 # Create a dataframe, with suitable columns for the fit
 df = pd.DataFrame()
@@ -27,7 +28,10 @@ df.index = df.temp.values
 for ii in range(challenger_data.shape[0]):
     curTemp = challenger_data[ii,0]
     curVal  = challenger_data[ii,1]
-    df.loc[curTemp,'total'] += 1
+    # the following lines find the current temperature in
+    # the DataFrame df, and add one to the counts in 'total',
+    # and one in 'failed' or 'ok'
+    df.loc[curTemp, 'total'] += 1
     if curVal == 1:
         df.loc[curTemp, 'failed'] += 1
     else:
