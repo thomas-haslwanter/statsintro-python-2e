@@ -28,9 +28,8 @@ df.index = df.temp.values
 for ii in range(challenger_data.shape[0]):
     curTemp = challenger_data[ii,0]
     curVal  = challenger_data[ii,1]
-    # the following lines find the current temperature in
-    # the DataFrame df, and add one to the counts in 'total',
-    # and one in 'failed' or 'ok'
+    # the following lines find the current temperature in df, and
+    # add one to the counts in 'total', and one in 'failed' or 'ok'
     df.loc[curTemp, 'total'] += 1
     if curVal == 1:
         df.loc[curTemp, 'failed'] += 1

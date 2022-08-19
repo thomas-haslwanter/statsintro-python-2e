@@ -1,8 +1,7 @@
 """ Solution to Exercise 'Climate Crisis'
   of the chapter 'Linear Regresison Models' """
 
-# author:   Thomas Haslwanter
-# date:     June-2022
+# author: Thomas Haslwanter, date: June-2022
 
 # Import standard packages
 import numpy as np
@@ -72,7 +71,7 @@ def find_best_fit(df: pd.DataFrame) -> None:
 
     Parameters
     ----------
-    df : 'year' in years (decimal), and 'co2': trend of the CO2-data
+    df : 'year' in years (decimal), and 'co2' trend of the CO2-data
     """
 
     # Fit the models, and show the results

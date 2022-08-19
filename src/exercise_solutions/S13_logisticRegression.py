@@ -110,7 +110,7 @@ def find_probabilities(x: np.arange, px: np.arange,
     Parameters
     ----------
     x : sepal length
-    px: corresponding probability os being 'setosa'
+    px: corresponding probability of being 'setosa'
     lengths : values of interest
     """
 
