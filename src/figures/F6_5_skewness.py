@@ -51,12 +51,12 @@ def kurtosis(ax):
     wignerIndex = np.abs(t) <= 1
     wigner[wignerIndex] = 2/np.pi * np.sqrt(1-t[wignerIndex]**2)
 
-    ax.plot(t, platykurtic, label='kurtosis=3')
-    ax.plot(t, wigner, '--', label='kurtosis=-1')
+    ax.plot(t, platykurtic, label='excess kurtosis=3')
+    ax.plot(t, wigner, '--', label='excess kurtosis=-1')
     ax.xaxis.set_ticks_position('bottom')
     ax.yaxis.set_ticks_position('left')
     ax.margins(0,0)
-    ax.legend()
+    ax.legend(loc='lower right')
 
 
 if __name__=='__main__':
