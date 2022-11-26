@@ -7,7 +7,7 @@ before 1986.
 
 Important note
 --------------
-This module requires PyMC3 or PyMC4. I only have been able to install
+This module requires PyMC3. I only have been able to install
 either of these packages using Anaconda!!
 
 """
