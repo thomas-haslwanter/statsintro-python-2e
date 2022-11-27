@@ -4,9 +4,11 @@ intervals for the likelihood of an O-ring failure in a space shuttle, as a
 function of the ambient temperature.
 Input data are the recorded O-ring performances of the space shuttles
 before 1986.
+
+Note: for an example with PyMC3, check out 'ISP_bayesianStats_PyMC3.py'
 """
 
-# author: Thomas Haslwanter, date: June-2022
+# author: Thomas Haslwanter, date: Nov-2022
 
 # Import standard packages
 import numpy as np
