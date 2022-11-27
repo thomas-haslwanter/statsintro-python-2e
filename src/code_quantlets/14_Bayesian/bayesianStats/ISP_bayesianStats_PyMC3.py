@@ -76,7 +76,7 @@ def getData() -> Tuple[np.ndarray, np.ndarray]:
     return (temperature, failureData)
 
 
-def showAndSave(temperature: np.ndarray, failures: np.ndarray) -> None:
+def show_and_save(temperature: np.ndarray, failures: np.ndarray) -> None:
     """Shows the input data, and saves the resulting figure
 
     Parameters
@@ -106,7 +106,7 @@ def showAndSave(temperature: np.ndarray, failures: np.ndarray) -> None:
     showData(outFile)
 
 
-def mcmcSimulations(temperature: np.ndarray, failures: np.ndarray) -> Tuple:
+def mcmc_simulations(temperature: np.ndarray, failures: np.ndarray) -> Tuple:
     """Perform the MCMC-simulations
 
     Parameters
@@ -129,10 +129,6 @@ def mcmcSimulations(temperature: np.ndarray, failures: np.ndarray) -> Tuple:
         """ Define the model-function for the temperature """
         return 1.0 / (1.0 + np.exp(np.dot(beta, x) + alpha))  
 
-
-    D = failures
-
-    #notice the`value` here. We explain why below.
     with pm.Model() as model:
         beta = pm.Normal("beta", mu=0, tau=0.001, testval=0)
         alpha = pm.Normal("alpha", mu=0, tau=0.001, testval=0)
@@ -141,9 +137,8 @@ def mcmcSimulations(temperature: np.ndarray, failures: np.ndarray) -> Tuple:
     # connect the probabilities in `p` with our observations through a
     # Bernoulli random variable.
     with model:
-        observed = pm.Bernoulli("bernoulli_obs", p, observed=D)
+        observed = pm.Bernoulli("bernoulli_obs", p, observed=failures)
         
-        # Mysterious code to be explained in Chapter 3
         start = pm.find_MAP()
         step = pm.Metropolis()
         trace = pm.sample(120000, step=step, start=start)
@@ -155,7 +150,7 @@ def mcmcSimulations(temperature: np.ndarray, failures: np.ndarray) -> Tuple:
     return(alpha_samples, beta_samples)
 
 
-def showSimResults(alpha_samples, beta_samples) -> None:
+def show_sim_results(alpha_samples, beta_samples) -> None:
     """Show the results of the simulations, and save them to an outFile
 
     Parameters
@@ -184,7 +179,7 @@ def showSimResults(alpha_samples, beta_samples) -> None:
     showData(outFile)
 
 
-def calculateProbability(alpha_samples, beta_samples, temperature, failures):
+def calc_prob(alpha_samples, beta_samples, temperature, failures):
     """Calculate the mean probability, and the CIs
 
     Parameters
@@ -208,7 +203,7 @@ def calculateProbability(alpha_samples, beta_samples, temperature, failures):
     return (t, mean_prob_t, p_t, quantiles)
 
 
-def showProbabilities(linearTemperature, temperature, failures,
+def show_prob(linearTemperature, temperature, failures,
                       mean_prob_t, p_t, quantiles) -> None:
     """Show the posterior probabilities, and save the resulting figures
 
@@ -271,14 +266,10 @@ def showProbabilities(linearTemperature, temperature, failures,
 
 if __name__=='__main__':
     (temperature, failures) = getData()
-    showAndSave(temperature, failures)
-
-    (alpha, beta) = mcmcSimulations(temperature, failures)
-    showSimResults(alpha, beta)
-
-    (linearTemperature, mean_p, p, quantiles) = calculateProbability(alpha,
-            beta, temperature, failures)
-
-    showProbabilities(linearTemperature, temperature, failures,
-            mean_p, p, quantiles)
+    show_and_save(temperature, failures)
+    (alpha, beta) = mcmc_simulations(temperature, failures)
+    show_sim_results(alpha, beta)
+    (linearTemperature, mean_p, p, quantiles) = calc_prob(alpha, beta,
+                                                          temperature, failures)
+    show_prob(linearTemperature, temperature, failures, mean_p, p, quantiles)
 
