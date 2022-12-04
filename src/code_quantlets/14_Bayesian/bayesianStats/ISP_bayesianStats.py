@@ -5,10 +5,15 @@ function of the ambient temperature.
 Input data are the recorded O-ring performances of the space shuttles
 before 1986.
 
-Note: for an example with PyMC3, check out 'ISP_bayesianStats_PyMC3.py'
+Notes
+-----
+Programs also exist for new versions of PyMC!!
+
+ * for an example with PyMC3, check out 'ISP_bayesianStats_PyMC3.py'
+ * for an example with PyMC4, check out 'ISP_bayesianStats_PyMC4.py'
 """
 
-# author: Thomas Haslwanter, date: Nov-2022
+# author: Thomas Haslwanter, date: Dec-2022
 
 # Import standard packages
 import numpy as np
