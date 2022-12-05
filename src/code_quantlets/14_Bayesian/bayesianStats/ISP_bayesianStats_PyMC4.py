@@ -7,7 +7,7 @@ before 1986.
 
 Important note
 --------------
-This module requires PyMC3. To install it you probably have to use Anaconda.
+This module requires PyMC4. To install it you probably have to use Anaconda.
 With `conda', be sure to ALWAYS use
 `conda <command> -c conda-forge <parameters>`
 to install the virtual environment, and the desired packages.
@@ -157,10 +157,13 @@ def mcmc_simulations(temperature: np.ndarray, failures: np.ndarray) -> Tuple:
     fig, axs = plt.subplots(2,1)
     az.plot_posterior(trace, var_names='alpha', ax=axs[0])
     az.plot_posterior(trace, var_names='beta', ax=axs[1])
-    plt.show()
+
+    outFile = 'Challenger_Parameters.png'
+    showData(outFile)
 
     # Get the sampled variable traces for alpha and beta:
-    # Note that PyMC4 requires no more "burn-in"
+    # Note that PyMC4 requires no more "burn-in", and that the sampled variables
+    # are stored as 2D Arrays.
     # Also, there may be a more elegant way to get the sampled variables from 
     # the arviz.InferenceData object than the one used here
     alpha, beta = az.extract(trace, var_names=['alpha', 'beta']).to_array()
@@ -168,35 +171,6 @@ def mcmc_simulations(temperature: np.ndarray, failures: np.ndarray) -> Tuple:
     beta_samples = np.atleast_2d(beta).T
 
     return(alpha_samples, beta_samples)
-
-
-def show_sim_results(alpha_samples, beta_samples) -> None:
-    """Show the results of the simulations, and save them to an outFile
-
-    Parameters
-    ----------
-    alpha_samples: posterior distribution of alpha values
-    beta_samples :  posterior distribution of beta values
-    """
-
-    plt.figure(figsize=(12.5, 6))
-    sns.set_style('darkgrid')
-    setFonts(18)
-
-    # Histogram of the samples:
-    plt.subplot(211)
-    plt.title(r"Posterior distributions of the variables $\alpha, \beta$")
-    plt.hist(beta_samples, histtype='stepfilled', bins=35, alpha=0.85,
-             label=r"posterior of $\beta$", color="#7A68A6", density=True)
-    plt.legend()
-
-    plt.subplot(212)
-    plt.hist(alpha_samples, histtype='stepfilled', bins=35, alpha=0.85,
-             label=r"posterior of $\alpha$", color="#A60628", density=True)
-    plt.legend()
-
-    outFile = 'Challenger_Parameters.png'
-    showData(outFile)
 
 
 def calc_prob(alpha_samples: np.ndarray,
@@ -295,7 +269,6 @@ if __name__=='__main__':
     (temperature, failures) = getData()
     show_and_save(temperature, failures)
     (alpha, beta) = mcmc_simulations(temperature, failures)
-    show_sim_results(alpha, beta)
     (linearTemperature, mean_p, p, quantiles) = calc_prob(alpha, beta,
                                                           temperature)
     show_prob(linearTemperature, temperature, failures, mean_p, p, quantiles)
