@@ -1,0 +1,7 @@
+ID, Weight, Value
+1, 1.3, 0.6
+2, 2.1, 0.7
+3, 4.8, 0.8
+4, 3.3, 0.9
+Those are dummy values, created by ThH.
+May, 2020
